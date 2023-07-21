@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto&display=swap');
+@tailwind base;
+@tailwind components;
+.underlineHover::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: orange; /* Set the underline color to orange */
+    transform: scaleX(0); /* Initially, the underline will have no width (hidden) */
+    transition: transform 0.2s ease; /* Add a transition for smooth effect */
+  }
+  
+  .underlineHover:hover::after {
+    transform: scaleX(1);
+  }
+  .iconDiv{
+    width: 20rem;
+    text-align: center;
+  }
+@tailwind utilities;

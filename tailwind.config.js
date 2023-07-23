@@ -10,7 +10,8 @@ module.exports = {
         btn:'#5b7c99'
       },
       fontFamily:{
-        body:['Lato']
+        lato:"'Lato',sans-serif",
+        DMSend:"'DM Sans',sans-serif"
       }
     },
   },

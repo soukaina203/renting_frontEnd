@@ -8,6 +8,7 @@ import AllCars from './Admin/cars';
 import AllRentals from './Admin/rentals';
 import AllUsers from './Admin/users';
 import Dashboard from './Admin/dashboard';
+import VoirCar from './Admin/cars/VoirCar';
 function App() {
   return (
     <div className="">
@@ -22,6 +23,7 @@ function App() {
         <Route path='/cars' element={<AllCars/>}/>
         <Route path='/Rentals' element={<AllRentals/>}/>
         <Route path='/Users' element={<AllUsers/>}/>
+        <Route path='/car/:id' element={<VoirCar/>}/>
         
       </Routes>
     </Router>

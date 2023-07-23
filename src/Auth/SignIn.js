@@ -5,7 +5,7 @@ function SignIn() {
 
   return (
     <div className='flex justify-center align-center  w-[100vw] h-[100vh] '>
-      <div className='w-[25rem] h-[22rem]  '>
+      <div className='w-[22rem] h-[22rem]  '>
 
       <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-md mt-12">
         <h1 className="text-2xl font-semibold mb-6 text-center text-orange-500">Sign In</h1>

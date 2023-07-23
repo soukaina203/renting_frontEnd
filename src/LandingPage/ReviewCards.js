@@ -7,6 +7,7 @@ function ReviewCards() {
 
   let fetchData = async () => {
     const datas = await axios.get("http://localhost:8000/api/reviews/get");
+    console.log(datas)
     setData(datas.data);
   };
 

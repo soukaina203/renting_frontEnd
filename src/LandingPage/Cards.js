@@ -32,7 +32,7 @@ function Cards() {
 
                 <div className="mt-auto">
                   <button className="w-full p-2  rounded bg-btn  text-slate-50 mt-2">
-                    <Link to="Choose">Rent Now</Link>
+                    <Link to="choose">Rent Now</Link>
                   </button>
                 </div>
       {/* <button className='p-2 bg-btn  rounded text-slate-50'><Link to="Choose">Rent Now</Link></button> */}

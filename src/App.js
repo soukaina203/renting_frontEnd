@@ -3,6 +3,7 @@ import {BrowserRouter as Router ,Link ,Route,Routes} from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage';
 import SignUp from './Auth/SignUp';
 import SignIn from './Auth/SignIn';
+import Choose from './Auth/Choose';
 function App() {
   return (
     <div className="">
@@ -12,6 +13,7 @@ function App() {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
+        <Route path='/choose' element={<Choose/>}/>
         
       </Routes>
     </Router>

@@ -15,7 +15,7 @@ function Cards() {
   }, []);
 
   return (
-    <div className="grid justify-center grid-cols-3  ">
+    <div className="grid justify-center grid-cols-3 justify-items-center ">
       {data !== undefined
         ? data.map((e, i) => (
             <div key={i} className="max-w-xs w-full bg-white shadow-lg rounded-lg mx-4 my-6">

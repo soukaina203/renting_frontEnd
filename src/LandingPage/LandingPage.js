@@ -13,7 +13,7 @@ function LandingPage() {
       <About />
       <Ride />
       <Services />
-      {/* <Reviews /> */}
+      <Reviews />
 
     </div>
   )

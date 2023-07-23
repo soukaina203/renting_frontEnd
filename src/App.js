@@ -1,9 +1,13 @@
 import './App.css';
-import {BrowserRouter as Router ,Link ,Route,Routes} from 'react-router-dom'
+import {BrowserRouter as Router  ,Route,Routes} from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage';
 import SignUp from './Auth/SignUp';
-import SignIn from './Auth/SignIn';
+import SignIn from './Auth/login';
 import Choose from './Auth/Choose';
+import AllCars from './Admin/cars';
+import AllRentals from './Admin/rentals';
+import AllUsers from './Admin/users';
+import Dashboard from './Admin/dashboard';
 function App() {
   return (
     <div className="">
@@ -14,6 +18,10 @@ function App() {
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/choose' element={<Choose/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/cars' element={<AllCars/>}/>
+        <Route path='/Rentals' element={<AllRentals/>}/>
+        <Route path='/Users' element={<AllUsers/>}/>
         
       </Routes>
     </Router>

@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors  :{
-        white1:'#EEEFF1'
+        white1:'#EEEFF1',
+        btn:'#5b7c99'
       },
       fontFamily:{
         body:['Lato']

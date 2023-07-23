@@ -1,8 +1,8 @@
 import './App.css';
 import {BrowserRouter as Router ,Link ,Route,Routes} from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage';
-// import SignUp from './Auth/SignUp';
-// import SignIn from './Auth/SignIn';
+import SignUp from './Auth/SignUp';
+import SignIn from './Auth/SignIn';
 function App() {
   return (
     <div className="">
@@ -10,8 +10,8 @@ function App() {
 
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
-        {/* <Route path='/signIn' element={<SignIn/>}/> */}
-        {/* <Route path='/signUp' element={<SignUp/>}/> */}
+        <Route path='/signIn' element={<SignIn/>}/>
+        <Route path='/signUp' element={<SignUp/>}/>
         
       </Routes>
     </Router>

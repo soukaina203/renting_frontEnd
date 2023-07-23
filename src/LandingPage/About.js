@@ -19,7 +19,7 @@ function About() {
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse provident odio exercitationem doloribus quae fuga ex tenetur, repudiandae laudantium non temporibus ea expedita.
                         </p> 
                         {/* <br /> */}
-                        <button className='p-2 bg-blue-600 rounded text-slate-50 w-[10em] mt-[10px]'> <a href="bv">Learn more</a></button>
+                        <button className='p-2 bg-btn rounded text-slate-50 w-[10em] mt-[10px]'> <a href="bv">Learn more</a></button>
                     </div>
                 </div>
 

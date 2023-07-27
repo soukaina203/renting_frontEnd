@@ -17,9 +17,9 @@ function SignIn() {
     });
 
 
+    console.log(res.data  )
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', res.data.user.name);
-    console.log(res.data.user)
 
     if (res.data.token!==undefined) {
       setMsg('')

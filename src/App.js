@@ -11,6 +11,7 @@ import Dashboard from './Admin/dashboard';
 import VoirCar from './Admin/cars/VoirCar';
 import ModifyCar from './Admin/cars/ModifyCar';
 import CreateCar from './Admin/cars/create';
+import LogOut from './Auth/logout';
 function App() {
   return (
     <div className="">
@@ -20,6 +21,7 @@ function App() {
         {/* Auth */}
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/signIn' element={<SignIn/>}/>
+        <Route path='/logout' element={<LogOut/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/choose' element={<Choose/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>

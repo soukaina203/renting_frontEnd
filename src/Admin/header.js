@@ -16,7 +16,7 @@ function HeaderAdmin() {
 
      
       <button className='p-2  rounded text-gray-500 '><Link to="AdminProfile">{admin} </Link></button>
-      <button className='p-2 rounded text-gray-500 '><Link to="signIn">Log Out</Link></button>
+      <button className='p-2 rounded text-gray-500 '><Link to="/logout">Log Out</Link></button>
       </div>
     </div>
     </div>

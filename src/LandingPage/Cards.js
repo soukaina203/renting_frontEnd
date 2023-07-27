@@ -20,7 +20,7 @@ function Cards() {
         ? data.map((e, i) => (
           <div key={i} className="max-w-xs w-full bg-white shadow-lg rounded-lg mx-4 my-6">
             <img
-              src={`imgs/${e.photo}.jpg`}
+              src={`http://127.0.0.1:8000/images/${e.photo}`}
               alt=""
               className="w-full h-48 object-cover object-center rounded-t-lg"
             />

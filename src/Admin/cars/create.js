@@ -35,7 +35,9 @@ function CreateCar() {
             }
         });
         console.log("hi")
-      
+      if(d.data.message==="Item added successfully"){
+        navigate('/admin/cars')
+      }
 
 console.log(d.data)
     }

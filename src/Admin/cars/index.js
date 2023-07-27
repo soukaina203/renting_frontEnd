@@ -103,14 +103,14 @@ function AllCars() {
 
 
     <div className="mt-4 flex justify-center">
-      <button className="px-4 py-2 font-bold text-white bg-btn rounded   mr-2 transition-colors duration-300">
+      <button className="px-4 py-1 font-bold  text-btn rounded  border-[2px] border-btn  mr-2 transition-colors duration-300">
         <Link to={`/car/${e.id}`}>View</Link>
       </button>
-      <button className="px-4 py-2 font-bold text-white bg-btn1 rounded  mr-2 transition-colors duration-300">
+      <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300">
         <Link to={`/car/${e.id}/edit`}>Edit</Link>
       </button>
       <button
-        className="px-4 py-1  font-bold text-white bg-btn2 rounded  mr-2 transition-colors duration-300"
+        className="px-4 py-1  font-bold   border-[2px]  border-btn  text-btn  rounded  mr-2 transition-colors duration-300"
         onClick={() => deleteClient(e.id)}
       >
         Delete

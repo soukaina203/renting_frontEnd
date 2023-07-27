@@ -9,6 +9,8 @@ function AllCars() {
   const [permanent, setPermanent] = useState([]);// because   const [data, setData] = useState([]); i use it also for filtring
   const [TypeFilter, setTypeFiltered] = useState([]);
   const [allCars, setallCars] = useState([]);
+  const [avaiCars, setAvaiCars] = useState([]);
+  const [notAvailCars, setnotAvailCars] = useState([]);
   const [msg, setMsg] = useState('');
 
   let fetchData = async () => {
@@ -21,6 +23,9 @@ function AllCars() {
     setTypeFiltered(datas.data.Type)
     setallCars(datas.data.groupes)
     setPermanent(datas.data.cars) // unchangebal array of cars that i use when the user press on filter all 
+    setAvaiCars(datas.data.available)
+    setnotAvailCars(datas.data.NotAvailable)
+    console.log(datas.data)
   }
 
   useEffect(() => {
@@ -61,6 +66,7 @@ function AllCars() {
         </button>
       </div>
       <div className="flex ml-4 mr-2">
+        {/* car types */}
         <div className="w-64 mr-4 border border-btn rounded mt-7">
           <h2 className="font-semibold ml-6 mt-6">Car Type</h2>
           <p
@@ -86,7 +92,24 @@ function AllCars() {
           ) : (
             <p>Loading...</p>
           )}
+          {/* ===================================== */}
+          <h2 className="font-semibold ml-6 mt-6">Car Availability</h2>
+          <p className="cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+            setData(avaiCars)
+          }}>Available </p>
+          <p className="cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+            setData(notAvailCars)
+
+          }}> Not Available </p>
+          {/* ========================================== */}
+    <div className=' text-center mt-4'> 
+          <button className="px-4 py-2 text-white bg-btn rounded-md shadow-md hover:bg-btn1">
+            More Filters
+          </button>
+
+    </div>
         </div>
+        {/* availability */}
         <div className="grid grid-cols-3 gap-4  ml-[-20px] w-[56rem]">
           {data !== undefined ? (
             data.map((e, i) => (

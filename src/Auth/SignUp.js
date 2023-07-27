@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 function SignUp() {
   const data = useRef({
     name: '',
@@ -8,6 +10,8 @@ function SignUp() {
     phone: '',
     password: '',
   });
+  const navigate = useNavigate();
+
   let handleSignup= async (e)=>{
     e.preventDefault()
     let v=data.current
@@ -18,7 +22,9 @@ function SignUp() {
       address:v.address,
       phone:v.phone,
     });
-    console.log(res.data)
+    navigate('/signIn')
+
+
   }
 
   return (

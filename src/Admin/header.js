@@ -8,9 +8,9 @@ function HeaderAdmin() {
   <img src="/imgs/jeep.png" alt="" className="w-[50px] h-[50px] mt-[15px] ml-[10px] "/>
 
       <ul className='flex gap-5 mt-[29.2px] ml-[8.5rem] relative right-[-20rem] '>
-        <li><a href="#Home" className='underlineHover'>Cars</a></li>
-        <li><a href="#About" className='underlineHover'>Users</a></li>
-        <li><a href="#Ride" className='underlineHover'>Rentals</a></li>
+        <li><a href="/admin/cars" className='underlineHover'>CARS</a></li>
+        <li><a href="/users" className='underlineHover'>USERS</a></li>
+        <li><a href="#Ride" className='underlineHover'>RENTALS</a></li>
       </ul>
       <div className="flex flex-row gap-1 mt-4 relative right-[-33rem] text-[19px]">
 

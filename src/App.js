@@ -12,12 +12,13 @@ import VoirCar from './Admin/cars/VoirCar';
 import ModifyCar from './Admin/cars/ModifyCar';
 import CreateCar from './Admin/cars/create';
 import LogOut from './Auth/logout';
+import CreateUser from './Admin/users/CreateUser';
 function App() {
   return (
     <div className="">
     <Router>
 
-      <Routes>
+      <Routes> 
         {/* Auth */}
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/signIn' element={<SignIn/>}/>
@@ -26,10 +27,14 @@ function App() {
         <Route path='/choose' element={<Choose/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
   
+        <Route path='/users' element={<AllUsers/>}/>
+        <Route path='/user/create' element={<CreateUser/>}/>
+
+
         {/* <Route path='AdminProfile' element={<AdminProfil/>}/> */}
         <Route path='/Rentals' element={<AllRentals/>}/>
         <Route path='/admin/cars' element={<AllCars/>}/>
-        <Route path='/Users' element={<AllUsers/>}/>
+        <Route path='/users' element={<AllUsers/>}/>
         {/* Cars */}
         <Route path='/car/:id' element={<VoirCar/>}/>
         <Route path='/car/:id/edit' element={<ModifyCar/>}/>

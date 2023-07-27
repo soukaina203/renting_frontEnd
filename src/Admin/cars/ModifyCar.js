@@ -27,7 +27,7 @@ function ModifyCar() {
   let handleUpdta = async (e) => {
     e.preventDefault()
     let n = editedData.current;
-
+    console.log('hiiiii')
     try {
       const res = await axios.patch(
         `http://127.0.0.1:8000/api/car/${id}`,
@@ -50,7 +50,7 @@ function ModifyCar() {
 
         navigate('/admin/cars')
       }
-    
+
       // Handle the response data here if needed
       console.log(res.data);
     } catch (error) {
@@ -68,8 +68,8 @@ function ModifyCar() {
         console.error('Error:', error.message);
       }
     }
-    
-  
+
+
   }
   useEffect(() => {
     fetchCar();
@@ -92,11 +92,12 @@ function ModifyCar() {
       <div className="flex justify-center">
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
-            <form action="" onSubmit={handleUpdta}>
+            <form action="" >
               <img
                 src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
-                 alt="" className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
-              <button className='text-blue-500' onClick={() => {
+                alt="" className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
+              <button className='text-blue-500' onClick={(e) => {
+                e.preventDefault()
                 setShowEditImg(true)
               }}>Change the image</button>
 
@@ -107,7 +108,8 @@ function ModifyCar() {
                   <div className="mt-4 flex gap-4">
                     <button
                       className="bg-orange-500 hover:bg-orange-600 text-white rounded-md px-4 py-1 flex items-center justify-center"
-                      onClick={() => {
+                      onClick={(z) => {
+                        z.preventDefault()
                         setUpclicked(true);
                         handleUpload();
                       }}
@@ -203,7 +205,9 @@ function ModifyCar() {
                   />
                 </label>
 
-                <button type='submit' className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" >
+                <button type='submit' className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" onClick={(e) => {
+                  handleUpdta(e)
+                }}>
                   Save Changes
                 </button>
 

@@ -27,7 +27,7 @@ function VoirCar() {
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
             <img
-              src={`/imgs/${data.photo}.jpg`}
+              src={`http://127.0.0.1:8000/images/${data.photo}`}
               alt=""
               className="w-full h-[19rem] object-cover object-center rounded-t-lg"
             />
@@ -43,7 +43,7 @@ function VoirCar() {
               {/* <p className="text-gray-600 font-bold">Mileage: {data.mileage}</p>
               <p className="text-gray-600 font-bold">Color: {data.color}</p> */}
 
-              <Link to={`/cars`} className=" inline-block mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Back</Link>
+              <Link to={`/admin/cars`} className=" inline-block mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Back</Link>
             </div>
           </div>
           : ""}

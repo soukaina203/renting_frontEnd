@@ -13,6 +13,7 @@ import ModifyCar from './Admin/cars/ModifyCar';
 import CreateCar from './Admin/cars/create';
 import LogOut from './Auth/logout';
 import CreateUser from './Admin/users/CreateUser';
+import VoirUser from './Admin/users/VoirUser';
 function App() {
   return (
     <div className="">
@@ -28,9 +29,10 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
   
         <Route path='/users' element={<AllUsers/>}/>
+        <Route path='/user/:id' element={<VoirUser/>}/>
         <Route path='/user/create' element={<CreateUser/>}/>
 
-
+        
         {/* <Route path='AdminProfile' element={<AdminProfil/>}/> */}
         <Route path='/Rentals' element={<AllRentals/>}/>
         <Route path='/admin/cars' element={<AllCars/>}/>

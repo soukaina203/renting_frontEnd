@@ -10,24 +10,28 @@ import AllUsers from './Admin/users';
 import Dashboard from './Admin/dashboard';
 import VoirCar from './Admin/cars/VoirCar';
 import ModifyCar from './Admin/cars/ModifyCar';
+import CreateCar from './Admin/cars/create';
 function App() {
   return (
     <div className="">
     <Router>
 
       <Routes>
+        {/* Auth */}
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/signIn' element={<SignIn/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/choose' element={<Choose/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        {/* Admin */} 
+  
         {/* <Route path='AdminProfile' element={<AdminProfil/>}/> */}
-        <Route path='/admin/cars' element={<AllCars/>}/>
         <Route path='/Rentals' element={<AllRentals/>}/>
+        <Route path='/admin/cars' element={<AllCars/>}/>
         <Route path='/Users' element={<AllUsers/>}/>
+        {/* Cars */}
         <Route path='/car/:id' element={<VoirCar/>}/>
         <Route path='/car/:id/edit' element={<ModifyCar/>}/>
+        <Route path='/car/create' element={<CreateCar/>}/>
         
       </Routes>
     </Router>

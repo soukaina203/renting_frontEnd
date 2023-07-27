@@ -52,62 +52,80 @@ function AllCars() {
   }
 
   return (
-    <div >
+    <div>
       <HeaderAdmin />
-      <div className="w-85  grid grid-cols-2 ml-4 mr-4">
-
-        <div className="h-[100vh] w-[25rem] ml-[4rem] border-[1px] mt-7 border-btn border-solid ">
-          <h2 className='font-DMSend font-semibold ml-6 mt-6'>Car Type</h2>
-          <p onClick={() => {
-            filterByType('all')
-          }}>all</p>
-          {TypeFilter !== undefined ? TypeFilter.map((e) => {
-            return <div>
-              <p onClick={() => {
-                filterByType(e)
-              }}>  {e}</p>
-            </div>
-          }) : ""}
-        </div>
-
-        <div className='grid grid-cols-2 gap-6 relative right-28'>
-          {data !== undefined
-            ? data.map((e, i) => (
-              <div key={i} className="max-w-xs w-full bg-white shadow-lg rounded-lg mx-4 my-6">
-                <img
-                  src={`/imgs/${e.photo}.jpg`}
-                  alt=""
-                  className="w-full h-48 object-cover object-center rounded-t-lg"
-                />
-                <div className="px-4 py-2">
-                  <p>{e.type}</p>
-                  <h2 className="text-xl font-semibold text-black">{e.year}</h2>
-                  <p className="text-gray-600 font-bold">{e.model}</p>
-                  <p className="font-semibold text-btn">{e.price_per_day}$ per day</p>
-
-                  <div className="mt-auto">
-                    <button className="w-full p-2  rounded bg-btn  text-slate-50 mt-2">
-                      <Link to="choose">Rent Now</Link>
-                    </button>
-                    <button className='bg-red-500  text-white p-2 font-bold' onClick={() => {
-                      deleteClient(e.id)
-
-                    }}>Supprimer</button>
-                    <button> <Link to={`/car/${e.id}`}>Voir </Link> </button>
-                    <br />
-                    <button> <Link to={`/car/${e.id}/edit`}>Modify </Link> </button>
-                  </div>
-
-                </div>
-              </div>
+      <div className="flex items-center justify-between px-4 py-2">
+        <h1 className="text-2xl font-bold">All Cars</h1>
+        <button className="px-4 py-2 text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600">
+          <Link to="/car/create">Create A Car</Link>
+        </button>
+      </div>
+      <div className="flex ml-4 mr-2">
+        <div className="w-64 mr-4 border border-btn rounded mt-7">
+          <h2 className="font-semibold ml-6 mt-6">Car Type</h2>
+          <p
+            className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+            onClick={() => {
+              filterByType('all');
+            }}
+          >
+            All
+          </p>
+          {TypeFilter !== undefined ? (
+            TypeFilter.map((e) => (
+              <p
+                key={e}
+                className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                onClick={() => {
+                  filterByType(e);
+                }}
+              >
+                {e}
+              </p>
             ))
-            : null}
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
+        <div className="grid grid-cols-3 gap-4  ml-[-20px] w-[56rem]">
+          {data !== undefined ? (
+            data.map((e, i) => (
+<div key={i} className="max-w-xs w-full bg-white shadow-lg rounded-lg overflow-hidden mx-4 my-6">
+  <img
+    src={`http://127.0.0.1:8000/images/${e.photo}`}
+    alt=""
+    className="w-full h-48 object-cover object-center rounded-t-lg"
+  />
+  <div className="px-4 py-3">
+    <p className="text-gray-700 font-bold text-[20px] uppercase">{e.model}</p>
+    <p className="text-sm text-gray-600 uppercase tracking-wide">{e.type} - {e.price_per_day}$/day</p>
 
 
 
+    <div className="mt-4 flex justify-center">
+      <button className="px-4 py-2 font-bold text-white bg-btn rounded   mr-2 transition-colors duration-300">
+        <Link to={`/car/${e.id}`}>View</Link>
+      </button>
+      <button className="px-4 py-2 font-bold text-white bg-btn1 rounded  mr-2 transition-colors duration-300">
+        <Link to={`/car/${e.id}/edit`}>Edit</Link>
+      </button>
+      <button
+        className="px-4 py-1  font-bold text-white bg-btn2 rounded  mr-2 transition-colors duration-300"
+        onClick={() => deleteClient(e.id)}
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
 
 
+
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
       </div>
     </div>
   )

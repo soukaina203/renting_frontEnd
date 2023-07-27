@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
+import { useNavigate } from "react-router-dom";
 
 function ModifyCar() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
@@ -10,6 +11,7 @@ function ModifyCar() {
   const editedData = useRef([])// the data thatis new edited by the user and gonna be passed to the backend
   const [upClicked, setUpclicked] = useState(false)// this for changing the image if the user click on upload than the url of the image goona change to the one sent by the backend
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // store the incoming image url that is coming from the backend
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -24,25 +26,50 @@ function ModifyCar() {
   };
   let handleUpdta = async (e) => {
     e.preventDefault()
-    let n = editedData.current
-    const res = await axios.patch(`http://127.0.0.1:8000/api/car/${id}`, {
-      'model': n.model,
-      'make': n.make,
-      'type': n.type,
-      'year': n.year,
-      'color': n.color,
-      'price_per_day': n.price_per_day,
-      'available': n.available
+    let n = editedData.current;
 
-
-    },
-      {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+    try {
+      const res = await axios.patch(
+        `http://127.0.0.1:8000/api/car/${id}`,
+        {
+          model: n.model,
+          make: n.make,
+          type: n.type,
+          year: n.year,
+          color: n.color,
+          price_per_day: n.price_per_day,
+          available: n.available,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
         }
+      );
+      if(res.data.message==="Item updated successfully"){
+
+        navigate('/admin/cars')
       }
-    )
-    console.log(res.data)
+    
+      // Handle the response data here if needed
+      console.log(res.data);
+    } catch (error) {
+      // Handle errors here
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error('Response data:', error.response.data);
+        console.error('Status code:', error.response.status);
+        console.error('Headers:', error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('Request:', error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error:', error.message);
+      }
+    }
+    
+  
   }
   useEffect(() => {
     fetchCar();
@@ -67,25 +94,40 @@ function ModifyCar() {
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
             <form action="" onSubmit={handleUpdta}>
               <img
-                src={upClicked ?`http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`} alt="" className="w-full h-[19rem] object-cover object-center rounded-t-lg" />
-              <button onClick={() => {
+                src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
+                 alt="" className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
+              <button className='text-blue-500' onClick={() => {
                 setShowEditImg(true)
               }}>Change the image</button>
 
-              {showEditImg ?
-                // <form action="" onSubmit={handleUpload}>
-                <div>
-                  <label htmlFor="">choose an image</label>
-                  <input type="file" onChange={(e) => {
-                    setImg(e.target.files[0])
-                  }} />
-                  <input type="text" onClick={() => {
-                    setUpclicked(true)
-                    handleUpload()
-                  }} value="Upload" />
-                </div>
+              {showEditImg ? (
+                <div className="px-4 py-2 bg-white shadow rounded-lg">
+                  <label className="text-gray-600 block mb-2">Choose an image</label>
+                  <input type="file" onChange={(e) => setImg(e.target.files[0])} />
+                  <div className="mt-4 flex gap-4">
+                    <button
+                      className="bg-orange-500 hover:bg-orange-600 text-white rounded-md px-4 py-1 flex items-center justify-center"
+                      onClick={() => {
+                        setUpclicked(true);
+                        handleUpload();
+                      }}
+                    >
 
-                : ""}
+                      Upload
+                    </button>
+                    <button
+                      className="bg-gray-300 hover:bg-gray-400 text-black rounded-md px-4 py-1 flex items-center justify-center"
+                      onClick={() => {
+                        setShowEditImg(false);
+                      }}
+                    >
+
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+
               <div className="px-4 py-2">
                 <label className="text-gray-600 block">
                   Make:
@@ -165,7 +207,7 @@ function ModifyCar() {
                   Save Changes
                 </button>
 
-                <Link to={`/cars`} className="bg-gray-300 hover:bg-gray-400 text-black rounded-md mt-2 px-4 py-2">
+                <Link to={`/admin/cars`} className="bg-gray-300 hover:bg-gray-400 text-black rounded-md mt-2 px-4 py-2">
                   Cancel
                 </Link>
               </div>

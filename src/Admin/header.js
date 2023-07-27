@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 function HeaderAdmin() {
+  const [admin,setAdmin]=useState(localStorage.getItem('user'))
   return (
     <div>
           <div className='flex flex-row font-body gap-[2.8rem] font-semibold bg-white1 w-[100vw] z-10 sticky top-0'>
@@ -11,9 +12,11 @@ function HeaderAdmin() {
         <li><a href="#About" className='underlineHover'>Users</a></li>
         <li><a href="#Ride" className='underlineHover'>Rentals</a></li>
       </ul>
-      <div className="flex flex-row gap-1 mt-4 relative right-[-43rem] text-[19px]">
+      <div className="flex flex-row gap-1 mt-4 relative right-[-33rem] text-[19px]">
 
-      <button className='p-2 bg-btn  rounded text-slate-50 '><Link to="signIn">Log Out</Link></button>
+     
+      <button className='p-2  rounded text-gray-500 '><Link to="AdminProfile">{admin} </Link></button>
+      <button className='p-2 rounded text-gray-500 '><Link to="signIn">Log Out</Link></button>
       </div>
     </div>
     </div>

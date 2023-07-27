@@ -9,6 +9,7 @@ import AllRentals from './Admin/rentals';
 import AllUsers from './Admin/users';
 import Dashboard from './Admin/dashboard';
 import VoirCar from './Admin/cars/VoirCar';
+import ModifyCar from './Admin/cars/ModifyCar';
 function App() {
   return (
     <div className="">
@@ -20,10 +21,13 @@ function App() {
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/choose' element={<Choose/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/cars' element={<AllCars/>}/>
+        {/* Admin */} 
+        {/* <Route path='AdminProfile' element={<AdminProfil/>}/> */}
+        <Route path='/admin/cars' element={<AllCars/>}/>
         <Route path='/Rentals' element={<AllRentals/>}/>
         <Route path='/Users' element={<AllUsers/>}/>
         <Route path='/car/:id' element={<VoirCar/>}/>
+        <Route path='/car/:id/edit' element={<ModifyCar/>}/>
         
       </Routes>
     </Router>

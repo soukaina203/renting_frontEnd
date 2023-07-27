@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import HeaderAdmin from '../header';
-import CarCards from './CarCards';
 axios.defaults.withCredentials = true;
 
 function AllCars() {
@@ -13,15 +12,15 @@ function AllCars() {
   const [msg, setMsg] = useState('');
 
   let fetchData = async () => {
-    const datas = await axios.get("http://localhost:8000/api/car", {
+    const datas = await axios.get("http://localhost:8000/api/carsForAdmin", {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
-    setData(datas.data.cars);
+    setData(datas.data.cars); // i use it in filters 
     setTypeFiltered(datas.data.Type)
     setallCars(datas.data.groupes)
-    setPermanent(datas.data.cars)
+    setPermanent(datas.data.cars) // unchangebal array of cars that i use when the user press on filter all 
   }
 
   useEffect(() => {
@@ -76,7 +75,7 @@ function AllCars() {
             ? data.map((e, i) => (
               <div key={i} className="max-w-xs w-full bg-white shadow-lg rounded-lg mx-4 my-6">
                 <img
-                  src={`imgs/${e.photo}.jpg`}
+                  src={`/imgs/${e.photo}.jpg`}
                   alt=""
                   className="w-full h-48 object-cover object-center rounded-t-lg"
                 />
@@ -95,8 +94,9 @@ function AllCars() {
 
                     }}>Supprimer</button>
                     <button> <Link to={`/car/${e.id}`}>Voir </Link> </button>
+                    <br />
+                    <button> <Link to={`/car/${e.id}/edit`}>Modify </Link> </button>
                   </div>
-                  {/* <button className='p-2 bg-btn  rounded text-slate-50'><Link to="Choose">Rent Now</Link></button> */}
 
                 </div>
               </div>

@@ -15,6 +15,7 @@ import VoirCar from './Admin/cars/Show';
 import ModifyCar from './Admin/cars/Modify';
 import CreateCar from './Admin/cars/Create';
 import ModifyUser from './Admin/users/Modify';
+import VoirRental from './Admin/rentals/Show';
 
 const routesConfig = [
   // Auth
@@ -33,6 +34,9 @@ const routesConfig = [
 
   // Rentals
   { path: '/rentals', element: <AllRentals /> },
+  { path: '/rental/:id', element: <VoirRental /> },
+  { path: '/rental/create', element: <CreateUser /> },
+  { path: '/rental/edit/:id', element: <ModifyUser /> },
 
   // Cars 
   { path: '/admin/cars', element: <AllCars /> },

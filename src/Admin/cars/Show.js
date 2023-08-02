@@ -14,6 +14,8 @@ function VoirCar() {
       }
     });
     setData(response.data.car);
+    console.log(response
+      )
   };
 
   useEffect(() => {
@@ -39,10 +41,7 @@ function VoirCar() {
               <p className="text-gray-600 font-bold">Available: {data.available === 1 ? 'Yes' : 'No'}</p>
               <p className="text-gray-600 font-bold">Price per day: {data.price_per_day}$</p>
 
-              {/* Additional car details can be displayed here */}
-              {/* <p className="text-gray-600 font-bold">Mileage: {data.mileage}</p>
-              <p className="text-gray-600 font-bold">Color: {data.color}</p> */}
-
+           
               <Link to={`/admin/cars`} className=" inline-block mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Back</Link>
             </div>
           </div>

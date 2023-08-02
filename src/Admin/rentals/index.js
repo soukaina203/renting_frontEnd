@@ -25,7 +25,7 @@ useEffect(() => {
     console.log("hello")
     fetchData();
 }, []);
-let deleteUser = async (id) => {
+let deleteRental = async (id) => {
   try {
    let d= await axios.delete(`http://localhost:8000/api/rental/${id}`, {
       headers: {
@@ -85,14 +85,14 @@ let deleteUser = async (id) => {
 
                                     <td>
                                     <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300">
-                                        <Link className="btn btn-info mb-3" to={`/user/${e.id}`}> Voir</Link>
+                                        <Link className="btn btn-info mb-3" to={`/rental/${e.id}`}> Voir</Link>
                                         </button>
                                         <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300">
-                                        <Link className="btn btn-primary mb-3" to={`/user/edit/${e.id}`}> Modifier</Link>
+                                        <Link className="btn btn-primary mb-3" to={`/rental/edit/${e.id}`}> Modifier</Link>
                                         </button>
                                         <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300" 
                                         onClick={()=>{
-                                          deleteUser(e.id)
+                                          deleteRental(e.id)
                                         }}>
                                     Supprimer 
                               </button>

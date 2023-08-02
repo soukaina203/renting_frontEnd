@@ -95,7 +95,7 @@ function ModifyCar() {
             <form action="" >
               <img
                 src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
-                alt="" className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
+                alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
               <button className='text-blue-500' onClick={(e) => {
                 e.preventDefault()
                 setShowEditImg(true)

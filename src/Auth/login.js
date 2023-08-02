@@ -18,10 +18,10 @@ function SignIn() {
 
 
     console.log(res.data  )
-    localStorage.setItem('token', res.data.token);
-    localStorage.setItem('user', res.data.user.name);
-
+    
     if (res.data.token!==undefined) {
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('user', res.data.user.name);
       setMsg('')
       navigate('/dashboard')
 

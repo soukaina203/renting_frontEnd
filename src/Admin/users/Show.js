@@ -47,6 +47,8 @@ function VoirUser() {
                             <p className="text-gray-600 font-bold">Email: {data.email}</p>
                             <p className="text-gray-600 font-bold">Address: {data.address}</p>
                             <p className="text-gray-600 font-bold">Phone: {data.phone}</p>
+                            <p className="text-gray-600 font-bold">Ville: {data.city}</p>
+                            <p className="text-gray-600 font-bold">Pays: {data.country}</p>
                             <p className="text-gray-600 font-bold">Rentals:</p>
                             </div>
 

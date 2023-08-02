@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from '../header';
 function CreateUser() {
-    const FillData = useRef({ name: "", email: "", password: "", address: "",  phone: "",photo:"" })// the data thatis new edited by the user and gonna be passed to the backend
+    const FillData = useRef({ name: "", email: "", password: "", address: "",  phone: "",photo:"",city:"",country:"" })// the data thatis new edited by the user and gonna be passed to the backend
     const navigate = useNavigate();
 
     let handleCreate = async (e) => {
@@ -19,6 +19,8 @@ function CreateUser() {
         formData.append('address', v.address);
         formData.append('photo', v.photo);
         formData.append('phone', v.phone); // Assuming v.photo is the selected file object
+        formData.append('city', v.city); // Assuming v.photo is the selected file object
+        formData.append('country', v.country); // Assuming v.photo is the selected file object
         const d = await axios.post("http://localhost:8000/api/user",formData, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -88,20 +90,23 @@ console.log(d.data)
                                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                                 />
                             </label>
-
-
-
-
-
-
                             <label className="text-gray-600 block mb-2">Photo:
                                 <input type="file"
                                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                                     onChange={(e) => FillData.current.photo= e.target.files[0] } />
                             </label>
 
-                         
+                            <label className="text-gray-600 block mb-2">City:
+                                <input type="text"
+                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => FillData.current.city= e.target.value } />
+                            </label>
 
+                            <label className="text-gray-600 block mb-2">Country:
+                                <input type="text"
+                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => FillData.current.country= e.target.value } />
+                            </label>
                             <button type='submit' className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" >
                                 Save Changes
                             </button>

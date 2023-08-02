@@ -121,6 +121,7 @@ function AllCars() {
     <div>
       <HeaderAdmin />
       <div className="flex items-center justify-between px-4 py-2">
+        
         <h1 className="text-2xl font-bold">All Cars</h1>
         <button className="px-4 py-2 text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600">
           <Link to="/car/create">Create A Car</Link>

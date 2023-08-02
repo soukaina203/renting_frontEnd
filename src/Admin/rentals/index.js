@@ -48,7 +48,7 @@ let deleteRental = async (id) => {
     <div>
       <HeaderAdmin />
       <button className="px-4 py-2 text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600 absolute top-[110px] left-6">
-          <Link to="/user/create">Create A Rental</Link>
+          <Link to="/rental/create">Create A Rental</Link>
         </button>
       <div className="flex justify-center  h-screen">
       <div className="w-full md:w-2/3">

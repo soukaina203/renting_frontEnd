@@ -15,7 +15,7 @@ function VoirUser() {
             }
         });
         console.log(r.data)
-        setData(r.data.User);
+        setData(r.data.user);
         setRental(r.data.rentals)
     };
 
@@ -40,12 +40,15 @@ function VoirUser() {
                                 className="w-[10rem] h-[10rem] object-cover object-center rounded-full"
                             />
                         </div>
-                        <div className="px-4 py-2">
+                        <div className="px-4 py-2 ">
+                            <div className=' flex items-center flex-col justify-center'>
+
                             <h2 className="text-2xl font-semibold text-black">{data.name} </h2>
                             <p className="text-gray-600 font-bold">Email: {data.email}</p>
                             <p className="text-gray-600 font-bold">Address: {data.address}</p>
                             <p className="text-gray-600 font-bold">Phone: {data.phone}</p>
                             <p className="text-gray-600 font-bold">Rentals:</p>
+                            </div>
 
 
                             <div className="container mx-auto">

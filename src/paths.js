@@ -32,7 +32,7 @@ const routesConfig = [
   { path: '/user/edit/:id', element: <ModifyUser /> },
 
   // Rentals
-  { path: '/Rentals', element: <AllRentals /> },
+  { path: '/rentals', element: <AllRentals /> },
 
   // Cars 
   { path: '/admin/cars', element: <AllCars /> },

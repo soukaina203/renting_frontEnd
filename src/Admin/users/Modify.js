@@ -21,25 +21,26 @@ function ModifyCar() {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
-    console.log(res.data)
     setData(res.data.user);
-    editedData.current = res.data.car;
+    console.log(res.data.user)
+    editedData.current = res.data.user;
   };
   let handleUpdta = async (e) => {
     e.preventDefault()
     let n = editedData.current;
-    console.log('hiiiii')
+    console.log("object")
+    console.log(n)
     try {
+
       const res = await axios.patch(
-        `http://127.0.0.1:8000/api/car/${id}`,
+        `http://127.0.0.1:8000/api/user/${id}`,
         {
-          model: n.model,
-          make: n.make,
-          type: n.type,
-          year: n.year,
-          color: n.color,
-          price_per_day: n.price_per_day,
-          available: n.available,
+          name: n.name,
+          phone: n.phone,
+          email: n.email,
+          address: n.address,
+          password: n.password,
+        
         },
         {
           headers: {
@@ -49,11 +50,11 @@ function ModifyCar() {
       );
       if (res.data.message === "Item updated successfully") {
 
-        navigate('/admin/cars')
+        navigate('/users')
       }
 
       // Handle the response data here if needed
-      console.log(res.data);
+      console.log(editedData.current);
     } catch (error) {
       // Handle errors here
       if (error.response) {
@@ -95,19 +96,19 @@ function ModifyCar() {
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
             <form action="" >
-            <div className="w-full h-[19rem] flex items-center justify-center">
-  <img
-    src={
-      upClicked
-        ? `http://127.0.0.1:8000/images/${uploadedImageUrl}`
-        : data && data.photo
-        ? `http://127.0.0.1:8000/images/${data.photo}`
-        : "/imgs/noProfile.jpg"
-    }
-    alt=""
-    className="w-[14rem] h-[14rem] object-cover object-center rounded-full"
-  />
-</div>
+              <div className="w-full h-[19rem] flex items-center justify-center">
+                <img
+                  src={
+                    upClicked
+                      ? `http://127.0.0.1:8000/images/${uploadedImageUrl}`
+                      : data && data.photo
+                        ? `http://127.0.0.1:8000/images/${data.photo}`
+                        : "/imgs/noProfile.jpg"
+                  }
+                  alt=""
+                  className="w-[14rem] h-[14rem] object-cover object-center rounded-full"
+                />
+              </div>
 
 
               <button className='text-blue-500' onClick={(e) => {
@@ -146,79 +147,59 @@ function ModifyCar() {
 
               <div className="px-4 py-2">
                 <label className="text-gray-600 block">
-                  Make:
+                  Name:
                   <input
                     type="text"
-                    defaultValue={data.make}
-                    onChange={(e) => editedData.current = { ...data, make: e.target.value }}
+                    defaultValue={data.name}
+                    onChange={(e) => editedData.current = { ...data, name: e.target.value }}
                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                   />
                 </label>
 
                 <label className="text-gray-600 block">
-                  Model:
+                  Email:
                   <input
                     type="text"
-                    defaultValue={data.model}
-                    onChange={(e) => editedData.current = { ...data, model: e.target.value }}
+                    defaultValue={data.email}
+                    onChange={(e) => editedData.current = { ...data, email: e.target.value }}
                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                   />
                 </label>
 
+
                 <label className="text-gray-600 block">
-                  Type:
+                Address:
                   <input
                     type="text"
-                    defaultValue={data.type}
-                    onChange={(e) => editedData.current = { ...data, type: e.target.value }}
+                    defaultValue={data.address}
+                    onChange={(e) => editedData.current = { ...data, address: e.target.value }}
                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                   />
                 </label>
 
+            
+
                 <label className="text-gray-600 block">
-                  Year:
+                  Phone
                   <input
                     type="text"
-                    defaultValue={data.year}
-                    onChange={(e) => editedData.current = { ...data, year: e.target.value }}
+                    defaultValue={data.phone}
+                    onChange={(e) => editedData.current = { ...data, phone: e.target.value }}
                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                   />
                 </label>
 
                 <label className="text-gray-600 block">
-                  Available:
-                  <select
-                    defaultValue={data.available}
-                    onChange={(e) => editedData.current = { ...data, available: e.target.value }}
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                  >
-                    <option value={1}>Yes</option>
-                    <option value={0}>No</option>
-                  </select>
-                </label>
-
-                <label className="text-gray-600 block">
-                  Price per day:
+                Password:
                   <input
-                    type="number"
-                    defaultValue={data.price_per_day}
-                    onChange={(e) => editedData.current = { ...data, price_per_day: e.target.value }}
+                    type="password"
+                    onChange={(e) => editedData.current = { ...data, password: e.target.value }}
                     className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
                   />
                 </label>
 
 
-
-                <label className="text-gray-600 block">
-                  Color:
-                  <input
-                    type="text"
-                    defaultValue={data.color}
-                    onChange={(e) => editedData.current = { ...data, color: e.target.value }}
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                  />
-                </label>
-
+               
                 <button type='submit' className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" onClick={(e) => {
                   handleUpdta(e)
                 }}>

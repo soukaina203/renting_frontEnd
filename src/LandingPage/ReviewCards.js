@@ -29,7 +29,7 @@ function ReviewCards() {
               <div className="flex items-center mb-2">
                 <div className="h-20 w-20 rounded-full overflow-hidden mr-3">
                   <img
-                    src={`imgs/${e.user.photo}.jpg`}
+                    src={`http://127.0.0.1:8000/images/${e.user.photo}`}
                     alt=""
                     className="w-full h-full object-cover object-center"
                   />

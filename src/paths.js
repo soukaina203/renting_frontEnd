@@ -25,6 +25,8 @@ import Answer from './Users/Answer';
 import UserRentals from './Users/UserRentals';
 import Processed from './Admin/rentals/Processed';
 import NotProcessed from './Admin/rentals/NotProcessed';
+import CreateReview from './Users/CreateReview';
+import ReviewsAdmin from './Admin/ReviewsAdmin';
 
 const routesConfig = [
   // Auth Admin and users
@@ -65,6 +67,11 @@ const routesConfig = [
   { path: '/car/:id/rent', element: <Rent /> },
   { path: '/answer', element: <Answer /> },
   { path: '/user/rentals', element: <UserRentals /> },
+  { path: '/review/create', element: <CreateReview /> },
+
+
+
+  { path: '/reviews', element: <ReviewsAdmin /> },
 
 
 

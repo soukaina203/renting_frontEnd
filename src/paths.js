@@ -22,6 +22,7 @@ import EditProfile from './Admin/editProfile';
 import Welcome from './Users/Welcome';
 import Rent from './Users/Rent';
 import Answer from './Users/Answer';
+import UserRentals from './Users/UserRentals';
 
 const routesConfig = [
   // Auth Admin and users
@@ -56,6 +57,7 @@ const routesConfig = [
   { path: '/welcome', element: <Welcome /> },
   { path: '/car/:id/rent', element: <Rent /> },
   { path: '/answer', element: <Answer /> },
+  { path: '/Rentals1', element: <UserRentals /> },
 
 
 ];

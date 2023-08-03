@@ -27,7 +27,7 @@ export default function Rent() {
         e.preventDefault()
        
         let n = FillData.current;
-        const d = await axios.post("http://localhost:8000/api/rental", {
+        const d = await axios.post("http://localhost:8000/api/rentals", {
             user_id:localStorage.getItem('userId'),
             car_id: id,
             rental_start: n.rental_start,

@@ -11,7 +11,7 @@ export default function HeaderUser() {
                 <div className="flex flex-row gap-1 mt-4 relative right-[-45rem] text-[19px]">
 
 
-                    <button className='p-2  rounded text-gray-500 '><Link to={`/rentals`}>Your Rentals </Link></button>
+                    <button className='p-2  rounded text-gray-500 '><Link to={`/Rentals1`}>Your Rentals </Link></button>
                     <button className='p-2  rounded text-gray-500 '><Link to={`/editProfile/${admin.id}`}>{admin.name} </Link></button>
                     <button className='p-2 rounded text-gray-500 '><Link to="/logout">Log Out</Link></button>
                 </div>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import HeaderAdmin from '../header';
+
 import { useNavigate } from "react-router-dom";
+import HeaderAdmin from './header';
 
 function ModifyCar() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
@@ -29,7 +30,6 @@ function ModifyCar() {
     e.preventDefault()
     let n = editedData.current;
   
-    try {
 
       const res = await axios.patch(
         `http://127.0.0.1:8000/api/user/${id}`,
@@ -39,6 +39,8 @@ function ModifyCar() {
           email: n.email,
           address: n.address,
           password: n.password,
+          city: n.city,
+          country: n.country,
         
         },
         {
@@ -47,28 +49,14 @@ function ModifyCar() {
           },
         }
       );
+      console.log(res.data)
       if (res.data.message === "Item updated successfully") {
 
         navigate('/users')
       }
 
       // Handle the response data here if needed
-      console.log(editedData.current);
-    } catch (error) {
-      // Handle errors here
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        console.error('Response data:', error.response.data);
-        console.error('Status code:', error.response.status);
-        console.error('Headers:', error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error('Request:', error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error('Error:', error.message);
-      }
-    }
+    
 
 
   }

@@ -14,6 +14,9 @@ function AllUsers() {
   const [NoRentals, setNoRentals] = useState([]);
 
   const [deleteMsg, setDeleteMsg] = useState(false);
+  const [filters, setFilter] = useState(
+    { rental: false, ville: false, pays: false }
+  )
 
   // distinct 
   const [disCity, setDisCity] = useState({ d: [], g: [] })
@@ -108,63 +111,81 @@ function AllUsers() {
 
         <div className="w-[15rem] mr-4 border border-btn rounded mt-[5rem]">
           {/* ============================================================ */}
-          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-          }}>Users Rental </h2>
-          <div>
-            <p
-              className="cursor-pointer hover:bg-gray-200 px-4 py-2"
-              onClick={() => {
-                filter('all');
-              }}>
-              All
-            </p>
+          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2"
+            onClick={() => {
+              setFilter({ rental: true, ville: false, pays: false })
 
-            <p
-              className="cursor-pointer hover:bg-gray-200 px-4 py-2"
-              onClick={() => {
-                filter('with');
-              }}
-            >
-              with Rentals
-            </p>
+            }}>Users Rental </h2>
+          {filters.rental === true ?
+            <div>
+              <p
+                className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                onClick={() => {
+                  filter('all');
+                }}>
+                All
+              </p>
+
+              <p
+                className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                onClick={() => {
+                  filter('with');
+                }}
+              >
+                with Rentals
+              </p>
 
 
-            <p
-              className="cursor-pointer hover:bg-gray-200 px-4 py-2"
-              onClick={() => {
-                filter('no');
-              }}
-            >
-              with No Rentals
-            </p>
-          </div>
+              <p
+                className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                onClick={() => {
+                  filter('no');
+                }}
+              >
+                with No Rentals
+              </p>
+            </div>
+            : ""}
           {/* ================================City ============================ */}
-          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-          }}>Ville </h2>
-          {disCity !== null ?
-            <div>
-              {disCity.distinct.map((e)=><p 
-                                className="cursor-pointer hover:bg-gray-200 px-4 py-2"
-                                onClick={() => {
-                                  filterByCity(e);
-                                }}
-              > {e}</p>)}
-             
-              </div> : ""}
+          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2"
+            onClick={() => {
+              setFilter({ rental: false, ville: true, pays: false })
 
-                    {/* ================================Country ============================ */}
-          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-          }}>Pays </h2>
-          {disCountry !== null ?
+            }}>Ville </h2>
+
+          {filters.ville === true ?
             <div>
-              {disCountry.distinct.map((e)=><p 
-                                className="cursor-pointer hover:bg-gray-200 px-4 py-2"
-                                onClick={() => {
-                                  filterByCountry(e);
-                                }}
-              > {e}</p>)}
-             
-              </div> : ""}
+              {disCity !== null ?
+                <div>
+                  {disCity.distinct.map((e) => <p
+                    className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                    onClick={() => {
+                      filterByCity(e);
+                    }}
+                  > {e}</p>)}
+
+                </div> : ""}
+            </div> : ""}
+
+          {/* ================================Country ============================ */}
+          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+            setFilter({ rental: false, ville: false, pays: true })
+
+          }}>Pays </h2>
+          {filters.pays === true ?
+            <div>
+              {disCountry !== null ?
+                <div>
+                  {disCountry.distinct.map((e) => <p
+                    className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                    onClick={() => {
+                      filterByCountry(e);
+                    }}
+                  > {e}</p>)}
+
+                </div> : ""}
+            </div>
+            : ""}
 
         </div>
 

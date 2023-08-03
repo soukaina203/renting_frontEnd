@@ -17,13 +17,20 @@ function SignIn() {
     });
 
 
-    console.log(res.data  )
+    console.log(res.data.isAdmin  )
     
     if (res.data.token!==undefined) {
       localStorage.setItem('token', res.data.token);
-      localStorage.setItem('user', res.data.user.name);
+      localStorage.setItem('userName', res.data.user.name);
+      localStorage.setItem('userId', res.data.user.id);
       setMsg('')
-      navigate('/dashboard')
+      if(res.data.isAdmin==='a'){
+
+        navigate('/dashboard')
+      }else{
+        navigate('/welcome')
+
+      }
 
     } else {
       setMsg('incorrect email or password ')

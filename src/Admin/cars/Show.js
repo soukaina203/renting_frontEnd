@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams,useLocation } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
 
 function VoirCar() {
   const [data, setData] = useState(null);
   const { id } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const source = queryParams.get('source'); // This will give you either 'dashboard' or 'welcome'
 
   const fetchCar = async () => {
     const response = await axios.get(`http://127.0.0.1:8000/api/car/${id}`, {
@@ -14,8 +17,9 @@ function VoirCar() {
       }
     });
     setData(response.data.car);
-    console.log(response
-      )
+    console.log(response)
+
+    
   };
 
   useEffect(() => {
@@ -37,12 +41,12 @@ function VoirCar() {
               <h2 className="text-2xl font-semibold text-black">{data.make} {data.model}</h2>
               <p className="text-gray-600 font-bold">Type: {data.type}</p>
               <p className="text-gray-600 font-bold">Color: {data.color}</p>
-              <p className="text-gray-600 font-bold">Year: {data.year}</p> 
+              <p className="text-gray-600 font-bold">Year: {data.year}</p>
               <p className="text-gray-600 font-bold">Available: {data.available === 1 ? 'Yes' : 'No'}</p>
               <p className="text-gray-600 font-bold">Price per day: {data.price_per_day}$</p>
 
-           
-              <Link to={`/admin/cars`} className=" inline-block mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Back</Link>
+
+              <Link to={source==='dashboard'?`/admin/cars`:`/welcome`} className=" inline-block mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Back</Link>
             </div>
           </div>
           : ""}

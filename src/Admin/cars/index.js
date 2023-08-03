@@ -74,7 +74,7 @@ function AllCars() {
       }
     }
   }
-  let filterByModel =(e)=>{
+  let filterByModel = (e) => {
     for (const key in ModelGroupe) {
       if (e === key) {
         setData(ModelGroupe[key])
@@ -84,7 +84,7 @@ function AllCars() {
       }
     }
   }
-  let filterByYear =(e)=>{
+  let filterByYear = (e) => {
     for (const key in YearGroupe) {
       if (e === key) {
         setData(YearGroupe[key])
@@ -94,16 +94,7 @@ function AllCars() {
       }
     }
   }
-  // let filterByColor=(e)=>{
-  //   for (const key in colorCar) {
-  //     if (e === key) {
-  //       setData(allCars[key])
-  //       break
-  //     } else {
-  //       setData(permanent)
-  //     }
-  //   }
-  // }
+
   let deleteClient = async (id) => {
     try {
       await axios.delete(`http://localhost:8000/api/car/${id}`, {
@@ -121,7 +112,7 @@ function AllCars() {
     <div>
       <HeaderAdmin />
       <div className="flex items-center justify-between px-4 py-2">
-        
+
         <h1 className="text-2xl font-bold">All Cars</h1>
         <button className="px-4 py-2 text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600">
           <Link to="/car/create">Create A Car</Link>
@@ -131,7 +122,7 @@ function AllCars() {
         {/* car types ===========================================================================================*/}
         <div className="w-64 mr-4 border border-btn rounded mt-7">
           <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-            setFilter({ type: true, avail: false, color: false, price: false, year: false , model: false })
+            setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })
           }}>Car Type</h2>
           {filter.type === true ?
             <div>
@@ -164,7 +155,7 @@ function AllCars() {
           {/* car Availability ===========================================================================================*/}
 
           <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-            setFilter({ type: false, avail: true, color: false, price: false, year: false , model: false })
+            setFilter({ type: false, avail: true, color: false, price: false, year: false, model: false })
 
           }}>Car Availability</h2>
           {filter.avail ? <div>
@@ -179,7 +170,7 @@ function AllCars() {
           </div> : ""}
           {/* ======================Color==================== */}
           <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-            setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false  })
+            setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })
 
           }}>Car Color</h2>
           {filter.color ? <div>
@@ -196,9 +187,9 @@ function AllCars() {
             ))}
 
           </div> : ""}
-        {/* Model */}
-        <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-            setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true  })
+          {/* Model */}
+          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+            setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })
 
           }}>Car Model</h2>
           {filter.model ? <div>
@@ -216,9 +207,9 @@ function AllCars() {
 
           </div> : ""}
 
-  {/* Year */}
-  <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
-            setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false  })
+          {/* Year */}
+          <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+            setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })
 
           }}>Car Year</h2>
           {filter.year ? <div>
@@ -258,7 +249,8 @@ function AllCars() {
 
                   <div className="mt-4 flex justify-center">
                     <button className="px-4 py-1 font-bold  text-btn rounded  border-[2px] border-btn  mr-2 transition-colors duration-300">
-                      <Link to={`/car/${e.id}`}>View</Link>
+                      <Link to={`/car/${e.id}?source=dashboard`}>View</Link>
+
                     </button>
                     <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300">
                       <Link to={`/car/${e.id}/edit`}>Edit</Link>

@@ -20,6 +20,8 @@ import ModifyRental from './Admin/rentals/Modify';
 import CreateRental from './Admin/rentals/Create';
 import EditProfile from './Admin/editProfile';
 import Welcome from './Users/Welcome';
+import Rent from './Users/Rent';
+import Answer from './Users/Answer';
 
 const routesConfig = [
   // Auth Admin and users
@@ -52,6 +54,8 @@ const routesConfig = [
   { path: '/editProfile/:id', element: <EditProfile /> },
   // for users 
   { path: '/welcome', element: <Welcome /> },
+  { path: '/car/:id/rent', element: <Rent /> },
+  { path: '/answer', element: <Answer /> },
 
 
 ];

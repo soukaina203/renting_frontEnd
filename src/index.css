@@ -16,7 +16,9 @@ body{
     transform: scaleX(0); /* Initially, the underline will have no width (hidden) */
     transition: transform 0.2s ease; /* Add a transition for smooth effect */
   }
-  
+  #an td{
+    border-top: 2px solid #5b7c99;
+  }
   .underlineHover:hover::after {
     transform: scaleX(1);
   }

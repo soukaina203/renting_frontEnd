@@ -23,6 +23,8 @@ import Welcome from './Users/Welcome';
 import Rent from './Users/Rent';
 import Answer from './Users/Answer';
 import UserRentals from './Users/UserRentals';
+import Processed from './Admin/rentals/Processed';
+import NotProcessed from './Admin/rentals/NotProcessed';
 
 const routesConfig = [
   // Auth Admin and users
@@ -44,6 +46,11 @@ const routesConfig = [
   { path: '/rental/:id', element: <VoirRental /> },
   { path: '/rental/create', element: <CreateRental /> },
   { path: '/rental/edit/:id', element: <ModifyRental /> },
+  { path: '/rentals/unprocessed', element: <NotProcessed /> },
+  { path: '/rentals/processed', element: <Processed /> },
+
+  
+
 
   // Cars  for admin
   { path: '/admin/cars', element: <AllCars /> },
@@ -57,7 +64,10 @@ const routesConfig = [
   { path: '/welcome', element: <Welcome /> },
   { path: '/car/:id/rent', element: <Rent /> },
   { path: '/answer', element: <Answer /> },
-  { path: '/Rentals1', element: <UserRentals /> },
+  { path: '/user/rentals', element: <UserRentals /> },
+
+
+
 
 
 ];

@@ -23,6 +23,7 @@ function SignIn() {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userName', res.data.user.name);
       localStorage.setItem('userId', res.data.user.id);
+      localStorage.setItem('status', res.data.isAdmin);//is admin
       setMsg('')
       if(res.data.isAdmin==='a'){
 

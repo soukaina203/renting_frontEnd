@@ -8,9 +8,10 @@ function LogOut() {
   const navigate = useNavigate();
 
   const func = async () => {
+    let st=localStorage.getItem('status')
     try {
-      const d = await axios.post(
-        'http://127.0.0.1:8000/api/logout',
+      const d = await axios.post( st==='a'?
+        'http://127.0.0.1:8000/api/logout':'http://127.0.0.1:8000/api/logoutUser',
         {},
         {
           headers: {

@@ -6,7 +6,7 @@ function ReviewCards() {
   const [data, setData] = useState([]);
 
   let fetchData = async () => {
-    const datas = await axios.get("http://localhost:8000/api/reviews/get");
+    const datas = await axios.get("http://localhost:8000/api/reviews/custom");
     console.log(datas)
     setData(datas.data);
   };

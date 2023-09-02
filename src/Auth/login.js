@@ -17,7 +17,7 @@ function SignIn() {
     });
 
 
-    console.log(res.data.isAdmin  )
+    console.log(res.data)
     
     if (res.data.token!==undefined) {
       localStorage.setItem('token', res.data.token);

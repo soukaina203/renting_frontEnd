@@ -12,7 +12,7 @@ export default function HeaderUser() {
 
 
                     <button className='p-2  rounded text-gray-500 '><Link to={`/user/rentals`}>Your Rentals </Link></button>
-                    <button className='p-2  rounded text-gray-500 '><Link to={`/review/create`}>Make A Rentals </Link></button>
+                    <button className='p-2  rounded text-gray-500 '><Link to={`/review/create`}>Make A Review </Link></button>
                     <button className='p-2  rounded text-gray-500 '><Link to={`/editProfile/${admin.id}`}>{admin.name} </Link></button>
                     <button className='p-2 rounded text-gray-500 '><Link to="/logout">Log Out</Link></button>
                 </div>

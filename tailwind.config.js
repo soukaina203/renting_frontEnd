@@ -5,18 +5,28 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors  :{
-        white1:'#EEEFF1',
-        btn:'#5b7c99',
-        btn1:"#4d6885",
-        btn2:'#3e5a73',
-        
+      keyframes: {
+        'showUp': {
+          '0%': { transform: 'translateY(20px)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
+
+        }
       },
-      fontFamily:{
-        lato:"'Lato',sans-serif",
-        DMSend:"'DM Sans',sans-serif"
+      colors: {
+        white1: '#EEEFF1',
+        btn: '#5b7c99',
+        btn1: "#4d6885",
+        btn2: '#3e5a73',
+
+      },
+      fontFamily: {
+        lato: "'Lato',sans-serif",
+        DMSend: "'DM Sans',sans-serif"
       }
-    },
+    },animation :{
+      'showUp': 'showUp 0.5s ease-in-out', // Durée de l'animation et l'interpolation
+
+    }
   },
   plugins: [],
   screens: {

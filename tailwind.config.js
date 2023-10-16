@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        heroSection: "url('/public/imgs/car.png')"
+      },
       keyframes: {
         'showUp': {
           '0%': { transform: 'translateY(20px)', opacity: 0 },

@@ -10,10 +10,10 @@ function LandingPage() {
     <div>
       <Header />
       <Home />
-      <About />
+      {/* <About />
       <Ride />
       <Services />
-      <Reviews />
+      <Reviews /> */}
 
     </div>
   )

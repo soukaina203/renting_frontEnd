@@ -19,7 +19,7 @@ function Header() {
   };
   return (
       <div className="fixed bottom-0 w-full border-t-[2px]   h-[3rem] z-20  md:fixed md:top-0 md:w-[100%] bg-white1">
-        <h1 className="font-bold p-5 mt-[-0.8rem]">SM</h1>
+        <img src="imgs/jeep.png" className="font-bold p-5 mt-[-0.8rem] w-[4.8rem] h-[4.8rem]" alt=""/>
         <button className="text-2xl absolute bottom-[0.5rem] right-2  z-40" onClick={() => { Toggle(); }}>
           {isClicked.menuIcon ? (<GiHamburgerMenu className="lg:hidden" />) : (<MdOutlineClose className="lg:hidden " />)}
         </button>

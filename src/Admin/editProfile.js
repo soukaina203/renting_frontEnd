@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from './header';
 
@@ -17,7 +16,8 @@ function ModifyCar() {
   const { id } = useParams();
 
   const fetchCar = async () => {
-    const res = await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
+    console.log(id)
+    const res = await axios.get(`http://127.0.0.1:8000/api/users/${id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -32,7 +32,7 @@ function ModifyCar() {
   
 
       const res = await axios.patch(
-        `http://127.0.0.1:8000/api/user/${id}`,
+        `http://127.0.0.1:8000/api/users/${id}`,
         {
           name: n.name,
           phone: n.phone,
@@ -73,7 +73,6 @@ function ModifyCar() {
       }
     });
     console.log(res)
-    // public function uploadImgs(Request $request,string $id )
     setUploadedImageUrl(res.data.image_url)
   }
   return (

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderAdmin from '../header';
 
 function CreateCar() {
-    const FillData = useRef({ make: "", model: "", color: "", type: "", photo: "", year: "", available: "", price_per_day: 0 })// the data thatis new edited by the user and gonna be passed to the backend
+    const FillData = useRef({ make: "", model: "", color: "", type: "", photo: "", year: "", available: 1, price_per_day: 0 })// the data thatis new edited by the user and gonna be passed to the backend
     const navigate = useNavigate();
 
     let handleCreate = async (e) => {

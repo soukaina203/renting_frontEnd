@@ -74,6 +74,7 @@ function ModifyCar() {
   useEffect(() => {
     fetchCar();
   }, []);
+  
   let handleUpload = async () => {
     const fd = new FormData()
     fd.append("image", img)

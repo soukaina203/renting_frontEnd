@@ -19,8 +19,6 @@ function SignUp() {
       name:v.name,
       email: v.email,
       password: v.password,
-      address:v.address,
-      phone:v.phone,
     });
     navigate('/signIn')
 
@@ -68,32 +66,8 @@ function SignUp() {
               }}
             />
           </div>
-          <div>
-            <label htmlFor="address" className="font-semibold block mb-1">
-              Address:
-            </label>
-            <input
-              type="text"
-              id="address"
-              className="w-full border border-gray-300 px-1 py-1  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onChange={(e) => {
-                data.current = { ...data.current, address: e.target.value };
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="font-semibold block mb-1">
-              Phone:
-            </label>
-            <input
-              type="text"
-              id="phone"
-              className="w-full border border-gray-300 px-1 py-1  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onChange={(e) => {
-                data.current = { ...data.current, phone: e.target.value };
-              }}
-            />
-          </div>
+          
+         
           <div>
             <label htmlFor="password" className="font-semibold block mb-1">
               Password:

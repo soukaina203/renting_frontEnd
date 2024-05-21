@@ -7,6 +7,8 @@ function Cards() {
 
   let fetchData = async () => {
     const datas = await axios.get("http://localhost:8000/api/topCars");
+    console.log(datas.data.topCars)
+
     setData(datas.data.topCars);
   };
 
@@ -25,9 +27,9 @@ function Cards() {
               <img
                 src={`http://127.0.0.1:8000/images/${e.photo}`}
                 alt=""
-                className="w-full h-48 object-cover object-center rounded-t-lg"
+                className="object-cover object-center w-full h-48 rounded-t-lg"
               />
-              <div className="px-4 py-3 flex flex-col justify-between">
+              <div className="flex flex-col justify-between px-4 py-3">
                 <p className="text-gray-700 font-bold text-[20px] uppercase">{e.model} </p>
                 <p className='line-clamp-2 text-[15px]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus ducimus id officia eveniet voluptatibus dolorem.
                   Provident, accusamus qui perferendis ab obcaecati odit est? Modi ad cum eaque molestiae ullam at.</p>

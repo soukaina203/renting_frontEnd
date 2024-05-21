@@ -2,28 +2,29 @@ import React from 'react'
 
 function About() {
     return (
-        <div id='About' className='w-[100%] h-[36rem] md:w-[100vw] md:h-[30rem] lg:h-[30rem] lg:mt-[2rem]'>
+<section class="">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light  sm:text-lg ">
+            <p className='text-[#E60035] '> KNOW ABOUT US  </p>
 
-            <div className='flex flex-col w-[100vw] h-[40rem] md:h-[45rem] '>{/* flex-direction=column */}
-                <div class="text-center ">
-                    <h3 class="text-[21px] md:text-[25px] font-bold text-orange-500">About Us</h3>
-                    <h2 class="text-xl md:text-2xl lg:text-4xl "><b>Best Customer Experience</b></h2>
-                </div>
-                <div className='flex flex-col md:flex-row justify-center gap-5 '> {/* row */}
-                    <img src="imgs/about.png" alt="" className='md:w-[16rem] md:h-[17rem] lg:h-[60vh] lg:w-[40vw] mt-10 ' />
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-black
+            ">Our Best Advantages</h2>
+            <p class="mb-4">
+            Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa eu faucibus. Urna fusce
+            </p>
 
-                    <div className='w-[16rem] font-semibold flex flex-col mt-1 md:mt-[4rem] ml-4 lg:w-[27rem] lg:mt-[4.8rem] '>
-                        <h3 className='hidden lg:block   font-bold'>ABOUT US</h3>
-                        <p className='mt-2 md:mt-0  line-clamp-[8]'>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus vitae laboriosam numquam, mollitia dolore quia sunt, maiores aspernatur nesciunt pariatur deleniti. Nemo ad vero voluptatum harum voluptatibus, sit optio cum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse provident odio exercitationem doloribus quae fuga ex tenetur, repudiandae laudantium non temporibus ea expedita.
-                        </p>
-                        <button className='w-[8em] p-1 md:p-2 bg-btn rounded text-slate-50 md:w-[10em] mt-3'><a href="/choose">Learn more</a></button>
-                    </div>
 
-                </div>
-
-            </div>
+            <button className="p-3 font-semibold  text-white bg-[#E60035]">
+           Read &#8594;
+          </button>
         </div>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+            <img class="w-full rounded-lg" src="about.png" alt="office content 1"/>
+        </div>
+    </div>
+</section>
+
+          
     )
 }
 

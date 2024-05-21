@@ -5,15 +5,18 @@ import Home from './Home'
 import Ride from './Ride'
 import Services from './Services'
 import Reviews from './Reviews'
+import Properties from './properties'
 function LandingPage() {
   return (
-    <div className='flex flex-col gap-5'>
+    <div className='flex flex-col '>
       <Header />
       <Home />
+      <Properties />
       <About />
+      {/*
       <Ride />
       <Services />
-      <Reviews />
+      <Reviews /> */}
 
     </div>
   )

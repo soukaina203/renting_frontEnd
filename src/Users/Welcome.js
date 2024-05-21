@@ -99,20 +99,19 @@ function Welcome() {
       <HeaderUser />
       <div className='flex flex-col'>
         {/* Search Part */}
-        <div className='w-full bg-white1 mt-2 py-4'>
-          <div className='max-w-4xl mx-auto px-2'>
+        <div className='w-full py-4 mt-2 bg-white1'>
+          <div className='max-w-4xl px-2 mx-auto'>
             <div className='flex'>
               <input
                 type="text"
-                className='w-full bg-white border rounded-l px-4 py-2 outline-none'
+                className='w-full px-4 py-2 bg-white border rounded-l outline-none'
                 placeholder='Search Cars...'
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button
                 type='button'
-                className="bg-btn hover:bg-btn1 text-white rounded-r px-4 py-2"
-                onClick={getSearchCars}
+                className="px-4 py-2 text-white rounded-r bg-btn hover:bg-btn1"
               >
                 Search
               </button>
@@ -121,21 +120,21 @@ function Welcome() {
           </div>
         {/* Filter Part */}
         <div className='flex flex-row'>
-        <div className='w-1/4 h-content mr-4 border  rounded mt-7'>
+        <div className='w-1/4 mr-4 border rounded h-content mt-7'>
             <div className="flex ml-4 mr-2">
               {/* car types ===========================================================================================*/}
-              <div className="w-64 mr-4 border border-btn rounded mt-7">
-                <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+              <div className="w-64 mr-4 border rounded border-btn mt-7">
+                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
                   setData(permanent)
                   setFilter({ type: false, avail: false, color: false, price: false, year: false, model: false })
                 }}> Top Cars</h2>
-                <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
                   setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })
                 }}>Car Type</h2>
                 {filter.type === true ?
                   <div>
                     <p
-                      className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
                       onClick={() => {
                         filterByType('all');
                       }}>
@@ -145,7 +144,7 @@ function Welcome() {
                       distinctTypes.map((e) => (
                         <p
                           key={e}
-                          className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                          className="px-4 py-2 cursor-pointer hover:bg-gray-200"
                           onClick={() => {
                             filterByType(e);
                           }}
@@ -162,7 +161,7 @@ function Welcome() {
 
 
                 {/* ======================Color==================== */}
-                <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
                   setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })
 
                 }}>Car Color</h2>
@@ -170,7 +169,7 @@ function Welcome() {
                   {distinctColors.map((e) => (
                     <p
                       key={e}
-                      className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
                       onClick={() => {
                         filterByColor(e)
                       }}
@@ -181,7 +180,7 @@ function Welcome() {
 
                 </div> : ""}
                 {/* Model */}
-                <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
                   setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })
 
                 }}>Car Model</h2>
@@ -189,7 +188,7 @@ function Welcome() {
                   {distinctModels.map((e) => (
                     <p
                       key={e}
-                      className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
                       onClick={() => {
                         filterByModel(e)
                       }}
@@ -201,7 +200,7 @@ function Welcome() {
                 </div> : ""}
 
                 {/* Year */}
-                <h2 className="font-semibold cursor-pointer hover:bg-gray-200 px-4 py-2" onClick={() => {
+                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
                   setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })
 
                 }}>Car Year</h2>
@@ -209,7 +208,7 @@ function Welcome() {
                   {distinctYear.map((e) => (
                     <p
                       key={e}
-                      className="cursor-pointer hover:bg-gray-200 px-4 py-2"
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
                       onClick={() => {
                         filterByYear(e)
                       }}
@@ -232,19 +231,19 @@ function Welcome() {
 
             {data !== undefined ? (
               data.map((e, i) => (
-                <div key={i} className="max-w-xs w-full bg-white shadow-lg rounded-lg overflow-hidden mx-4 my-6">
+                <div key={i} className="w-full max-w-xs mx-4 my-6 overflow-hidden bg-white rounded-lg shadow-lg">
                   <img
                     src={`http://127.0.0.1:8000/images/${e.photo}`}
                     alt=""
-                    className="w-full h-48 object-cover object-center rounded-t-lg"
+                    className="object-cover object-center w-full h-48 rounded-t-lg"
                   />
                   <div className="px-4 py-3">
                     <p className="text-gray-700 font-bold text-[20px] uppercase">{e.model}</p>
-                    <p className="text-sm text-gray-600 uppercase tracking-wide">{e.type} - {e.price_per_day}$/day</p>
+                    <p className="text-sm tracking-wide text-gray-600 uppercase">{e.type} - {e.price_per_day}$/day</p>
 
 
 
-                    <div className="mt-4 flex justify-center">
+                    <div className="flex justify-center mt-4">
                       <button className="px-4 py-1 font-bold  text-btn rounded  border-[2px] border-btn  mr-2 transition-colors duration-300">
                         <Link to={`/car/${e.id}?source=welcome`}>View</Link>                      </button>
                       <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300">

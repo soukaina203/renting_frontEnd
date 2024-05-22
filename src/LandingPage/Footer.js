@@ -92,8 +92,8 @@ export default function Footer() {
               </h5>
 
               <ul class="mb-0 list-none">
-                <li>
-                  <a href="#!">About
+                <li  className='p-3'>
+                  <a href="#!" >About
                   </a>
                 </li>
                 <li>

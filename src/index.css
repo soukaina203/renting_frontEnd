@@ -9,7 +9,7 @@
 body{
 
   overflow-x: hidden;
-  background-color: #EEEFF1;
+  background-color: #FFFFFF;
 }
 .underlineHover::after {
     content: "";

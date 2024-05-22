@@ -6,7 +6,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        heroSection: "url('/public/imgs/car.png')"
+        service1: "url('/public/services/one.png')",
+        service2: "url('/public/services/two.png')",
+        service3: "url('/public/services/three.png')",
+        wheel: "url('/public/services/wheel.jpg')",
+        hero: "url('/public/one.jpg')",
+       
       },
       keyframes: {
         'showUp': {

@@ -11,7 +11,8 @@ function Properties() {
     <section className="flex items-center justify-center w-full h-full py-8">
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {props.map((property) => (
-          <div key={property.title} className="flex p-6 transition-transform  translate-y-[-50%] transform bg-white  shadow-lg hover:scale-105">
+          <div key={property.title} className="flex p-6 transition-transform  translate-y-[-50%] transform
+           bg-[#FEFEFE]  shadow-lg">
             <div className="flex-shrink-0 p-4">
               <img src={`icons/${property.img}.png`} alt={property.title} className="w-16 h-16" />
             </div>

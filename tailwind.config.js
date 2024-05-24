@@ -11,15 +11,25 @@ module.exports = {
         service3: "url('/public/services/three.png')",
         wheel: "url('/public/services/wheel.jpg')",
         hero: "url('/public/one.jpg')",
-       
+        signUp: "url('/public/services/signUp.jpeg')",
+        login: "url('/public/services/login.jpeg')",
+      },
+
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
         'showUp': {
           '0%': { transform: 'translateY(20px)', opacity: 0 },
           '100%': { transform: 'translateY(0)', opacity: 1 },
-
+  
         }
       },
+  
       colors: {
         white1: '#EEEFF1',
         btn: '#5b7c99',

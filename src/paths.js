@@ -27,6 +27,7 @@ import Processed from './Admin/rentals/Processed';
 import NotProcessed from './Admin/rentals/NotProcessed';
 import CreateReview from './Users/CreateReview';
 import ReviewsAdmin from './Admin/ReviewsAdmin';
+import Admin from './Admin/Admin';
 
 const routesConfig = [
   // Auth Admin and users
@@ -37,26 +38,24 @@ const routesConfig = [
   { path: '/choose', element: <Choose /> },
   { path: '/dashboard', element: <Dashboard /> },
 
-  // Users for admin
-  { path: '/users', element: <AllUsers /> },
-  { path: '/user/:id', element: <VoirUser /> },
-  { path: '/user/create', element: <CreateUser /> },
-  { path: '/user/edit/:id', element: <ModifyUser /> },
+   { path: '/admin/users', element: <AllUsers /> },
+   { path: '/user/create', element: <CreateUser /> },
+   { path: '/user/edit/:id', element: <ModifyUser /> },
 
-  // Rentals for admin
+   // Rentals for admin
   { path: '/rentals', element: <AllRentals /> },
-  { path: '/rental/:id', element: <VoirRental /> },
-  { path: '/rental/create', element: <CreateRental /> },
-  { path: '/rental/edit/:id', element: <ModifyRental /> },
-  { path: '/rentals/unprocessed', element: <NotProcessed /> },
-  { path: '/rentals/processed', element: <Processed /> },
+   { path: '/rental/create', element: <CreateRental /> },
+   { path: '/rental/edit/:id', element: <ModifyRental /> },
+   { path: '/rentals/unprocessed', element: <NotProcessed /> },
+   { path: '/rentals/processed', element: <Processed /> },
 
   
 
 
   // Cars  for admin
-  { path: '/admin/cars', element: <AllCars /> },
-  { path: '/car/:id', element: <VoirCar /> },
+  { path: '/admin', element: <Admin /> },
+
+  { path: '/cars', element: <AllCars /> },
   { path: '/car/:id/edit', element: <ModifyCar /> },
   { path: '/car/create', element: <CreateCar /> },
   
@@ -64,6 +63,7 @@ const routesConfig = [
   { path: '/editProfile/:id', element: <EditProfile /> },
   // for users 
   { path: '/welcome', element: <Welcome /> },
+  
   { path: '/car/:id/rent', element: <Rent /> },
   { path: '/answer', element: <Answer /> },
   { path: '/user/rentals', element: <UserRentals /> },

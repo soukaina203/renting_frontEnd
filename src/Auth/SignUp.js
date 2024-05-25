@@ -27,16 +27,14 @@ function SignUp() {
   return (
     <div className="flex justify-center min-h-screen bg-gray-100 mt-14 md:mt-0 lg:items-center">
       <div className="flex flex-col-reverse items-center justify-center w-full bg-white rounded-lg shadow-lg lg:flex-row lg:w-2/3 lg:h-2/3">
-        {/* Image Section */}
         <div className="relative w-full h-64 lg:w-full lg:h-auto">
           <img src="/services/login.jpeg" alt="Background" className="object-cover w-full h-full rounded-t-lg lg:rounded-l-lg lg:rounded-t-none" />
         </div>
 
-        {/* Form Section */}
         <div className="w-full p-8 lg:w-1/2">
           <div className="flex justify-center mb-8">
           </div>
-          <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">USER SIGNUP</h2>
+          <h2 className="mb-6 text-2xl font-bold text-center text-gray-800 uppercase">User SignUp</h2>
           <form onSubmit={handleSignup} className="space-y-4">
             <div>
               <label htmlFor="name" className="block mb-1 font-semibold text-gray-800">
@@ -77,20 +75,19 @@ function SignUp() {
                 }}
               />
             </div>
-            <button type='submit'
-             className="relative flex items-center justify-center w-full px-4 py-2 mt-4 text-lg
-              font-semibold text-white transition-colors bg-red-500  border-transparent rounded
-               shadow 
-               before:ease  h-12  uppercasegap-2 mr-auto ml-auto  overflow-hidden
-               border border-[#E60035] 
-              before:absolute before:left-0 before:-ml-2
-                before:h-48 before:w-full before:origin-top-right before:-translate-x-full 
-                before:translate-y-12 before:-rotate-90 before:bg-black before:transition-all before:duration-300
-                 hover:text-white hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180
-               ">
-              <span>Sign Up</span>
-              <FaArrowRight className="ml-2" />
+            <button className="before:ease relative h-12 w-40 uppercase font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
+                before:bg-white before:transition-all before:duration-300 hover:text-white
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+
+              <span className='relative text-[#E60035] z-20 group-hover:text-white'>Sign Up</span>
+              <FaArrowRight className="relative text-[#E60035] z-20 group-hover:text-white ml-2" />
             </button>
+
           </form>
           <p className="mt-4 text-sm text-center text-gray-500">
             Already have an account?{' '}

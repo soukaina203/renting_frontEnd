@@ -16,7 +16,8 @@ body{
     display: block;
     height: 3px;
     width: 100%;
-    background-color: orange; /* Set the underline color to orange */
+    border-radius: 15px ;
+    background-color: #E60035; /* Set the underline color to orange */
     transform: scaleX(0); /* Initially, the underline will have no width (hidden) */
     transition: transform 0.2s ease; /* Add a transition for smooth effect */
   }

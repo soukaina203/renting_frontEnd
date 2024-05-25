@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaArrowRight } from 'react-icons/fa6';
 
 axios.defaults.withCredentials = true;
 
@@ -29,7 +30,7 @@ function SignIn() {
 
         navigate('/dashboard')
       }else{
-        navigate('/welcome')
+        navigate('/admin')
 
       }
 
@@ -40,59 +41,72 @@ function SignIn() {
   }
   return (
     <div className="flex justify-center min-h-screen bg-gray-100 mt-14 md:mt-0 lg:items-center">
-      <div className="flex">
-        {/* Div with orange background */}
-        <div className="h-[27rem] w-[30rem] mr-[-0.8rem] bg-btn hidden lg:block">
-
-          {/* Welcome heading */}
-          <h1 className="flex-1 text-[30px] font-semibold mb-6 text-center text-white mt-[8rem] ">Welcome Back To Our Website</h1>
-          <p className="flex-1 text-[20px] w-[16rem] ml-[7rem] font-semibold mb-6 text-center text-white mt-[-1rem] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,</p>
+      <div className="flex flex-col-reverse items-center justify-center w-full bg-white rounded-lg shadow-lg lg:flex-row lg:w-2/3 lg:h-2/3">
+        <div className="relative w-full h-64 lg:w-full lg:h-auto">
+          <img src="/services/login3.jpeg" alt="Background" className="object-cover w-full h-full rounded-t-lg lg:rounded-l-lg lg:rounded-t-none" />
         </div>
-      </div>
-      
-      <div className="bg-white shadow-md  p-6 h-[23rem] w-[16rem] md:mt-[3rem] lg:mt-0 md:h-[27rem] md:w-[20rem]">
-        {/* <h1 className="mb-6 text-2xl font-semibold text-center text-orange-500">Sign Up</h1> */}
-        <form className="h-[25rem] w-[14rem]  md:w-[17rem] md:h-[20rem]  md:mt-8  " onSubmit={handleLogin}>
-          <h1 className='font-bold text-center text-btn'>USER LOGIN</h1>
-          <div className="flex flex-col gap-4 mt-12">
-            <label htmlFor="email" className="font-semibold">
-              Email:
-            </label>
-            <input
-              type="text"
-              required
-              id="email"
-              className="px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onBlur={(e) => {
-                data.current = { ...data.current, email: e.target.value };
-              }}
-            />
+
+        <div className="w-full p-8 lg:w-1/2">
+          <div className="flex justify-center mb-8">
           </div>
-          <div className="flex flex-col gap-4 mt-2">
-            <label htmlFor="password" className="font-semibold">
-              Password:
-            </label>
-            <input
+          <h2 className="mb-6 text-2xl font-bold text-center text-gray-800 uppercase">Login</h2>
+          <form onSubmit={handleLogin} className="space-y-4">
+        
+            <div>
+              <label htmlFor="email" className="block mb-1 font-semibold text-gray-800">
+                Email:
+              </label>
+              <input
+           type="text"
+           required
+           id="email"
+           className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
+
+           onBlur={(e) => {
+             data.current = { ...data.current, email: e.target.value };
+           }}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block mb-1 font-semibold text-gray-800">
+                Password:
+              </label>
+              <input
               type="password"
               id="password"
               required
-              className="px-1 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
               onBlur={(e) => {
                 data.current = { ...data.current, password: e.target.value };
               }}
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full px-1 py-1 mt-10 font-semibold text-white transition-colors rounded-md bg-btn"
-          >
-            Login
-          </button>
-              <h1 className='mt-6 ml-6 font-bold text-red-500'>  {msg}</h1>
-        </form>
+              />
+            </div>
+            <button className="before:ease relative h-12 w-40 uppercase font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
+                before:bg-white before:transition-all before:duration-300 hover:text-white
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+
+              <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+              Sign In
+
+              </span>
+              <FaArrowRight className="relative text-[#E60035] z-20 group-hover:text-white ml-2" />
+            </button>
+
+          </form>
+          <p className="mt-4 text-sm text-center text-gray-500">
+            Already have an account?{' '}
+            <Link to="/signIn" className="font-semibold text-red-500 hover:underline">
+              Sign In
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
-
   )
 }
 

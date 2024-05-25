@@ -114,7 +114,7 @@ function Header() {
             >
               <div className="py-1" role="none">
                 <a
-                  href="/signIn"
+                  href="/signUp"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"
@@ -123,7 +123,7 @@ function Header() {
                   Sign Up
                 </a>
                 <a
-                  href="/signUp"
+                  href="/signIn"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"

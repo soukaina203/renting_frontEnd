@@ -1,45 +1,59 @@
 import React, { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
+import { MdOutlinePersonOutline } from "react-icons/md";
+
 function HeaderAdmin() {
-  const [admin,setAdmin]=useState({id:localStorage.getItem('userId'),name:localStorage.getItem("userName")})
+  const [admin, setAdmin] = useState({ id: localStorage.getItem('userId'), name: localStorage.getItem("userName") })
   return (
-    <div className='bg-slate-400'>
-  <div className='hidden lg:flex justify-between font-body items-center w-[100%] h-[4rem]  font-semibold bg-white1  z-10 sticky top-0'>
-  <img src="/imgs/jeep.png" alt="" className="w-[50px] h-[50px] ml-[10px] "/>
 
-      <ul className='flex gap-[2rem]'>
-        <li><a href="/admin/cars" className='underlineHover'>Cars</a></li>
-        <li><a href="/users" className='underlineHover'>Users</a></li>
-        <li><a href="/rentals" className='underlineHover'>Rentals</a></li>
-        <li><a href="/reviews" className='underlineHover'>Reviews</a></li>
-      </ul>
+    <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
+      <div className="container relative flex items-center justify-between mx-auto">
+        <h1 className="text-2xl font-bold  p-[1.2rem] text-white bg-[#E60035] lg:ml-[2rem]">
+          BestCar
+        </h1>
 
-      <div className="flex flex-row gap-1  text-[19px]">
-      <button className='p-2 text-gray-500 rounded '><Link to={`/editProfile/${admin.id}`}>{admin.name} </Link></button>
-      <button className='p-2 text-gray-500 rounded '><Link to="/logout">Log Out</Link></button>
-      </div>
+        <ul className="items-center hidden pr-10 font-semibold cursor-pointer lg:flex">
+          <li className="w-full px-6 py-4 duration-500 underlineHover ">
+            <Link to="/admin/users">Users</Link>
+          </li>
+          <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+            <Link to="/admin/rentals">Rentals</Link>
+          </li>
+          <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+            <Link to="/admin/cars">Cars</Link>
+          </li>
+          <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+            <Link to="/admin/reviews">Reviews</Link>
+          </li>
+        </ul>
 
-    </div>
-
-
-    <button className=" lg:hidden group">
+        <button className="lg:hidden group">
           <GiHamburgerMenu className="mr-5 text-2xl" />
+          <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
+            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
+              <li className="w-full px-6 py-4 duration-500 underlineHover ">
+                <Link to="/Home">Users</Link>
+              </li>
+              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+                <Link to="/About">Rentals</Link>
+              </li>
+              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+                <Link to="mission">Cars</Link>
+              </li>
+              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+                <Link to="team">Reviews</Link>
+              </li>
 
-
-
-          <div className="absolute top-0 w-8/12 h-screen ml-auto mr-auto text-white transition-all duration-500 opacity-0 bg-slate-600 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
-            <ul className="flex flex-col gap-6 items-center justify-center h-[15rem] pr-10 mt-12 text-base font-semibold bg-orange-500 cursor-pointer">
-            <li><a href="/admin/cars" className='w-full px-6 py-4 ml-auto mr-auto mb-14 underlineHover'>Cars</a></li>
-        <li><a href="/users" className='w-full px-6 py-4 ml-auto mr-auto '>Users</a></li>
-        <li><a href="/rentals" className='w-full px-6 py-4 ml-auto mr-auto '>Rentals</a></li>
-        <li><a href="/reviews" className='w-full px-6 py-4 ml-auto mr-auto '>Reviews</a></li>
             </ul>
           </div>
-         
-
         </button>
-    </div>
+
+        <button className='p-2 text-gray-500 rounded '><Link to={`/editProfile/${admin.id}`}><MdOutlinePersonOutline className='w-8 h-8 text-[#E60035] ' />
+        </Link></button>
+
+      </div>
+    </nav>
   )
 }
 

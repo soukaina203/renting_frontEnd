@@ -7,9 +7,6 @@ function Choose() {
   return (
     <div>
 
-{/* <img src="/icons/settings.png" alt="Settings Icon" className="absolute top-[5rem] left-[5rem] w-28 h-28 animate-spin-slow" />
-<img src="/icons/settings.png" alt="Settings Icon" className="absolute top-[7.5rem] left-[7.5rem] w-20 h-20 animate-spin-slow" /> */}
-
 <IoSettingsOutline className="absolute top-[5rem] left-[5rem] text-[#E60035] w-28 h-28 animate-spin-slow"/>
 <IoSettingsOutline className="absolute top-[10rem] left-[10rem] text-[#E60035] w-20 h-20 animate-spin-slow"/>
 

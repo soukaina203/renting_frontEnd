@@ -46,23 +46,21 @@ function App() {
           {/* Admin */}
           <Route path="/admin" element={<Admin />}>
             <Route path="reviews" element={<ReviewsAdmin />} />
-          <Route path="review/create" element={<CreateReviewAdmin />} />
+            <Route path="review/create" element={<CreateReviewAdmin />} />
 
-            <Route path="users" element={<AllUsers />}>
-              <Route path="create" element={<CreateUser />} />
-              <Route path="edit/:id" element={<ModifyUser />} />
-              <Route path="rentals" element={<UserRentals />} />
-            </Route>
+            <Route path="users" element={<AllUsers />} />
+            <Route path="users/create" element={<CreateUser />} />
+            <Route path="edit/:id" element={<ModifyUser />} />
+            {/* <Route path="rentals" element={<UserRentals />} /> */}
 
-            <Route path="cars" element={<AllCars />}>
-              <Route path="edit/:id" element={<ModifyCar />} />
-              <Route path="create" element={<CreateCar />} />
-              <Route path=":id/rent" element={<Rent />} />
-              <Route path="answer" element={<Answer />} />
-            </Route>
+            <Route path="cars" element={<AllCars />} />
+            <Route path="cars/edit/:id" element={<ModifyCar />} />
+            <Route path="cars/create" element={<CreateCar />} />
+            <Route path=":id/rent" element={<Rent />} />
+            <Route path="answer" element={<Answer />} />
 
-            <Route path="rentals" element={<AllRentals />}/>
-           
+            <Route path="rentals" element={<AllRentals />} />
+
             <Route path="rentals/create" element={<CreateRental />} />
             <Route path="rentals/edit/:id" element={<ModifyRental />} />
             <Route path="rentals/unprocessed" element={<NotProcessed />} />

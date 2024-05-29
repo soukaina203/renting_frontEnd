@@ -43,7 +43,7 @@ export default function CreateRental() {
         });
         console.log(d.data)
         if (d.data.message === "Item added successfully") {
-            navigate('/rentals')
+            navigate('/admin/rentals/unprocessed')
         }
 
         console.log(d.data)
@@ -69,19 +69,20 @@ export default function CreateRental() {
         setTotal(totalPrice)
     }
     return (
-        <div>
-            <HeaderAdmin />
+        <div className='mt-5'>
+
             {
                 users !== null && cars !== null ?
 
                     <div className="flex justify-center">
                         <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
                             <form action="" onSubmit={handleCreate}>
-                                <div className="px-4 py-2 bg-white shadow rounded-lg">
-                                </div>
+                    <h1 className='text-xl font-semibold text-center'>Creation Of A Rental</h1>
+
+                               
                                 <div className="px-4 py-2">
 
-                                    <label htmlFor="users" className="text-gray-600 block">
+                                    <label htmlFor="users" className="block text-gray-600">
                                         Users:
                                         <select
                                             id="users"
@@ -89,7 +90,7 @@ export default function CreateRental() {
                                             onChange={(e) => {
                                                 FillData.current.user_id = e.target.value
                                             }}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
                                         >
                                             <option value="">Choose user</option>
                                             {users.map((e) => (
@@ -100,7 +101,7 @@ export default function CreateRental() {
                                         </select>
                                     </label>
 
-                                    <label htmlFor="cars" className="text-gray-600 block">
+                                    <label htmlFor="cars" className="block text-gray-600">
                                         Cars:
                                         <select
                                             id="cars"
@@ -110,7 +111,7 @@ export default function CreateRental() {
                                                 const selectedCar = cars.find((car) => car.id === parseInt(e.target.value));
                                                 price_per_day.current = selectedCar ? selectedCar.price_per_day : null;
                                             }}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
                                         >
                                             <option value="">Choose car</option>
 
@@ -120,76 +121,94 @@ export default function CreateRental() {
                                         </select>
                                     </label>
 
-                                    <label className="text-gray-600 block">
-                                        rental_start:
+                                    <label className="block text-gray-600">
+                                        rental start:
                                         <input
                                             type="date"
 
                                             onChange={(e) => FillData.current.rental_start = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
                                         />
                                     </label>
-                                    <label className="text-gray-600 block">
-                                        rental_end:
+                                    <label className="block text-gray-600">
+                                        rental end:
                                         <input
                                             type="date"
 
                                             onChange={(e) => FillData.current.rental_end = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
                                         />
                                     </label>
 
 
-                                    <label className="text-gray-600 block">
-                                        hourFinish:
+                                    <label className="block text-gray-600">
+                                        Hour of Finish:
                                         <input
                                             type="time"
 
                                             onChange={(e) => FillData.current.hourFinish = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
                                         />
                                     </label>
 
-                                    <label className="text-gray-600 block">
-                                        hourStart:
+                                    <label className="block text-gray-600">
+
+                                        Hour of Start:
                                         <input
                                             type="time"
 
                                             onChange={(e) => FillData.current.hourStart = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
                                         />
                                     </label>
-                                    <button 
-                                     type="button" 
-                                    className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2"
+                                    <button
+                                        type="button"
+                                        className="w-full px-4 py-2 mt-4 text-white  bg-[#E60035] rounded-md hover:bg-red-600 font-semibold mb-2"
                                         onClick={() => {
                                             diffrenceDate(FillData.current.rental_start, FillData.current.rental_end)
                                         }}> Calculer Total</button>
-                                    <label className="text-gray-600 block">
-                                        total_price:
+
+
+
+                                    <label className="block text-gray-600">
+                                        Total Price:
                                         <input
                                             type="text"
                                             value={total}
                                             onChange={(e) => FillData.current.total_price = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
+                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                        /> 
                                     </label>
 
 
 
 
+                                    <div className='flex justify-between mt-2'>
+                                        <button
+                                            type="submit"
+                                            className="relative flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#E60035] border border-transparent rounded-md group hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        >
+                                            Create
+                                        </button>
+
+                                        <Link to={`/admin/rentals`}>
+                                            <button
+                                                type="button"
+                                                className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                            >
+                                                Cancel
+                                            </button>
+                                        </Link>
+                                     
+
+
+                                    </div>
 
 
 
 
 
-                                    <button type='submit'  className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" >
-                                        Save Changes
-                                    </button>
 
-                                    <Link to={`/users`} className="bg-gray-300 hover:bg-gray-400 text-black rounded-md mt-2 px-4 py-2">
-                                        Cancel
-                                    </Link>
                                 </div>
                             </form>
                         </div>

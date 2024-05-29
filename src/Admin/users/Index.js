@@ -102,6 +102,7 @@ function AllUsers() {
   };
   return (
     <div className="">
+       <Link to="/admin/users/create">
       <button
         className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex justify-center items-center gap-2 overflow-hidden border border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
   before:-mr-2 before:h-48 before:w-48 before:origin-top-left 
@@ -110,10 +111,11 @@ function AllUsers() {
   hover:shadow-red-500 hover:bg-red-500 hover:before:-rotate-180"
       >
         <span className="relative z-20 text-red-500 group-hover:text-white">
-          <Link to="/admin/user/create">Create A User</Link>
+         Create A User
         </span>
         <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
       </button>
+      </Link>
 
       <div className="">
         <div className="flex flex-col p-4 lg:flex-row">

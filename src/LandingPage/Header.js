@@ -36,7 +36,8 @@ function Header() {
   return (
     <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
       <div className="container relative flex items-center justify-between mx-auto">
-        <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white bg-[#E60035] lg:ml-[2rem]">
+        <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white
+         bg-[#E60035] lg:ml-[2rem]">
           BestCar
         </h1>
 

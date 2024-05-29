@@ -70,7 +70,7 @@ export default function NotProcessed() {
         <div>
 
 
-            <Link to="/admin/rental/create">
+            <Link to="/admin/rentals/create">
                 <button
                     className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex justify-center items-center gap-2 overflow-hidden border border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
   before:-mr-2 before:h-48 before:w-48 before:origin-top-left 
@@ -121,7 +121,7 @@ export default function NotProcessed() {
                                                         {e.car.model}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        {e.e.total_price}  {e.currency}
+                                                       {e.total_price}  DH
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         {e.rental_start}
@@ -145,6 +145,19 @@ export default function NotProcessed() {
                                                             Delete
                                                         </button>
                                                     </td>
+
+                                                    <td>
+                                                    <input
+                                                        type="checkbox"
+                                                        className="w-5 h-5"
+                                                        onChange={(event) => {
+                                                            console.log(e.id);
+                                                            const isChecked = event.target.checked;
+                                                            pro(e.id, isChecked);
+                                                        }}
+                                                    />
+
+                                                </td>
                                                 </tr>
                                             ))}
                                         </tbody>

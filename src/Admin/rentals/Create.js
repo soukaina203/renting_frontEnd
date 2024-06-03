@@ -26,9 +26,11 @@ export default function CreateRental() {
         e.preventDefault()
 
         let n = FillData.current;
+    let userId=localStorage.getItem('userId');
+
         console.log(n)
         const d = await axios.post("http://localhost:8000/api/rental", {
-            user_id: n.user_id,
+            user_id: userId,
             car_id: n.car_id,
             rental_start: n.rental_start,
             rental_end: n.rental_end,
@@ -82,24 +84,7 @@ export default function CreateRental() {
                                
                                 <div className="px-4 py-2">
 
-                                    <label htmlFor="users" className="block text-gray-600">
-                                        Users:
-                                        <select
-                                            id="users"
-                                            name="users"
-                                            onChange={(e) => {
-                                                FillData.current.user_id = e.target.value
-                                            }}
-                                            className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                        >
-                                            <option value="">Choose user</option>
-                                            {users.map((e) => (
-                                                <option key={e.id} value={e.id} >
-                                                    {e.name}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </label>
+                           
 
                                     <label htmlFor="cars" className="block text-gray-600">
                                         Cars:

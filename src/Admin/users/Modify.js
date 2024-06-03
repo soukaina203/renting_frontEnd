@@ -28,7 +28,7 @@ function ModifyCar() {
   let handleUpdta = async (e) => {
     e.preventDefault()
     let n = editedData.current;
-  
+
     try {
 
       const res = await axios.patch(
@@ -39,7 +39,9 @@ function ModifyCar() {
           email: n.email,
           address: n.address,
           password: n.password,
-        
+          city: n.city,
+          country: n.country,
+
         },
         {
           headers: {
@@ -49,7 +51,7 @@ function ModifyCar() {
       );
       if (res.data.message === "Item updated successfully") {
 
-        navigate('/users')
+        navigate('/admin/users')
       }
 
       // Handle the response data here if needed
@@ -90,7 +92,6 @@ function ModifyCar() {
   }
   return (
     <div>
-      <HeaderAdmin />
       <div className="flex justify-center">
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
@@ -110,18 +111,18 @@ function ModifyCar() {
               </div>
 
 
-              <button className='text-blue-500' onClick={(e) => {
+              <button className='p-4 pb-0 text-blue-500' onClick={(e) => {
                 e.preventDefault()
                 setShowEditImg(true)
               }}>Change the image</button>
 
               {showEditImg ? (
-                <div className="px-4 py-2 bg-white shadow rounded-lg">
-                  <label className="text-gray-600 block mb-2">Choose an image</label>
+                <div className="px-4 py-4 pt-1 bg-white rounded-lg shadow " >
+                  <label className="block mb-2 text-gray-600">Choose an image</label>
                   <input type="file" onChange={(e) => setImg(e.target.files[0])} />
-                  <div className="mt-4 flex gap-4">
+                  <div className="flex gap-4 mt-4">
                     <button
-                      className="bg-orange-500 hover:bg-orange-600 text-white rounded-md px-4 py-1 flex items-center justify-center"
+                      className="w-full px-3 py-2 border border-gray-300 text-white font-semibold bg-[#E60035] rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       onClick={(z) => {
                         z.preventDefault()
                         setUpclicked(true);
@@ -132,7 +133,7 @@ function ModifyCar() {
                       Upload
                     </button>
                     <button
-                      className="bg-gray-300 hover:bg-gray-400 text-black rounded-md px-4 py-1 flex items-center justify-center"
+                      className="w-full px-3 py-2 text-black bg-gray-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       onClick={() => {
                         setShowEditImg(false);
                       }}
@@ -145,89 +146,101 @@ function ModifyCar() {
               ) : null}
 
               <div className="px-4 py-2">
-                <label className="text-gray-600 block">
+                <label className="block text-gray-600">
                   Name:
                   <input
                     type="text"
                     defaultValue={data.name}
-                    onChange={(e) => editedData.current.name= e.target.value}
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.name = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
 
-                <label className="text-gray-600 block">
+                <label className="block text-gray-600">
                   Email:
                   <input
                     type="text"
                     defaultValue={data.email}
-                    onChange={(e) => editedData.current.email= e.target.value}
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.email = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
 
 
-                <label className="text-gray-600 block">
-                Address:
+                <label className="block text-gray-600">
+                  Address:
                   <input
                     type="text"
                     defaultValue={data.address}
-                    onChange={(e) => editedData.current.address= e.target.value}
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.address = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
 
-            
 
-                <label className="text-gray-600 block">
+
+                <label className="block text-gray-600">
                   Phone
                   <input
                     type="text"
                     defaultValue={data.phone}
-                    onChange={(e) => editedData.current.phone= e.target.value }
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.phone = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
-                <label className="text-gray-600 block">
+                <label className="block text-gray-600">
                   Ville
                   <input
                     type="text"
                     defaultValue={data.city}
-                    onChange={(e) => editedData.current.city= e.target.value }
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.city = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
 
-                <label className="text-gray-600 block">
+                <label className="block text-gray-600">
                   Pays
                   <input
                     type="text"
                     defaultValue={data.country}
-                    onChange={(e) => editedData.current.country= e.target.value }
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.country = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
 
-                <label className="text-gray-600 block">
-                Password:
+                <label className="block text-gray-600">
+                  Password:
                   <input
                     type="password"
-                    onChange={(e) => editedData.current.password= e.target.value}
-                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                    onChange={(e) => editedData.current.password = e.target.value}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </label>
 
 
-               
-                <button type='submit' className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" onClick={(e) => {
+                <div className='flex justify-between mt-2'>
+                  <button  onClick={(e) => {
                   handleUpdta(e)
-                }}>
-                  Save Changes
-                </button>
+                }} type="submit" className="relative flex justify-center px-4 py-2 text-sm font-medium
+                text-white bg-[#E60035] border border-transparent 
+                rounded-md group hover:bg-red-600 focus:outline-none 
+                focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Edit
+                  </button>
 
-                <Link to={`/users`} className="bg-gray-300 hover:bg-gray-400 text-black rounded-md mt-2 px-4 py-2">
-                  Cancel
-                </Link>
+                  <Link to={`/admin/users`}
+                  >
+                    <button type="submit"
+                      className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Cancel
+                    </button>
+                  </Link>
+                </div>
+
               </div>
+
+
+
             </form>
           </div>
           : ""}

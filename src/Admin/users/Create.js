@@ -110,11 +110,12 @@ function CreateUser() {
 
                     </div>
 
-                    <div className='flex justify-between'>
+                    <div className='flex justify-between mt-3'>
                     <Link to={`/admin/users`} 
                    >
 
-                        <button type="submit" className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button type="submit" 
+                        className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Cancel
                         </button>
                         </Link>

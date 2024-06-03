@@ -5,7 +5,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 
 function Dashboard() {
   return (
-    <div className='min-h-screen bg-gray-100'>
+    <div className='min-h-screen '>
       <IoSettingsOutline className="absolute hidden text-red-600 md:w-24 md:h-24 md:block top-20 left-20 lg:w-28 lg:h-28 animate-spin-slow"/>
       <IoSettingsOutline className="absolute hidden text-red-600 md:block md:w-14 md:h-14 lg:w-20 lg:h-20 top-40 left-40 animate-spin-slow"/>
 

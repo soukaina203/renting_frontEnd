@@ -5,6 +5,8 @@ import { MdOutlinePersonOutline } from "react-icons/md";
 
 function HeaderAdmin() {
   const [admin, setAdmin] = useState({ id: localStorage.getItem('userId'), name: localStorage.getItem("userName") })
+ let idUser=localStorage.getItem("userId")
+
   return (
 
     <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
@@ -28,8 +30,8 @@ function HeaderAdmin() {
           </li>
         </ul>
 
-        <button className="lg:hidden group">
-          <GiHamburgerMenu className="mr-5 text-2xl" />
+        <button className="z-40 lg:hidden group">
+          <GiHamburgerMenu className="absolute text-2xl top-6 right-12"  />
           <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
             <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
               <li className="w-full px-6 py-4 duration-500 underlineHover ">
@@ -49,7 +51,7 @@ function HeaderAdmin() {
           </div>
         </button>
 
-        <button className='p-2 text-gray-500 rounded '><Link to={`/editProfile/${admin.id}`}><MdOutlinePersonOutline className='w-8 h-8 text-[#E60035] ' />
+        <button className='p-2 text-gray-500 rounded '><Link to={`/admin/editProfile/${idUser}`}><MdOutlinePersonOutline className='w-8 h-8 text-[#E60035] ' />
         </Link></button>
 
       </div>

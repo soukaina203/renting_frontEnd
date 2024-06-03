@@ -30,7 +30,7 @@ function SignIn() {
 
         navigate('/dashboard')
       }else{
-        navigate('/admin')
+        navigate('/admin/users')
 
       }
 

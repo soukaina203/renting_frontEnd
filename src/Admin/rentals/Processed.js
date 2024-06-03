@@ -1,10 +1,13 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { FaLongArrowAltLeft } from "react-icons/fa";
+
 import { Link } from 'react-router-dom';
 import { ImCross } from 'react-icons/im'
 import HeaderAdmin from '../header';
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight, FaPen } from "react-icons/fa6";
+import { MdDeleteSweep } from 'react-icons/md';
 
 axios.defaults.withCredentials = true;
 
@@ -50,7 +53,9 @@ export default function Processed() {
     <div>
       <Link to="/admin/rentals/create">
         <button
-          className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex justify-center items-center gap-2 overflow-hidden border border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
+          className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex 
+          justify-center items-center gap-2 overflow-hidden border
+           border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
   before:-mr-2 before:h-48 before:w-48 before:origin-top-left 
   before:-translate-x-full before:-translate-y-12 before:rotate-90
   before:bg-white before:transition-all before:duration-300 hover:text-white
@@ -62,6 +67,8 @@ export default function Processed() {
           <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
         </button>
       </Link>
+
+
       <div className="flex justify-center h-screen">
         <div className="w-full md:w-2/3">
           {deleteMsg ? <div>
@@ -80,6 +87,10 @@ export default function Processed() {
 
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+
+                <Link to="/admin/rentals">
+                  <FaLongArrowAltLeft className='h-6 w-7' />
+                </Link>
                 <div className="overflow-hidden">
                   <table className="min-w-full text-sm font-light text-left text-surface ">
                     <thead className="font-medium border-b border-black">
@@ -106,7 +117,7 @@ export default function Processed() {
                             {e.car.model}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {e.e.total_price}  {e.currency}
+                            {e.total_price} DH
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {e.rental_start}
@@ -114,21 +125,14 @@ export default function Processed() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             {e.rental_end}
                           </td>
-                          <td className="flex gap-2 px-6 py-4 whitespace-nowrap">
+                          <td className="flex items-center justify-start gap-2 px-6 py-4 whitespace-nowrap">
 
-                            <Link to={`/user/edit/${e.id}`}>
-                              <button className="font-semibold px-5 py-2 text-[#E60035] border border-[#E60035]  ">
-                                Edit
-                              </button>
+                            <Link to={`/admin/rental/edit/${e.id}`}>
+                              <FaPen className="font-semibold  text-[#E60035] w-4 h-4" />
+
                             </Link>
-
-                            <button
-                              className="font-semibold px-5 py-2 text-[#E60035] border border-[#E60035]  "
-                              onClick={() => deleteRental(e.id)
-                              }
-                            >
-                              Delete
-                            </button>
+                            <MdDeleteSweep className="font-semibold  text-[#E60035] w-5 h-5  "
+                              onClick={() => deleteRental(e.id)} />
                           </td>
                         </tr>
                       ))}

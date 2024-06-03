@@ -78,17 +78,17 @@ function AllCars() {
 
   return (
     <div className='flex flex-col'>
-           <Link to="/admin/cars/create">
-      <button className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex justify-center items-center gap-2 overflow-hidden border border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
+      <Link to="/admin/cars/create">
+        <button className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex justify-center items-center gap-2 overflow-hidden border border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
   before:-mr-2 before:h-48 before:w-48 before:origin-top-left 
   before:-translate-x-full before:-translate-y-12 before:rotate-90
   before:bg-white before:transition-all before:duration-300 hover:text-white
   hover:shadow-red-500 hover:bg-red-500 hover:before:-rotate-180">
-        <span className="relative z-20 text-red-500 group-hover:text-white">
-     Create A Car
-        </span>
-        <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
-      </button>
+          <span className="relative z-20 text-red-500 group-hover:text-white">
+            Create A Car
+          </span>
+          <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
+        </button>
       </Link>
 
       <div className='flex'>
@@ -187,8 +187,8 @@ function AllCars() {
                   </div>
                 </div>
                 <div className="flex justify-between px-6 pb-5">
-
-                  <button onClick={() => deleteClient(e.id)} className="before:ease relative h-12 w-40  font-semibold flex
+                  <Link to={`/admin/car/edit/${e.id}`}>
+                    <button className="before:ease relative h-12 w-40  font-semibold flex
              justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
               border-[#E60035] text-white group
               shadow-2xl before:absolute before:left-0 
@@ -196,16 +196,17 @@ function AllCars() {
                before:-translate-x-full before:translate-y-12 before:-rotate-90
                 before:bg-white before:transition-all before:duration-300 hover:text-white
                  hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
-                    <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+                      <span className='relative text-[#E60035] z-20 group-hover:text-white'>
 
-                      <Link to={`/car/${e.id}/edit`}>Modify</Link>
+                        Modify
 
-                    </span>
+                      </span>
 
-                    <FaArrowRight className="relative text-[#E60035] 
+                      <FaArrowRight className="relative text-[#E60035] 
                   z-20 group-hover:text-white ml-2" />
-                  </button>
-
+                    </button>
+                  </Link>
+                  
 
                   <button onClick={() => deleteClient(e.id)} className="before:ease relative h-12 w-40  font-semibold flex
              justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border

@@ -60,9 +60,9 @@ function Header() {
         </ul>
 
         <button className="lg:hidden group">
-          <GiHamburgerMenu className="mr-5 text-2xl" />
+          <GiHamburgerMenu className="absolute right-[6.4rem] text-2xl top-6 " />
           <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
-            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
+            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold ">
               <li className="w-full px-6 py-4 duration-500 uppercase hover:bg-[#7D7ED7]">
                 <Link to="/Home">Home</Link>
               </li>
@@ -86,7 +86,9 @@ function Header() {
           <button
             type="button"
             onClick={dropDawn}
-            className="w-[6rem] md:w-[8rem] flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="w-[6rem] md:w-[8rem] flex justify-center gap-x-1.5 rounded-md bg-white
+             px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset
+              ring-gray-300 hover:bg-gray-50"
             id="menu-button"
             aria-expanded={isOpen}
             aria-haspopup="true"

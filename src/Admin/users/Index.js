@@ -5,6 +5,10 @@ import { ImCross } from "react-icons/im";
 import HeaderAdmin from "../header";
 import Admin from "../Admin";
 import { FaArrowRight } from "react-icons/fa6";
+import { FaPen } from "react-icons/fa";
+import { MdDeleteSweep } from "react-icons/md";
+
+
 axios.defaults.withCredentials = true;
 
 function AllUsers() {
@@ -119,7 +123,7 @@ function AllUsers() {
 
       <div className="">
         <div className="flex flex-col p-4 lg:flex-row">
-          <div className="hidden w-64 mr-4 border-[0.2rem] border-gray-200 rounded lg:block ">
+          <div className="hidden w-1/5 mr-4 border-[0.2rem] border-gray-200 rounded lg:block ">
             <h2
               className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200"
               onClick={() => {
@@ -268,20 +272,19 @@ function AllUsers() {
                             <td className="px-6 py-4 whitespace-nowrap">
                               {e.city}
                             </td>
-                            <td className="flex gap-2 px-6 py-4 whitespace-nowrap">
+                            <td className="flex items-center justify-start gap-2 px-6 py-4 whitespace-nowrap">
 
-                              <Link to={`/user/edit/${e.id}`}>
-                                <button className="font-semibold px-5 py-2 text-[#E60035] border border-[#E60035]  ">
-                                  Edit
-                                </button>
+                              <Link to={`/admin/user/edit/${e.id}`}>
+                                <FaPen className="font-semibold cursor-pointer 
+                                 text-[#E60035] w-4 h-4"/>
+
                               </Link>
 
-                              <button
-                                className="font-semibold px-5 py-2 text-[#E60035] border border-[#E60035]  "
-                                onClick={() => deleteUser(e.id)}
-                              >
-                                Delete
-                              </button>
+                           
+                                <MdDeleteSweep   className="font-semibold cursor-pointer
+                                 text-[#E60035] w-5 h-5  "
+                                onClick={() => deleteUser(e.id)}/>
+
                             </td>
                           </tr>
                         ))}

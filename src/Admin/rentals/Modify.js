@@ -48,7 +48,7 @@ export default function ModifyRental() {
             }
         );
         if (res.data.message === "Item updated successfully") {
-            navigate('/rentals');
+            navigate('/admin/rentals');
         }
         // Handle the response data here if needed
         console.log(res.data);
@@ -61,42 +61,24 @@ export default function ModifyRental() {
 
     return (
         <div>
-            <HeaderAdmin />
             <div className="flex justify-center">
                 {data !== null ?
-                    <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6 p-6">
+                    <div className="w-[60%] mt-[4rem] bg-white shadow-lg rounded-lg mx-4 my-6 p-6">
                         <form onSubmit={handleUpdate}>
-                            <label htmlFor="users" className="text-gray-600 block">
-                                Users:
-                                <select
-                                    id="users"
-                                    name="users"
-                                    value={data.user.name} // Use value instead of defaultValue
-                                    onChange={(e) => {
-                                        editedData.current.user_id =  e.target.value 
-                                        console.log(editedData.current.user_id);
-                                    }}
-                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                >
-                                    {users.map((e) => (
-                                        <option key={e.id} value={e.id} >
-                                            {e.name}
-                                        </option>
-                                    ))}
-                                </select>
-                            </label>
+                        <h1 className='text-xl font-semibold text-center'>Modifyin  A Rental</h1>
 
 
-                            <label htmlFor="cars" className="text-gray-600 block">
+
+                            <label htmlFor="cars" className="block text-gray-600">
                                 Cars:
                                 <select
                                     id="cars"
                                     name="cars"
                                     defaultValue={data.car.model}
                                     onChange={(e) => {
-                                        editedData.current.car_id=e.target.value 
+                                        editedData.current.car_id = e.target.value
                                     }}
-                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 >
                                     {cars.map((e) => (
                                         <option key={e.id} value={e.id}>{e.model}</option>
@@ -104,70 +86,72 @@ export default function ModifyRental() {
                                 </select>
                             </label>
 
-                            <label className="text-gray-600 block">
+                            <label className="block text-gray-600">
                                 rental_start:
                                 <input
                                     type="date"
                                     defaultValue={data.rental_start}
-                                    onChange={(e) => editedData.current.rental_start= e.target.value }
-                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => editedData.current.rental_start = e.target.value}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 />
                             </label>
 
-                            <label className="text-gray-600 block">
+                            <label className="block text-gray-600">
                                 rental_end:
                                 <input
                                     type="date"
                                     defaultValue={data.rental_end}
-                                    onChange={(e) => editedData.current.rental_end=e.target.value }
-                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => editedData.current.rental_end = e.target.value}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 />
                             </label>
 
 
 
 
-                            <label className="text-gray-600 block">
+                            <label className="block text-gray-600">
                                 total_price:
                                 <input
                                     type="text"
                                     defaultValue={data.total_price}
 
-                                    onChange={(e) => editedData.current.total_price= e.target.value }
-                                    className="border-2 text-black border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => editedData.current.total_price = e.target.value}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 />
                             </label>
-                            <label className="text-gray-600 block">
+                            <label className="block text-gray-600">
                                 hourFinish:
                                 <input
                                     type="time"
                                     defaultValue={data.hourFinish}
-                                    onChange={(e) => editedData.current.hourFinish= e.target.value }
-                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => editedData.current.hourFinish = e.target.value}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 />
                             </label>
 
-                            <label className="text-gray-600 block">
+                            <label className="block text-gray-600">
                                 hourStart:
                                 <input
                                     type="time"
                                     defaultValue={data.hourStart}
-                                    onChange={(e) => editedData.current.hourStart= e.target.value }
-                                    className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
+                                    onChange={(e) => editedData.current.hourStart = e.target.value}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 />
                             </label>
 
 
-                            <div className="mt-4">
+                            <div className='flex justify-between mt-2'>
                                 <button
                                     type="submit"
-                                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
-                                >
-                                    Save Changes
+                                    className="relative flex justify-center px-4 py-2 text-sm font-medium
+                                    text-white bg-[#E60035] border border-transparent 
+                                    rounded-md group hover:bg-red-600 focus:outline-none 
+                                    focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"                                >
+                                    Edit
                                 </button>
                                 <Link
-                                    to="/admin/cars"
-                                    className="ml-4 text-gray-600 hover:underline"
+                                    to="/admin/rentals"
+                                    className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Cancel
                                 </Link>

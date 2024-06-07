@@ -35,7 +35,7 @@ function Header() {
 
   return (
     <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
-      <div className="container relative flex items-center justify-between mx-auto">
+      <div className="container flex items-center justify-between m-auto ">
         <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white
          bg-[#E60035] lg:ml-[2rem]">
           BestCar
@@ -60,9 +60,9 @@ function Header() {
         </ul>
 
         <button className="lg:hidden group">
-          <GiHamburgerMenu className="absolute right-[6.4rem] text-2xl top-6 " />
+          <GiHamburgerMenu className="text-2xl " />
           <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
-            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold ">
+            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
               <li className="w-full px-6 py-4 duration-500 uppercase hover:bg-[#7D7ED7]">
                 <Link to="/Home">Home</Link>
               </li>
@@ -82,13 +82,11 @@ function Header() {
           </div>
         </button>
 
-        <div className="relative inline-block text-left" ref={dropdownRef}>
+        <div className="relative hidden text-left lg:inline-block" ref={dropdownRef}>
           <button
             type="button"
             onClick={dropDawn}
-            className="w-[6rem] md:w-[8rem] flex justify-center gap-x-1.5 rounded-md bg-white
-             px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset
-              ring-gray-300 hover:bg-gray-50"
+            className="w-[6rem] md:w-[8rem] flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             id="menu-button"
             aria-expanded={isOpen}
             aria-haspopup="true"

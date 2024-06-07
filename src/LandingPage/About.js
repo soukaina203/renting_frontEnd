@@ -55,7 +55,7 @@ function About() {
                                     <p className="text-gray-600">
                                         Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa eu faucibus. Urna fusce
                                     </p>
-                                    <div className="flex flex-col gap-7 lg:flex-row">
+                                    <div className="flex flex-col gap-7 md:flex-row md:justify-between">
                                         <ul key="1">
                                             {advantages[0].props.map((advantage) => (
                                                 <li key={advantage} className='flex p-2'><IoMdDoneAll className='text-[#E60035] w-6 h-6 mr-3' />
@@ -69,7 +69,8 @@ function About() {
                                             ))}
                                         </ul>
                                     </div>
-                                    <button className="px-6 py-3 font-semibold text-white bg-[#E60035] uppercase hover:bg-opacity-80 flex">
+                                    <button className="px-6 py-3 w-full lg:w-fit  text-center flex justify-center items-center
+                                      font-semibold text-white bg-[#E60035] uppercase hover:bg-opacity-80 ">
                                         Read More<FaLongArrowAltRight className='w-8 h-6 ml-2 text-white' />
 
                                     </button>

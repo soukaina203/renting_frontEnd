@@ -16,7 +16,7 @@ function Ride() {
   ];
 
   return (
-    <div id='Ride' className='flex flex-col w-full h-full gap-1 mb-8 bg-black'> {/* Add mb-8 for margin-bottom */}
+    <div id='Ride' className='flex flex-col w-full h-full gap-1 bg-black'> {/* Add mb-8 for margin-bottom */}
 
       <section className="z-40 flex items-center justify-center w-full h-full py-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">

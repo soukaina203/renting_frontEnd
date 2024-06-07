@@ -1,0 +1,16 @@
+/* src/styles/fonts.css */
+
+  
+  @font-face {
+    font-family: 'Yantramanav-Black';
+    font-style: normal;
+    font-weight: 400 700; /* Range of weights for variable font */
+    src: url('../public/fonts/Yantramanav-Black.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Yantramanav-Bold"';
+    font-style: normal;
+    font-weight: 400 700; /* Range of weights for variable font */
+    src: url('../public/fonts/Yantramanav-Bold.ttf') format('truetype');
+  }

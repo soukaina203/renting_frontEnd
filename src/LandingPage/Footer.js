@@ -67,7 +67,10 @@ export default function Footer() {
                 <div class="mb-6 md:me-auto">
                   <button
                     type="submit"
-                    class="inline-block rounded px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:bg-neutral-700 dark:text-white"
+                    class="inline-block rounded px-6 pb-[6px] pt-2 text-xs font-medium
+                     uppercase leading-normal text-surface shadow-dark-3 shadow-black/30 transition
+                      duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none 
+                      focus:ring-0 active:shadow-1 bg-red-500 dark:text-white"
                     data-twe-ripple-init
                     data-twe-ripple-color="light">
                     Subscribe
@@ -92,20 +95,17 @@ export default function Footer() {
               </h5>
 
               <ul class="mb-0 list-none">
-                <li  className='p-3'>
-                  <a href="#!" >About
-                  </a>
+                <li>
+                  <a href="#!">(+888) 123 456 765</a>
                 </li>
                 <li>
-                  <a href="#!">Team</a>
+                  <a href="#!">infoname@mail.com</a>
                 </li>
                 <li>
-                  <a href="#!">Faq
-                  </a>
+                  <a href="#!">Old city Street,USA
+                    1212 New york-3500</a>
                 </li>
-                <li>
-                  <a href="#!">Privacy Policy</a>
-                </li>
+
               </ul>
             </div>
 
@@ -121,9 +121,9 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href="#!">Old city Street,USA
-1212 New york-3500</a>
+                    1212 New york-3500</a>
                 </li>
-               
+
               </ul>
             </div>
 
@@ -151,17 +151,16 @@ export default function Footer() {
 
               <ul class="mb-0 list-none">
                 <li>
-                  <a href="#!">Link 1</a>
+                  <a href="#!">(+888) 123 456 765</a>
                 </li>
                 <li>
-                  <a href="#!">Link 2</a>
+                  <a href="#!">infoname@mail.com</a>
                 </li>
                 <li>
-                  <a href="#!">Link 3</a>
+                  <a href="#!">Old city Street,USA
+                    1212 New york-3500</a>
                 </li>
-                <li>
-                  <a href="#!">Link 4</a>
-                </li>
+
               </ul>
             </div>
           </div>
@@ -169,12 +168,12 @@ export default function Footer() {
 
         <div class="w-full bg-black/5 p-4 text-center">
           © 2023 Copyright:
-          <a class="font-semibold "  href="https://tw-elements.com/"
+          <a class="font-semibold " href="https://tw-elements.com/"
           >
-              BESTCAR
+            BESTCAR
 
           </a>
-          
+
         </div>
       </footer>
     </div>

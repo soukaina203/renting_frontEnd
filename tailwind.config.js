@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+
+      fontFamily: {
+        'Yantramanav-Black': ['"Yantramanav-Black"', 'sans-serif'],
+        'Yantramanav-Bold"': ['"Yantramanav-Bold"', 'sans-serif'],
+      },
+
       backgroundImage: {
         service1: "url('/public/services/one.png')",
         service2: "url('/public/services/two.png')",
@@ -37,10 +43,7 @@ module.exports = {
         btn2: '#3e5a73',
 
       },
-      fontFamily: {
-        lato: "'Lato',sans-serif",
-        DMSend: "'DM Sans',sans-serif"
-      }
+  
     },animation :{
       'showUp': 'showUp 0.5s ease-in-out', // Durée de l'animation et l'interpolation
 

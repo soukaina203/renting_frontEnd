@@ -39,9 +39,8 @@ function UserRentals() {
 
     return (
         <div>
-            <HeaderUser />
             <div className="container mx-auto">
-                <div className="container mx-auto flex justify-center items-center">
+                <div className="container flex items-center justify-center mx-auto">
                     {rentals.length !== 0 ? (
                         <table id='an' className="table-auto w-[40rem] mt-6">
                             <thead>
@@ -57,10 +56,10 @@ function UserRentals() {
                                 {rentals.map((rental) => (
                                     <React.Fragment key={rental.id}>
                                         <tr>
-                                            <td className="border px-4 py-2 text-center">{rental.car.make}</td>
-                                            <td className="border px-4 py-2 text-center">{rental.rental_start}</td>
-                                            <td className="border px-4 py-2 text-center">{rental.rental_end}</td>
-                                            <td className="border px-4 py-2 text-center">{rental.total_price}</td>
+                                            <td className="px-4 py-2 text-center border">{rental.car.make}</td>
+                                            <td className="px-4 py-2 text-center border">{rental.rental_start}</td>
+                                            <td className="px-4 py-2 text-center border">{rental.rental_end}</td>
+                                            <td className="px-4 py-2 text-center border">{rental.total_price}</td>
                                             <td className="text-center">
                                                 <button
                                                     className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300"
@@ -73,7 +72,7 @@ function UserRentals() {
                                         {infoMap[rental.id] && (
                                             <tr>
                                                 <td colSpan="5">
-                                                    <div className="bg-white1 rounded-lg shadow-lg flex flex-row gap-7 p-4">
+                                                    <div className="flex flex-row p-4 rounded-lg shadow-lg bg-white1 gap-7">
                                                         {/* Additional Information */}
                                                         <img
                                                             src={`http://127.0.0.1:8000/images/${rental.car.photo}`}
@@ -81,13 +80,13 @@ function UserRentals() {
                                                             className="w-[15rem] h-[11rem] object-cover object-center rounded-lg"
                                                         />
                                                         <div className="flex flex-col">
-                                                            <p className="font-bold text-xl mb-2">{rental.car.make}</p>
+                                                            <p className="mb-2 text-xl font-bold">{rental.car.make}</p>
                                                             <p className="text-gray-600">{rental.car.model}</p>
                                                             <p className="text-gray-600">Price per day: {rental.car.price_per_day}</p>
                                                             <p className="text-gray-600">Type: {rental.car.type}</p>
                                                         </div>
                                                         <div className="flex flex-col">
-                                                            <div className="border-t my-4" />
+                                                            <div className="my-4 border-t" />
                                                             <p className="text-gray-600">Hour Finish: {rental.hourFinish}</p>
                                                             <p className="text-gray-600">Hour Start: {rental.hourStart}</p>
                                                             <p className="text-gray-600">Total Price: {rental.total_price}</p>
@@ -97,7 +96,7 @@ function UserRentals() {
                                                                 onClick={() => handleToggleInfo(rental.id)}
                                                             >
                                                                 Close
-                                                            </button> 
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -108,7 +107,7 @@ function UserRentals() {
                             </tbody>
                         </table>
                     ) : (
-                        <div className="text-center">No Rentals</div>
+                        <div className="p-8 text-xl font-semibold text-center">No Rentals</div>
                     )}
                 </div>
             </div>

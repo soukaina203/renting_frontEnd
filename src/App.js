@@ -25,6 +25,8 @@ import Processed from './Admin/rentals/Processed';
 import CreateReviewAdmin from './Admin/CreateReviewAdmin';
 import ModifyCar from './Admin/cars/Modify';
 import EditProfile from './Admin/editProfile';
+import UserInterface from './Users/UserInterface';
+import VoirCar from './Admin/cars/Show';
 
 function App() {
   return (
@@ -40,16 +42,27 @@ function App() {
           <Route path="signUp" element={<SignUp />} />
           <Route path="choose" element={<Choose />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="welcome" element={<Welcome />} />
 
           {/* <Route path="review/create" element={<CreateReview />} /> */}
+          
 
+          <Route path="/user" element={<UserInterface />}>
+          <Route path="welcome" element={<Welcome />} />
+          <Route path="rentals" element={<UserRentals />} />
+          <Route path="editProfile/:id" element={<EditProfile />} />
+          <Route path="car/:id/rent" element={<Rent />} />
+          <Route path="car/:id" element={<VoirCar />} />
+          <Route path="review/create" element={<CreateReviewAdmin />} />
+          <Route path="answer" element={<Answer />} />
+
+
+          </Route>
           {/* Admin */}
           <Route path="/admin" element={<Admin />}>
             <Route path="editProfile/:id" element={<EditProfile />} />
             
             <Route path="reviews" element={<ReviewsAdmin />} />
-            <Route path="review/create" element={<CreateReviewAdmin />} />
+            {/* <Route path="review/create" element={<CreateReviewAdmin />} /> */}
 
             <Route path="users" element={<AllUsers />} />
             <Route path="users/create" element={<CreateUser />} />
@@ -59,7 +72,6 @@ function App() {
             <Route path="cars" element={<AllCars />} />
             <Route path="car/edit/:id" element={<ModifyCar />} />
             <Route path="cars/create" element={<CreateCar />} />
-            <Route path=":id/rent" element={<Rent />} />
             <Route path="answer" element={<Answer />} />
 
             <Route path="rentals" element={<AllRentals />} />
@@ -68,6 +80,7 @@ function App() {
             <Route path="rental/edit/:id" element={<ModifyRental />} />
             <Route path="rentals/unprocessed" element={<NotProcessed />} />
             <Route path="rentals/processed" element={<Processed />} />
+
           </Route>
         </Routes>
       </Router>

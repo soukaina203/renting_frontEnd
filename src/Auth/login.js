@@ -26,11 +26,11 @@ function SignIn() {
       localStorage.setItem('userId', res.data.user.id);
       localStorage.setItem('status', res.data.isAdmin);//is admin
       setMsg('')
-      if(res.data.isAdmin==='a'){
+       if(res.data.isAdmin==='a'){
 
-        navigate('/dashboard')
-      }else{
-        navigate('/admin/users')
+         navigate('/dashboard')
+       }else{
+         navigate('/user/welcome')
 
       }
 
@@ -100,8 +100,8 @@ function SignIn() {
           </form>
           <p className="mt-4 text-sm text-center text-gray-500">
             Already have an account?{' '}
-            <Link to="/signIn" className="font-semibold text-red-500 hover:underline">
-              Sign In
+            <Link to="/signUp" className="font-semibold text-red-500 hover:underline">
+              Sign Up
             </Link>
           </p>
         </div>

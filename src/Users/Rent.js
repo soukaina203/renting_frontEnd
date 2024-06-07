@@ -21,14 +21,14 @@ export default function Rent() {
             }
         });
         setCars(res.data.car);
-        price_per_day.current=res.data.car.price_per_day;
+        price_per_day.current = res.data.car.price_per_day;
     };
     let handleCreate = async (e) => {
         e.preventDefault()
-       
+
         let n = FillData.current;
         const d = await axios.post("http://localhost:8000/api/rentals", {
-            user_id:localStorage.getItem('userId'),
+            user_id: localStorage.getItem('userId'),
             car_id: id,
             rental_start: n.rental_start,
             rental_end: n.rental_end,
@@ -43,7 +43,7 @@ export default function Rent() {
         });
         console.log(d.data)
         if (d.data.message === "Item added successfully") {
-            navigate('/answer')
+            navigate('/user/answer')
         }
 
         console.log(d.data)
@@ -59,26 +59,25 @@ export default function Rent() {
         const date2Ms = endDate.getTime();
         // Calculate the difference in milliseconds
         const differenceMs = Math.abs(date1Ms - date2Ms);
-        
+
         // Convert the difference to days
         const daysDifference = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
         const totalPrice = daysDifference * price_per_day.current
         console.log(daysDifference)
         FillData.current.total_price = totalPrice
         console.log(FillData.current.total_price
-            )
+        )
         setTotal(totalPrice)
     }
     return (
         <div>
-            <HeaderAdmin />
             {
                 car !== null ?
 
                     <div className="flex justify-center">
-                        <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
+                        <div className="w-[50%] bg-white shadow-lg rounded-lg mx-4 my-6">
                             <form action="" onSubmit={handleCreate}>
-                                <div className="px-4 py-2 bg-white shadow rounded-lg">
+                                <div className="px-4 py-2 bg-white rounded-lg shadow">
                                 </div>
                                 <div className="px-4 py-2">
                                     <img
@@ -89,72 +88,73 @@ export default function Rent() {
 
 
 
-                                    <label className="text-gray-600 block">
-                                        rental_start:
-                                        <input
-                                            type="date"
-
-                                            onChange={(e) => FillData.current.rental_start = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
+                                    <label className="block mt-2 font-bold text-gray-700">
+                                        Rental Start Date
                                     </label>
-                                    <label className="text-gray-600 block">
-                                        rental_end:
-                                        <input
-                                            type="date"
+                                    <input
+                                        type="date"
 
-                                            onChange={(e) => FillData.current.rental_end = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
+                                        onChange={(e) => FillData.current.rental_start = e.target.value}
+                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                    />
+
+                                    <label className="block mt-2 font-bold text-gray-700">
+                                        Rental End Date
                                     </label>
+                                    <input
+                                        type="date"
 
-                                    <label className="text-gray-600 block">
-                                    price_per_day:
-                                        <input
-                                            type="text"
-                                            value={car.price_per_day}
+                                        onChange={(e) => FillData.current.rental_end = e.target.value}
+                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                    />
 
-                                            onChange={(e) => FillData.current.rental_end = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
+                                    <label className="block mt-2 font-bold text-gray-700">
+                                        Price per day                                    </label>
+                                    <input
+                                        type="text"
+                                        value={car.price_per_day}
+
+                                        onChange={(e) => FillData.current.rental_end = e.target.value}
+                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                    />
+                                    <label className="block mt-2 font-bold text-gray-700">
+                                        Hour start
                                     </label>
+                                    <input
+                                        type="time"
 
+                                        onChange={(e) => FillData.current.hourStart = e.target.value}
+                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                    />
 
-                                    <label className="text-gray-600 block">
-                                        hourFinish:
-                                        <input
-                                            type="time"
-
-                                            onChange={(e) => FillData.current.hourFinish = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
+                                    <label className="block mt-2 font-bold text-gray-700">
+                                        Hour finish
                                     </label>
+                                    <input
+                                        type="time"
 
-                                    <label className="text-gray-600 block">
-                                        hourStart:
-                                        <input
-                                            type="time"
+                                        onChange={(e) => FillData.current.hourFinish = e.target.value}
+                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                    />
 
-                                            onChange={(e) => FillData.current.hourStart = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
-                                    </label>
+
+
                                     <button
                                         type="button"
-                                        className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2"
+                                        className="w-full px-4 py-2 mt-4 text-white  bg-[#E60035] rounded-md hover:bg-red-600 font-semibold mb-2"
                                         onClick={() => {
-                                          
+
                                             diffrenceDate(FillData.current.rental_start, FillData.current.rental_end)
                                         }}> Calculer Total</button>
-                                    <label className="text-gray-600 block">
-                                        total_price:
-                                        <input
-                                            type="text"
-                                            value={total}
-                                            onChange={(e) => FillData.current.total_price = e.target.value}
-                                            className="border-2 border-gray-300 p-2 ml-2 rounded-md w-full text-base font-normal"
-                                        />
+                                    <label className="block mt-2 font-bold text-gray-700">
+                                        Total price
                                     </label>
+                                    <input
+                                        type="text"
+                                        value={total}
+                                        onChange={(e) => FillData.current.total_price = e.target.value}
+                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+                                    />
 
 
 
@@ -163,14 +163,20 @@ export default function Rent() {
 
 
 
+                                    <div className='flex justify-between mt-2'>
 
-                                    <button type='submit' className="bg-orange-500 hover:bg-orange-600 text-white rounded-md mt-4 px-4 py-2" >
-                                        Rent
-                                    </button>
+                                        <button type='submit'
+                                            className="relative flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#E60035] border border-transparent rounded-md group hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        >
+                                            Rent
+                                        </button>
 
-                                    <Link to={`/welcome`} className="bg-gray-300 hover:bg-gray-400 text-black rounded-md mt-2 px-4 py-2">
-                                        Cancel
-                                    </Link>
+                                        <Link to={`/welcome`}
+                                            className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        >
+                                            Cancel
+                                        </Link>
+                                    </div>
                                 </div>
                             </form>
                         </div>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from './header';
 
-function EditProfile() {
+function  EditProfile() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
   const [showEditImg, setShowEditImg] = useState(false);// to show the form of uploading an image 
   const [img, setImg] = useState('')// the uploaded file of the user 
@@ -49,6 +49,8 @@ function EditProfile() {
         },
       }
     );
+
+    
     console.log(res.data)
     if (res.data.message === "Item updated successfully") {
 
@@ -218,7 +220,7 @@ function EditProfile() {
                   Save Changes
                 </button>
 
-                <Link to={`/users`}
+                <Link to={`/admin/users`}
                   className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
                   Cancel

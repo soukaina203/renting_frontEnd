@@ -3,25 +3,25 @@ import 'tailwindcss/tailwind.css';
 
 const slides = [
   {
-    image: 'one.jpg',
+    image: 'services/signUp.jpeg',
     title: 'Car Back Light',
     description: '120 kinds of automobile lights',
     buttonText: 'Shop Now'
   },
   {
-    image: 'one.jpg',
+    image: 'services/login.jpeg',
     title: 'Car Steering Wheel',
     description: '120 kinds of automobile lights',
     buttonText: 'Shop Now'
   },
   {
-    image: 'one.jpg',
+    image: 'services/login1.jpeg',
     title: 'Car Body & Engine',
     description: '120 kinds of automobile lights',
     buttonText: 'Shop Now'
   },
   {
-    image: 'one.jpg',
+    image: 'services/login3.jpeg',
     title: 'Car Tire',
     description: '120 kinds of automobile tires',
     buttonText: 'Shop Now'
@@ -33,7 +33,7 @@ const slides = [
     buttonText: 'Shop Now'
   },
   {
-    image: 'one.jpg',
+    image: 'services/wheel.jpg',
     title: 'Car Mirror',
     description: '120 kinds of automobile mirrors',
     buttonText: 'Shop Now'
@@ -63,7 +63,7 @@ function ImageSlider() {
 
   return (
     <div className="relative flex items-center justify-center w-full h-full lg:pb-[4rem] overflow-hidden bg-black">
-      <div className={`flex transition-transform duration-500 ease-in-out ${isLargeScreen ? 'w-[300%]' : 'w-full'}`} style={{ transform: `translateX(-${currentIndex * (isLargeScreen ? 33.3333 : 100)}%)` }}>
+      <div className={`flex transition-transform mb-8 lg:mb-0 duration-500 ease-in-out ${isLargeScreen ? 'w-[300%]' : 'w-full'}`} style={{ transform: `translateX(-${currentIndex * (isLargeScreen ? 33.3333 : 100)}%)` }}>
         {slides.map((slide, index) => (
           <div key={index} className={`flex flex-col items-center   flex-shrink-0 ${isLargeScreen ? 'w-1/3' : 'w-full'} bg-black/85`}>
             <img className="object-cover w-[24rem] h-48 rounded-lg" src={slide.image} alt={`Slide ${index + 1}`} />

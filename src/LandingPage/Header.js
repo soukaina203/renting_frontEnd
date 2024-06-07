@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll'
+import { Link as RouterLink } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
 
 function Header() {
@@ -34,7 +35,7 @@ function Header() {
   }, [isOpen]);
 
   return (
-    <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
+    <nav className="w-full h-[4rem] fixed lg:relative bg-white text-black shadow-md z-40">
       <div className="container flex items-center justify-between m-auto ">
         <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white
          bg-[#E60035] lg:ml-[2rem]">
@@ -43,19 +44,19 @@ function Header() {
 
         <ul className="items-center hidden pr-10 font-semibold cursor-pointer lg:flex">
           <li className="px-6 py-4 duration-500 underlineHover">
-            <Link to="/Home">Home</Link>
+            <Link to="home" smooth={true} offset={-100} duration={500} >Home</Link>
           </li>
           <li className="px-6 py-4 duration-500 underlineHover">
-            <Link to="/About">About Us</Link>
+            <Link to="About" smooth={true} offset={-100} duration={500}>About Us</Link>
           </li>
           <li className="px-6 py-4 duration-500 underlineHover">
-            <Link to="/Pricing">Ride</Link>
+            <Link to="Ride" smooth={true} offset={-100} duration={500}>Ride</Link>
           </li>
           <li className="px-6 py-4 duration-500 underlineHover">
-            <Link to="/Contact">Services</Link>
+            <Link to="Services" smooth={true} offset={-100} duration={500}>Services</Link>
           </li>
           <li className="px-6 py-4 duration-500 underlineHover">
-            <Link to="/Contact">Reviews</Link>
+            <Link to="Reviews" smooth={true} offset={-100} duration={500}>Reviews</Link>
           </li>
         </ul>
 
@@ -63,20 +64,31 @@ function Header() {
           <GiHamburgerMenu className="text-2xl " />
           <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
             <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
-              <li className="w-full px-6 py-4 duration-500 uppercase hover:bg-[#7D7ED7]">
-                <Link to="/Home">Home</Link>
+            <li className="px-6 py-4 duration-500 underlineHover">
+            <Link to="home" smooth={true} offset={-100} duration={500} >Home</Link>
+          </li>
+          <li className="px-6 py-4 duration-500 underlineHover">
+            <Link to="About" smooth={true} offset={-100} duration={500}>About Us</Link>
+          </li>
+          <li className="px-6 py-4 duration-500 underlineHover">
+            <Link to="Ride" smooth={true} offset={-100} duration={500}>Ride</Link>
+          </li>
+          <li className="px-6 py-4 duration-500 underlineHover">
+            <Link to="Services" smooth={true} offset={-100} duration={500}>Services</Link>
+          </li>
+          <li className="px-6 py-4 duration-500 underlineHover">
+            <Link to="Reviews" smooth={true} offset={-100} duration={500}>Reviews</Link>
+          </li>
+
+
+              <li className="w-full px-6 py-4 uppercase duration-500 underlineHover ">
+                <RouterLink to="/signUp"> Sign Up</RouterLink>
               </li>
-              <li className="w-full px-6 py-4 duration-500 uppercase hover:bg-[#7D7ED7] rounded-lg">
-                <Link to="/About">About</Link>
-              </li>
-              <li className="w-full px-6 py-4 duration-500 uppercase hover:bg-[#7D7ED7] rounded-lg">
-                <Link to="mission">Ride</Link>
-              </li>
-              <li className="w-full px-6 py-4 uppercase duration-500 hover:bg-[#7D7ED7] rounded-lg">
-                <Link to="team">Services</Link>
-              </li>
-              <li className="w-full px-6 py-4 uppercase duration-500 hover:bg-[#7D7ED7] rounded-lg">
-                <Link to="team">Reviews</Link>
+              <li className="w-full px-6 py-4 uppercase duration-500 underlineHover">
+                <RouterLink to="/signIn">
+                Sign In
+
+                </RouterLink>
               </li>
             </ul>
           </div>

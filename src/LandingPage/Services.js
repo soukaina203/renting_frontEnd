@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function Services() {
   return (
-    <div className="relative flex items-center justify-center w-full h-full py-16 bg-gray-100"> {/* Add py-16 for padding */}
+    <div id='Services' className="relative flex items-center justify-center w-full h-full py-16 bg-gray-100"> {/* Add py-16 for padding */}
       <div>
 
         {/* Paragraphs */}
@@ -19,7 +19,7 @@ export default function Services() {
         </div>
 
 
-        <div className="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 mt-8 md:grid-cols-2 place-items-center lg:grid-cols-3">
 
           <div
             class="relative grid h-[31rem] w-full max-w-[28rem] flex-col items-end justify-center 

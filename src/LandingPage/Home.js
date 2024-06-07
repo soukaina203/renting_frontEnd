@@ -3,7 +3,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 function Home() {
   return (
-    <section className="relative flex items-center justify-center h-screen overflow-hidden text-white lg:justify-start">
+    <section id='home' className="relative flex items-center justify-center h-screen overflow-hidden text-white lg:justify-start">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img src="/one.jpg" alt="Background" className="object-cover w-full h-full" />

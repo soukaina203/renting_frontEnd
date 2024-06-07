@@ -8,7 +8,7 @@ function Answer() {
   useEffect(() => {
     // Set up a timer to navigate to the welcome page after 5 seconds
     const timer = setTimeout(() => {
-     navigate('/welcome'); // Replace '/welcome' with the actual route to your welcome page
+     navigate('/user/welcome'); // Replace '/welcome' with the actual route to your welcome page
     }, 1000);
 
     // Clean up the timer when the component unmounts

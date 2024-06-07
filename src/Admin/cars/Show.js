@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams,useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
+import { FaArrowRight } from 'react-icons/fa6';
 
 function VoirCar() {
   const [data, setData] = useState(null);
@@ -19,7 +20,7 @@ function VoirCar() {
     setData(response.data.car);
     console.log(response)
 
-    
+
   };
 
   useEffect(() => {
@@ -28,7 +29,6 @@ function VoirCar() {
 
   return (
     <div>
-      <HeaderAdmin />
       <div className="flex justify-center">
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
@@ -37,16 +37,61 @@ function VoirCar() {
               alt=""
               className="w-full h-[19rem] object-cover object-center rounded-t-lg"
             />
-            <div className="px-4 py-2">
-              <h2 className="text-2xl font-semibold text-black">{data.make} {data.model}</h2>
-              <p className="text-gray-600 font-bold">Type: {data.type}</p>
-              <p className="text-gray-600 font-bold">Color: {data.color}</p>
-              <p className="text-gray-600 font-bold">Year: {data.year}</p>
-              <p className="text-gray-600 font-bold">Available: {data.available === 1 ? 'Yes' : 'No'}</p>
-              <p className="text-gray-600 font-bold">Price per day: {data.price_per_day}$</p>
+            <div className="px-6 py-4">
+              <div className="flex justify-between mb-2 ">
+                <h1 className='text-[1.4rem] font-bold'>
+                  {data.model}
+                </h1>
+                <p className='font-bold text-xl text-[#E60035] '>  ${data.price_per_day}/day </p>
 
+              </div>
 
-              <Link to={source==='dashboard'?`/admin/cars`:`/welcome`} className=" inline-block mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">Back</Link>
+              <div className='flex flex-col flex-wrap'>
+                <div className="ml-1 text-[1.3rem] text-gray-700">
+                  <span className="mr-2 font-medium">Make:</span> {data.make}
+                </div>
+
+                <div className="ml-1 text-[1.3rem] text-gray-700">
+                  <span className="mr-2 font-medium">Year:</span> {data.year}
+                </div>
+                <div className="ml-1 text-[1.3rem] text-gray-700">
+                  <span className="mr-2 font-medium">Color:</span> {data.color}
+                </div>
+
+                <div className="ml-1 text-[1.3rem] text-gray-700">
+                  <span className="mr-2 font-medium">Type:</span> {data.type}
+                </div>
+                {data.available === 0 ?
+                  <div className="ml-1 text-[1.3rem] text-gray-700">
+                    <span className="mr-2 font-medium">Availabilty:</span> Available
+                  </div> :
+                  <div className="ml-1 text-[1.3rem] text-gray-700">
+                    <span className="mr-2 font-medium">Availabilty:</span> Not Available
+                  </div>
+                }
+
+              </div>
+                <div>
+
+                  <Link to={`/user/welcome`}>
+                    <button className="before:ease relative h-12 w-40 mt-8  font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
+                before:bg-white before:transition-all before:duration-300 hover:text-white
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+                      <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+
+                        Back
+
+                      </span>
+                      <FaArrowRight className="relative text-[#E60035] 
+                  z-20 group-hover:text-white ml-2" />
+                    </button>
+                  </Link>
+                </div>
             </div>
           </div>
           : ""}

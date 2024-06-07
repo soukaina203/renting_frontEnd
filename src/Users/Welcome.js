@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeaderUser from './Header'
+import { FaArrowRight } from 'react-icons/fa6'
 
 function Welcome() {
   const [search, setSearch] = useState([])
@@ -96,10 +97,9 @@ function Welcome() {
 
   return (
     <div>
-      <HeaderUser />
       <div className='flex flex-col'>
         {/* Search Part */}
-        <div className='w-full py-4 mt-2 bg-white1'>
+        <div className='w-full py-4 mt-2 '>
           <div className='max-w-4xl px-2 mx-auto'>
             <div className='flex'>
               <input
@@ -111,160 +111,149 @@ function Welcome() {
               />
               <button
                 type='button'
-                className="px-4 py-2 text-white rounded-r bg-btn hover:bg-btn1"
+                className="px-4 py-2 text-white rounded-r bg-[#E60035] hover:bg-red-600  "
               >
                 Search
               </button>
             </div>
           </div>
-          </div>
+        </div>
         {/* Filter Part */}
-        <div className='flex flex-row'>
-        <div className='w-1/4 mr-4 border rounded h-content mt-7'>
-            <div className="flex ml-4 mr-2">
-              {/* car types ===========================================================================================*/}
-              <div className="w-64 mr-4 border rounded border-btn mt-7">
-                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
-                  setData(permanent)
-                  setFilter({ type: false, avail: false, color: false, price: false, year: false, model: false })
-                }}> Top Cars</h2>
-                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
-                  setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })
-                }}>Car Type</h2>
-                {filter.type === true ?
-                  <div>
-                    <p
-                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => {
-                        filterByType('all');
-                      }}>
-                      All
-                    </p>
-                    {distinctTypes !== undefined ? (
-                      distinctTypes.map((e) => (
-                        <p
-                          key={e}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                          onClick={() => {
-                            filterByType(e);
-                          }}
-                        >
-                          {e}
-                        </p>
-                      ))
-                    ) : (
-                      <p>Loading...</p>
-                    )}
-                  </div>
-                  : ""
-                }
+        <div className='flex'>
+          <div className="flex flex-col p-4 lg:flex-row">
+            {/* Sidebar */}
+            <div className="hidden w-64 mr-4 border-[0.2rem] border-gray-200 rounded lg:block ">
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })}>Car Type</h2>
+              {filter.type && (
+                <div>
+                  <p className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => setData(permanent)}>All</p>
+                  {distinctTypes.map((e) => (
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByType(e)}>{e}</p>
+                  ))}
+                </div>
+              )}
 
 
-                {/* ======================Color==================== */}
-                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
-                  setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })
 
-                }}>Car Color</h2>
-                {filter.color ? <div>
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })}>Car Color</h2>
+              {filter.color && (
+                <div>
                   {distinctColors.map((e) => (
-                    <p
-                      key={e}
-                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => {
-                        filterByColor(e)
-                      }}
-                    >
-                      {e}
-                    </p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByColor(e)}>{e}</p>
                   ))}
+                </div>
+              )}
 
-                </div> : ""}
-                {/* Model */}
-                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
-                  setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })
-
-                }}>Car Model</h2>
-                {filter.model ? <div>
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })}>Car Model</h2>
+              {filter.model && (
+                <div>
                   {distinctModels.map((e) => (
-                    <p
-                      key={e}
-                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => {
-                        filterByModel(e)
-                      }}
-                    >
-                      {e}
-                    </p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByModel(e)}>{e}</p>
                   ))}
+                </div>
+              )}
 
-                </div> : ""}
-
-                {/* Year */}
-                <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => {
-                  setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })
-
-                }}>Car Year</h2>
-                {filter.year ? <div>
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })}>Car Year</h2>
+              {filter.year && (
+                <div>
                   {distinctYear.map((e) => (
-                    <p
-                      key={e}
-                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                      onClick={() => {
-                        filterByYear(e)
-                      }}
-                    >
-                      {e}
-                    </p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByYear(e)}>{e}</p>
                   ))}
-
-                </div> : ""}
-
-
-
-
-              </div>
+                </div>
+              )}
             </div>
 
-          </div>
-          {/* Cars Part */}
-          <div className='w-3/4 h-content mr-4 border grid grid-cols-3 gap-4 ml-[-3rem] rounded mt-7'>
-
-            {data !== undefined ? (
-              data.map((e, i) => (
-                <div key={i} className="w-full max-w-xs mx-4 my-6 overflow-hidden bg-white rounded-lg shadow-lg">
-                  <img
-                    src={`http://127.0.0.1:8000/images/${e.photo}`}
-                    alt=""
-                    className="object-cover object-center w-full h-48 rounded-t-lg"
-                  />
-                  <div className="px-4 py-3">
-                    <p className="text-gray-700 font-bold text-[20px] uppercase">{e.model}</p>
-                    <p className="text-sm tracking-wide text-gray-600 uppercase">{e.type} - {e.price_per_day}$/day</p>
 
 
 
-                    <div className="flex justify-center mt-4">
-                      <button className="px-4 py-1 font-bold  text-btn rounded  border-[2px] border-btn  mr-2 transition-colors duration-300">
-                        <Link to={`/car/${e.id}?source=welcome`}>View</Link>                      </button>
-                      <button className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300">
-                        <Link to={`/car/${e.id}/rent`}>Rent Now</Link>
-                      </button>
+
+
+
+            {/* Main Content */}
+            <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {data.map((e, i) => (
+                <div key={i} className="max-w-sm overflow-hidden transition-shadow duration-300 rounded shadow-lg hover:shadow-xl">
+                  <img src={`http://127.0.0.1:8000/images/${e.photo}`} alt={e.model} className="object-cover w-full h-48" />
+                  <div className="px-6 py-4">
+                    <div className="flex justify-between mb-2 ">
+                      <h1 className='text-xl font-bold'>
+                        {e.model}
+                      </h1>
+                      <p className='font-bold text-xl text-[#E60035] '>  ${e.price_per_day}/day </p>
 
                     </div>
+
+                    <div className='flex flex-wrap'>
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Make:</span> {e.make}
+                      </div>
+
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Year:</span> {e.year}
+                      </div>
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Color:</span> {e.color}
+                      </div>
+
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Type:</span> {e.type}
+                      </div>
+                      {e.available === 0 ?
+                        <div className="ml-1 text-base text-gray-700">
+                          <span className="mr-2 font-medium">Availabilty:</span> Available
+                        </div> :
+                        <div className="ml-1 text-base text-gray-700">
+                          <span className="mr-2 font-medium">Availabilty:</span> Not Available
+                        </div>
+                      }
+                    </div>
+                  </div>
+                  <div className="flex justify-between px-6 pb-5">
+                    <Link to={`/user/car/${e.id}`}>
+                      <button className="before:ease relative h-12 w-40  font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
+                before:bg-white before:transition-all before:duration-300 hover:text-white
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+                        <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+
+                          Show
+
+                        </span>
+
+                        <FaArrowRight className="relative text-[#E60035] 
+                  z-20 group-hover:text-white ml-2" />
+                      </button>
+                    </Link>
+
+                    <Link to={`/user/car/${e.id}/rent`}>
+                      <button className="before:ease relative h-12 w-40  font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
+                before:bg-white before:transition-all before:duration-300 hover:text-white
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+
+                        <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+                          Rent Now
+
+                        </span>
+                        <FaArrowRight className="relative text-[#E60035] z-20 group-hover:text-white ml-2" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
-
-
-
-              ))
-            ) : (
-              <p>Loading...</p>
-            )}
-
-
+              ))}
+            </div>
           </div>
-
         </div>
+
+
       </div>
 
     </div>

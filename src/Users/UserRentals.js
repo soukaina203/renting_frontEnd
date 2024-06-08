@@ -39,30 +39,33 @@ function UserRentals() {
 
     return (
         <div>
-            <div className="container mx-auto">
+            <div className="container mx-auto lg:mt-[5rem] ">
                 <div className="container flex items-center justify-center mx-auto">
                     {rentals.length !== 0 ? (
-                        <table id='an' className="table-auto w-[40rem] mt-6">
-                            <thead>
+
+
+                  <table className="min-w-full text-sm font-light text-left text-surface ">
+                    <thead className="font-medium border-b border-black">
                                 <tr>
-                                    <th className="px-4 py-2 ">Car</th>
-                                    <th className="px-4 py-2">Rental Start</th>
-                                    <th className="px-4 py-2">Rental End</th>
-                                    <th className="px-4 py-2">Total Price</th>
-                                    <th className="px-4 py-2">Actions</th>
+                                    <th className="px-6 py-4 ">Car</th>
+                                    <th className="px-6 py-4">Rental Start</th>
+                                    <th className="px-6 py-4">Rental End</th>
+                                    <th className="px-6 py-4">Total Price</th>
+                                    <th className="px-6 py-4">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {rentals.map((rental) => (
+                                {rentals.map((rental,i) => (
                                     <React.Fragment key={rental.id}>
-                                        <tr>
-                                            <td className="px-4 py-2 text-center border">{rental.car.make}</td>
-                                            <td className="px-4 py-2 text-center border">{rental.rental_start}</td>
-                                            <td className="px-4 py-2 text-center border">{rental.rental_end}</td>
-                                            <td className="px-4 py-2 text-center border">{rental.total_price}</td>
+                                                               <tr key={i} className="border-b border-black ">
+
+                                            <td className="px-6 py-4 font-medium whitespace-nowrap">{rental.car.make}</td>
+                                            <td className="px-6 py-4 font-medium whitespace-nowrap">{rental.rental_start}</td>
+                                            <td className="px-6 py-4 font-medium whitespace-nowrap">{rental.rental_end}</td>
+                                            <td className="px-6 py-4 font-medium whitespace-nowrap">{rental.total_price}</td>
                                             <td className="text-center">
                                                 <button
-                                                    className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300"
+                                                    className="px-4 py-1 font-bold  border-[2px]  border-[#E60035]  text-[#E60035] rounded  mr-2 transition-colors duration-300"
                                                     onClick={() => handleToggleInfo(rental.id)}
                                                 >
                                                     Voir
@@ -72,14 +75,15 @@ function UserRentals() {
                                         {infoMap[rental.id] && (
                                             <tr>
                                                 <td colSpan="5">
-                                                    <div className="flex flex-row p-4 rounded-lg shadow-lg bg-white1 gap-7">
+                                                    {/* <div className="flex flex-row p-4 bg-white rounded-lg gap-7"> */}
+                                                    <div className="grid grid-cols-1 lg:grid-cols-3 ">
                                                         {/* Additional Information */}
                                                         <img
                                                             src={`http://127.0.0.1:8000/images/${rental.car.photo}`}
                                                             alt=""
                                                             className="w-[15rem] h-[11rem] object-cover object-center rounded-lg"
                                                         />
-                                                        <div className="flex flex-col">
+                                                        <div className="grid-">
                                                             <p className="mb-2 text-xl font-bold">{rental.car.make}</p>
                                                             <p className="text-gray-600">{rental.car.model}</p>
                                                             <p className="text-gray-600">Price per day: {rental.car.price_per_day}</p>
@@ -89,10 +93,10 @@ function UserRentals() {
                                                             <div className="my-4 border-t" />
                                                             <p className="text-gray-600">Hour Finish: {rental.hourFinish}</p>
                                                             <p className="text-gray-600">Hour Start: {rental.hourStart}</p>
-                                                            <p className="text-gray-600">Total Price: {rental.total_price}</p>
+                                                            <p className="text-gray-600">Total Price: {rental.total_price} DH</p>
 
                                                             <button
-                                                                className="px-4 py-1 font-bold  border-[2px]  border-btn  text-btn rounded  mr-2 transition-colors duration-300"
+                                                                className="px-4 py-1 font-bold  border-[2px]  text-[]  mr-2 transition-colors duration-300"
                                                                 onClick={() => handleToggleInfo(rental.id)}
                                                             >
                                                                 Close

@@ -91,6 +91,8 @@ export default function Processed() {
                 <Link to="/admin/rentals">
                   <FaLongArrowAltLeft className='h-6 w-7' />
                 </Link>
+
+                
                 <div className="overflow-hidden">
                   <table className="min-w-full text-sm font-light text-left text-surface ">
                     <thead className="font-medium border-b border-black">

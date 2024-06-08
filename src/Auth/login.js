@@ -26,6 +26,8 @@ function SignIn() {
       localStorage.setItem('userId', res.data.user.id);
       localStorage.setItem('status', res.data.isAdmin);//is admin
       setMsg('')
+      console.log("==========")
+      console.log(res.data)
        if(res.data.isAdmin==='a'){
 
          navigate('/dashboard')

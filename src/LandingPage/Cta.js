@@ -1,8 +1,11 @@
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa6'
+import { Zoom } from 'react-reveal'
+import { Link } from 'react-router-dom'
 
 function Cta() {
     return (
+        <Zoom>
         <div className="relative w-full h-full bg-no-repeat bg-cover bg-hero">
             <div className="absolute inset-0 bg-red-700 opacity-50"></div>
             <div className='flex items-center justify-center '>
@@ -17,6 +20,7 @@ function Cta() {
                         <h1 className='max-w-2xl p-2 text-4xl font-extrabold text-center text-white uppercase md:text-left'>Where Engines Roar and Problems Soar</h1>
 
                     </div>
+                    <Link to='/signIn' >
 
                     <button class="before:ease relative h-16 mb-3 lg:mb-0  w-40 mt-[3rem] uppercase font-semibold flex justify-center items-center gap-2 mr-auto ml-auto  overflow-hidden
                border border-[#E60035] text-white 
@@ -28,10 +32,12 @@ function Cta() {
                         <span className="relative z-10 ">  Read More</span>
                         <FaArrowRight className="relative z-10" />
                     </button>
+                    </Link>
                 </div>
 
             </div>
         </div>
+        </Zoom>
 
     )
 }

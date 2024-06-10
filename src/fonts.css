@@ -4,7 +4,7 @@
   @font-face {
     font-family: 'Yantramanav-Black';
     font-style: normal;
-    font-weight: 400 700; /* Range of weights for variable font */
+    font-weight: 800; /* Range of weights for variable font */
     src: url('../public/fonts/Yantramanav-Black.ttf') format('truetype');
   }
   

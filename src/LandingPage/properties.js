@@ -1,4 +1,5 @@
 import React from 'react';
+import {  Zoom } from 'react-reveal';
 
 function Properties() {
   const props = [
@@ -8,6 +9,7 @@ function Properties() {
   ];
 
   return (
+    <Zoom>
     <section className="flex items-center justify-center w-full h-full py-8">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {props.map((property) => (
@@ -16,13 +18,14 @@ function Properties() {
               <img src={`icons/${property.img}.png`} alt={property.title} className="w-16 h-16" />
             </div>
             <div className="flex flex-col justify-center ml-4">
-              <h2 className="text-2xl text-[#E60035] font-semibold">{property.title}</h2>
+              <h2 className="text-2xl text-[#E60035] font-Yantramanav-Black">{property.title}</h2>
               <p className="mt-2 text-gray-600">{property.desc}</p>
             </div>
           </div>
         ))}
       </div>
     </section>
+    </Zoom>
   );
 }
 

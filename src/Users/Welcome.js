@@ -111,6 +111,10 @@ function Welcome() {
               />
               <button
                 type='button'
+                onClick={()=>{
+               getSearchCars()
+
+                }}
                 className="px-4 py-2 text-white rounded-r bg-[#E60035] hover:bg-red-600  "
               >
                 Search

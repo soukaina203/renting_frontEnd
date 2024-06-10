@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-scroll'
 import { Link as RouterLink } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Fade } from 'react-reveal';
 
 function Header() {
   const [isClicked, setClicked] = useState({ menuIcon: true, exitIcon: false });
@@ -35,10 +36,11 @@ function Header() {
   }, [isOpen]);
 
   return (
+    <Fade>
     <nav className="w-full h-[4rem] fixed lg:relative bg-white text-black shadow-md z-40">
       <div className="container flex items-center justify-between m-auto ">
         <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white
-         bg-[#E60035] lg:ml-[2rem]">
+         bg-[#E60035] lg:ml-[2rem] font-Yantramanav-Black">
           BestCar
         </h1>
 
@@ -150,6 +152,7 @@ function Header() {
         </div>
       </div>
     </nav>
+    </Fade>
   );
 }
 

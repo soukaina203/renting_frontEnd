@@ -19,7 +19,7 @@ function Answer() {
     <div className='h-[100vh]'>
       <HeaderUser />
       <div className="text-center mt-[14rem] ">
-        <h1 className="text-2xl font-bold text-orange-500">YOU'RE RENTAL IS GOING TO BE PROCESSED AND WE'LL CONTACT YOU</h1>
+        <h1 className="text-2xl font-bold text-[#E60035] ">YOU'RE RENTAL IS GOING TO BE PROCESSED AND WE'LL CONTACT YOU</h1>
       </div>
     </div>
   );

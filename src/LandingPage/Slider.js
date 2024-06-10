@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import 'tailwindcss/tailwind.css';
 
 const slides = [
@@ -68,10 +69,12 @@ function ImageSlider() {
           <div key={index} className={`flex flex-col items-center   flex-shrink-0 ${isLargeScreen ? 'w-1/3' : 'w-full'} bg-black/85`}>
             <img className="object-cover w-[24rem] h-48 rounded-lg" src={slide.image} alt={`Slide ${index + 1}`} />
             <div className="mt-4 text-center">
-              <h2 className="mb-2 text-2xl font-semibold text-white uppercase">{slide.title}</h2>
+              <h2 className="mb-2 text-2xl font-semibold text-white uppercase font-Yantramanav-Black">{slide.title}</h2>
               <p className="mb-4 font-semibold text-gray-300">{slide.description}</p>
-              <button 
-               class="before:ease lg:flex hidden mr-auto ml-auto   relative h-12 w-40
+              <Link to='/signIn' >
+
+                <button
+                  class="before:ease lg:flex hidden mr-auto ml-auto   relative h-12 w-40
                 uppercase font-semibold  justify-center items-center gap-2 
                  overflow-hidden
                border border-[#E60035] text-white 
@@ -80,11 +83,12 @@ function ImageSlider() {
                 before:translate-y-12 before:-rotate-90 before:bg-black before:transition-all before:duration-300
                  hover:text-white hover:shadow-[#E60035]
                   hover:bg-[#E60035] hover:before:-rotate-180"
-              
-              >
-                
-                <span className="relative z-10 font-semibold">  {slide.buttonText}</span>
-              </button>
+
+                >
+
+                  <span className="relative z-10 font-semibold">  {slide.buttonText}</span>
+                </button>
+              </Link>
             </div>
           </div>
         ))}

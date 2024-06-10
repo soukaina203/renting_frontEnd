@@ -63,10 +63,8 @@ export default function Rent() {
         // Convert the difference to days
         const daysDifference = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
         const totalPrice = daysDifference * price_per_day.current
-        console.log(daysDifference)
         FillData.current.total_price = totalPrice
-        console.log(FillData.current.total_price
-        )
+        console.log(FillData.current.total_price)
         setTotal(totalPrice)
     }
     return (

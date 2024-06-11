@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdOutlinePersonOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom';
+
 export default function HeaderUser() {
   const [isClicked, setClicked] = useState({ menuIcon: true, exitIcon: false });
   const [isOpen, setIsOpen] = useState(false);
@@ -42,13 +44,13 @@ export default function HeaderUser() {
         </h1>
 
         <ul className="items-center hidden font-semibold cursor-pointer lg:flex">
-          <li className="px-6 py-4 duration-500 underlineHover">
+          <li className="block px-6 py-4 duration-500 underlineHover">
             <Link to="/user/rentals">Your Rentals </Link>
           </li>
-          <li className="px-6 py-4 duration-500 rounded-lg underlineHover">
+          <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
             <Link to="/user/review/create">Make A Review</Link>
           </li>
-          <li className="px-6 py-4 duration-500 rounded-lg underlineHover">
+          <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
             <Link to="/user/welcome">Cars</Link>
           </li>
 
@@ -59,16 +61,25 @@ export default function HeaderUser() {
           <GiHamburgerMenu className="absolute text-2xl top-6 right-12" />
           <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
             <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
-              <li className="w-full px-6 py-4 duration-500 underlineHover ">
+              <li className="block px-6 py-4 duration-500 w-fit underlineHover">
                 <Link to="/user/users">Your Rentals </Link>
               </li>
-              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
                 <Link to="/user/rentals">Make A Review</Link>
               </li>
-              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
                 <Link to="/user/cars">Cars</Link>
               </li>
+              <li className="block px-6 py-4 duration-500 underlineHover ">
+                <RouterLink to={`/user/editProfile/${user.id}`}> Profile</RouterLink>
+              </li>
+              <li className="block px-6 py-4 duration-500 underlineHover">
+                <RouterLink to="/logout">
+                Log Out
 
+
+                </RouterLink>
+              </li>
             </ul>
           </div>
         </button>

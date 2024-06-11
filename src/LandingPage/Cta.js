@@ -13,11 +13,11 @@ function Cta() {
                 <div className='relative z-10 flex flex-col items-center lg:gap-[12rem] lg:mt-7 justify-between md:flex-row '>
                     <div className='relative z-10 flex flex-col  pt-[3rem] md:mb-5 lg:mb-8'>
 
-                        <p className="flex items-center gap-2 p-2 ml-auto mr-auto font-semibold text-center text-white md:ml-0 md:mr-0 md:text-left">
+                        <p className="flex items-center ml-auto mr-auto font-semibold text-center text-white justify-centerp-2 font-Yantramanav-Black md:ml-0 md:mr-0 md:text-left">
                             CONTACT US
-                            <div className='w-12 h-[3px]  md:ml-3 bg-white '></div>
+                            <div className='w-12 h-[3px]  md:ml-3  bg-white '></div>
                         </p>
-                        <h1 className='max-w-2xl p-2 text-4xl font-extrabold text-center text-white uppercase md:text-left'>Where Engines Roar and Problems Soar</h1>
+                        <h1 className='max-w-2xl p-2 text-4xl font-extrabold text-center text-white uppercase lg:pt-3 lg:p-0 md:text-left'>Where Engines Roar and Problems Soar</h1>
 
                     </div>
                     <Link to='/signIn' >

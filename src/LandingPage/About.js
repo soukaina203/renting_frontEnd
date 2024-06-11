@@ -35,7 +35,7 @@ function    About() {
 
     return (
         <Fade>
-        <section id='About' className="relative pt-20  bg-[#FEFEFE] z-40 lg:pt-[120px] pb-[8rem] lg:pb-[90px] lg:mb-[8rem]  ">
+        <section id='About' className="relative pt-20  bg-[#FEFEFE] z-30 lg:pt-[120px] pb-[8rem] lg:pb-[90px] lg:mb-[8rem]  ">
             <div className="container mx-auto ">
                 <div className="flex flex-wrap items-center justify-center -mx-4">
                     <div className="w-full px-4 lg:w-4/12">

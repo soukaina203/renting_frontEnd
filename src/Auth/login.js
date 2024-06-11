@@ -31,7 +31,7 @@ function SignIn() {
       console.log(res.data)
        if(res.data.isAdmin==='a'){
 
-         navigate('/dashboard')
+         navigate('/admin/users')
        }else{
          navigate('/user/welcome')
 
@@ -43,8 +43,8 @@ function SignIn() {
 
   }
   return (
-    <Zoom>
     <div className="flex justify-center min-h-screen bg-gray-100 mt-14 md:mt-0 lg:items-center">
+      <Zoom>
       <div className="flex flex-col-reverse items-center justify-center w-full bg-white rounded-lg shadow-lg lg:flex-row lg:w-2/3 lg:h-2/3">
         <div className="relative w-full h-64 lg:w-full lg:h-auto">
           <img src="/services/login3.jpeg" alt="Background" className="object-cover w-full h-full rounded-t-lg lg:rounded-l-lg lg:rounded-t-none" />
@@ -110,8 +110,8 @@ function SignIn() {
           </p>
         </div>
       </div>
-    </div>
     </Zoom>
+    </div>
   )
 }
 

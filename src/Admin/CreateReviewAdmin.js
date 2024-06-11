@@ -8,7 +8,8 @@ function CreateReviewAdmin() {
 
   let handleCreate = async (e) => {
     e.preventDefault();
-
+    let isAdmin=localStorage.getItem('status')
+    console.log(isAdmin)
     let v = FillData.current;
     let userId=localStorage.getItem('userId');
 
@@ -17,18 +18,27 @@ function CreateReviewAdmin() {
     formData.append('rating', v.rating);
     formData.append('comment', v.comment);
     formData.append('user_id', userId);
-
-    const d = await axios.post("http://localhost:8000/api/review", formData, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-    console.log(d.data);
-    if (d.data.message === "yes") {
-      navigate('/admin/reviews');
+if(isAdmin!=='u'){
+  const d = await axios.post("http://localhost:8000/api/review", formData, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
+  });
+  if (d.data.message === "yes") {
+    navigate('/admin/reviews');
+  }
 
-    console.log(d.data);
+
+}else{
+  const d = await axios.post("http://localhost:8000/api/review/create", formData, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  if (d.data.message === "yes") {
+    navigate('/user/reviews');
+  }
+}
   };
 
   return (

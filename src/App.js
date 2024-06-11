@@ -27,6 +27,7 @@ import ModifyCar from './Admin/cars/Modify';
 import EditProfile from './Admin/editProfile';
 import UserInterface from './Users/UserInterface';
 import VoirCar from './Admin/cars/Show';
+import UserReviews from './Admin/UserReviews';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="car/:id" element={<VoirCar />} />
           <Route path="review/create" element={<CreateReviewAdmin />} />
           <Route path="answer" element={<Answer />} />
+          <Route path="reviews" element={<UserReviews />} />
 
 
           </Route>
@@ -62,7 +64,7 @@ function App() {
             <Route path="editProfile/:id" element={<EditProfile />} />
             
             <Route path="reviews" element={<ReviewsAdmin />} />
-            {/* <Route path="review/create" element={<CreateReviewAdmin />} /> */}
+          <Route path="review/create" element={<CreateReviewAdmin />} /> 
 
             <Route path="users" element={<AllUsers />} />
             <Route path="users/create" element={<CreateUser />} />

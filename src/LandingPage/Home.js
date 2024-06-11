@@ -16,17 +16,17 @@ function Home() {
       {/* Content */}
       <div className="absolute z-10 max-w-screen-xl p-4 mx-auto lg:left-[12%] lg:py-16 lg:px-12 text-center lg:text-left">
         <p className="text-thin text-[18px] font-semibold lg:font-normal font-Yantramanav-Black text-[#E60035]">Welcome to BESTCAR</p>
-        <h1 className="mt-4 text-5xl font-extrabold lg:text-6xl font-Yantramanav-Black">
+        <h1 className="mt-4 text-5xl font-extrabold lg:text-[5rem] font-Yantramanav-Black">
           Revive, Repair, <br className='hidden lg:block' />
           Relish the Ride!
         </h1>
 
 
-        <p className="mt-6 text-lg max-w-[24rem] md:max-w-[27rem] ml-auto mr-auto lg:max-w-[29rem]  lg:text-[20px]">
+        <p className="mt-2 text-lg max-w-[24rem] md:max-w-[27rem]  ml-auto mr-auto lg:mr-0 lg:ml-0 lg:max-w-[29rem]  lg:text-[20px]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           Minus, quaerat. Assumenda in corrupti earum quod nostrum.
         </p>
-        <div className="flex flex-col-reverse justify-start w-full mt-8 space-y-4 lg:gap-3 md:flex-row lg:space-y-0 lg:space-x-4">
+        <div className="flex flex-col-reverse justify-start w-full mt-5 space-y-4 lg:gap-3 md:flex-row lg:space-y-0 lg:space-x-4">
 
 
           <Link to='/signIn' >

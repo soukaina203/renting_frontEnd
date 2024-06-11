@@ -11,14 +11,14 @@ export default function Services() {
 
         {/* Paragraphs */}
         <div className='flex flex-col items-center justify-center '>
-          <p className="text-[#E60035] text-lg justify-center p-2 font-semibold flex items-center">
+          <p className="text-[#E60035] text-lg justify-center p-2  font-Yantramanav-Black font-semibold flex items-center">
             <div className='w-12 h-[3px] mr-3 bg-[#E60035] '></div>
             KNOW ABOUT US
             <div className='w-12 h-[3px] ml-3 bg-[#E60035] '></div>
 
           </p>
 
-          <h1 className='max-w-2xl p-2 ml-auto mr-auto text-4xl font-extrabold text-center uppercase'>Strategic Solutions For A Thriving Future</h1>
+          <h1 className='max-w-2xl p-2 ml-auto mr-auto text-3xl font-extrabold text-center uppercase md:text-4xl font-Yantramanav-Black'>Strategic Solutions For A Thriving Future</h1>
         </div>
 
 
@@ -33,7 +33,7 @@ export default function Services() {
               <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50"></div>
             </div>
             <div class="relative p-6 px-6 py-14 md:px-12">
-              <h2 class="mb-6 block font-sans text-2xl  leading-[1.5] uppercase font-extrabold tracking-normal text-white antialiased">
+              <h2 class="mb-6 block  text-2xl  leading-[1.5] uppercase font-Yantramanav-Black font-extrabold tracking-normal text-white antialiased">
                 Strategic guidance for your business success
               </h2>
 
@@ -62,7 +62,7 @@ export default function Services() {
               <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50"></div>
             </div>
             <div class="relative p-6 px-6 py-14 md:px-12">
-              <h2 class="mb-6 block font-sans text-2xl  leading-[1.5] uppercase font-extrabold tracking-normal text-white antialiased">
+              <h2 class="mb-6 block  text-2xl  leading-[1.5] font-Yantramanav-Black  uppercase font-extrabold tracking-normal text-white antialiased">
                 Dependable Car Repair Solutions Services
               </h2>
               <Link to='/signIn' >
@@ -90,7 +90,7 @@ export default function Services() {
               <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50"></div>
             </div>
             <div class="relative p-6 px-6 py-14 md:px-12">
-              <h2 class="mb-6 block font-sans text-2xl  leading-[1.5] uppercase font-extrabold tracking-normal text-white antialiased">
+              <h2 class="mb-6 block  text-2xl  leading-[1.5] font-Yantramanav-Black uppercase font-extrabold tracking-normal text-white antialiased">
                 Precision Auto Works Solutions Services              </h2>
               <Link to='/signIn' >
 

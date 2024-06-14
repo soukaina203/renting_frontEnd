@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { MdOutlinePersonOutline } from "react-icons/md";
+import axios from 'axios';
 
 function HeaderAdmin() {
   const [admin, setAdmin] = useState({ id: localStorage.getItem('userId'), name: localStorage.getItem("userName") })
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [userPhoto,setUserPhoto]=useState(null)
   const [user, setuser] = useState({
     id: localStorage.getItem('userId'),
     name: localStorage.getItem("userName")
@@ -15,7 +17,20 @@ function HeaderAdmin() {
     setIsOpen(prevState => !prevState);
   };
 
+  let getUser =async ()=>{
+    const res = await axios.get(`http://127.0.0.1:8000/api/user/${user.id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    console.log('<<<<<<<<<<<<<<<<<<<<<res>>>>>>>>>>>>>>>>>>>>>')
+    console.log(res.data.user.photo)
+    setUserPhoto(res.data.user.photo)
+  }
   useEffect(() => {
+    console.log('==========hello==========')
+    console.log(user.id)
+    getUser()
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -39,7 +54,8 @@ function HeaderAdmin() {
 
     <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
       <div className="container relative flex items-center justify-between mx-auto">
-        <h1 className="text-2xl font-bold  p-[1.2rem] text-white bg-[#E60035] lg:ml-[2rem]">
+        <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white
+         bg-[#E60035] lg:ml-[2rem] font-Yantramanav-Black">
           BestCar
         </h1>
 
@@ -59,22 +75,28 @@ function HeaderAdmin() {
         </ul>
 
         <button className="z-40 lg:hidden group">
-          <GiHamburgerMenu className="absolute text-2xl top-6 right-12" />
-          <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
-            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
-              <li className="w-full px-6 py-4 duration-500 underlineHover ">
+        <GiHamburgerMenu className="text-2xl " />
+        <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
+            <ul className="flex flex-col items-center justify-center w-[98%] font-semibold ">
+              <li className="block px-6 py-4 duration-500 w-fit underlineHover ">
                 <Link to="/Home">Users</Link>
               </li>
-              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
                 <Link to="/About">Rentals</Link>
               </li>
-              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
                 <Link to="mission">Cars</Link>
               </li>
-              <li className="w-full px-6 py-4 duration-500 rounded-lg underlineHover">
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
                 <Link to="team">Reviews</Link>
               </li>
 
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
+                <Link to={`/admin/editProfile/${user.id}`}>Profile</Link>
+              </li>
+              <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
+                <Link to="/logout">Log out</Link>
+              </li>
             </ul>
           </div>
         </button>
@@ -82,7 +104,8 @@ function HeaderAdmin() {
 
           <button className='p-2 text-gray-500 rounded '
             onClick={dropDawn}>
-              <MdOutlinePersonOutline className='w-8 h-8 text-[#E60035] ' />
+              <img src={userPhoto ?  `http://127.0.0.1:8000/images/${userPhoto}`:
+               "/imgs/noProfile.jpg"} className='w-8 h-8 rounded-full ' alt=''/>
           </button>
           {isOpen && (
             <div

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdOutlinePersonOutline } from 'react-icons/md'
@@ -12,12 +13,24 @@ export default function HeaderUser() {
     id: localStorage.getItem('userId'),
     name: localStorage.getItem("userName")
   })
+  const [userPhoto,setUserPhoto]=useState(null)
 
   const dropDawn = () => {
     setIsOpen(prevState => !prevState);
   };
 
+  let getUser =async ()=>{
+    const res = await axios.get(`http://127.0.0.1:8000/api/user/${user.id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    setUserPhoto(res.data.user.photo)
+  }
+
   useEffect(() => {
+    getUser()
+
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -39,7 +52,8 @@ export default function HeaderUser() {
 
     <nav className="w-full h-[4rem] bg-white text-black shadow-md z-40">
       <div className="container relative flex items-center justify-between mx-auto">
-        <h1 className="text-2xl font-bold  p-[1.2rem] text-white bg-[#E60035] lg:ml-[2rem]">
+        <h1 className="text-2xl font-bold uppercase p-[1.2rem] text-white
+         bg-[#E60035] lg:ml-[2rem] font-Yantramanav-Black">
           BestCar
         </h1>
 
@@ -48,7 +62,7 @@ export default function HeaderUser() {
             <Link to="/user/rentals">Your Rentals </Link>
           </li>
           <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
-            <Link to="/user/review/create">Make A Review</Link>
+            <Link to="/user/reviews">Make A Review</Link>
           </li>
           <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
             <Link to="/user/welcome">Cars</Link>
@@ -86,7 +100,9 @@ export default function HeaderUser() {
         <div className="relative hidden text-left lg:inline-block" ref={dropdownRef}>
 
           <button className='p-2 text-gray-500 rounded '
-            onClick={dropDawn}><MdOutlinePersonOutline className='w-8 h-8 text-[#E60035] ' />
+            onClick={dropDawn}>
+            <img src={userPhoto ?  `http://127.0.0.1:8000/images/${userPhoto}`:
+               "/imgs/noProfile.jpg"} className='w-8 h-8 rounded-full ' alt=''/>
           </button>
           {isOpen && (
             <div

@@ -115,7 +115,7 @@ function Welcome() {
                getSearchCars()
 
                 }}
-                className="px-4 py-2 text-white rounded-r bg-[#E60035] hover:bg-red-600  "
+                className="px-4 py-2 text-white font-Yantramanav-Black text-[1.2rem] rounded-r bg-[#E60035] hover:bg-red-600  "
               >
                 Search
               </button>
@@ -126,42 +126,42 @@ function Welcome() {
         <div className='flex'>
           <div className="flex flex-col p-4 lg:flex-row">
             {/* Sidebar */}
-            <div className="hidden w-64 mr-4 border-[0.2rem] border-gray-200 rounded lg:block ">
-              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })}>Car Type</h2>
+            <div className="hidden w-1/5 mr-4 border-[0.1rem] border-red-600 rounded lg:block bg-white text-black">
+            <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })}>Car Type</h2>
               {filter.type && (
                 <div>
-                  <p className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => setData(permanent)}>All</p>
+                  <p className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => setData(permanent)}>All</p>
                   {distinctTypes.map((e) => (
-                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByType(e)}>{e}</p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByType(e)}>{e}</p>
                   ))}
                 </div>
               )}
 
 
 
-              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })}>Car Color</h2>
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })}>Car Color</h2>
               {filter.color && (
                 <div>
                   {distinctColors.map((e) => (
-                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByColor(e)}>{e}</p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByColor(e)}>{e}</p>
                   ))}
                 </div>
               )}
 
-              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })}>Car Model</h2>
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })}>Car Model</h2>
               {filter.model && (
                 <div>
                   {distinctModels.map((e) => (
-                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByModel(e)}>{e}</p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByModel(e)}>{e}</p>
                   ))}
                 </div>
               )}
 
-              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })}>Car Year</h2>
+              <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })}>Car Year</h2>
               {filter.year && (
                 <div>
                   {distinctYear.map((e) => (
-                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-gray-200" onClick={() => filterByYear(e)}>{e}</p>
+                    <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByYear(e)}>{e}</p>
                   ))}
                 </div>
               )}
@@ -222,13 +222,13 @@ function Welcome() {
                before:-translate-x-full before:translate-y-12 before:-rotate-90
                 before:bg-white before:transition-all before:duration-300 hover:text-white
                  hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
-                        <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+                        <span className='relative text-[#E60035] text-[1.2rem] font-Yantramanav-Black z-20 group-hover:text-white'>
 
                           Show
 
                         </span>
 
-                        <FaArrowRight className="relative text-[#E60035] 
+                        <FaArrowRight className="relative text-[1.2rem] text-[#E60035] 
                   z-20 group-hover:text-white ml-2" />
                       </button>
                     </Link>
@@ -243,11 +243,11 @@ function Welcome() {
                 before:bg-white before:transition-all before:duration-300 hover:text-white
                  hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
 
-                        <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+                        <span className='relative text-[#E60035] font-Yantramanav-Black text-[1.2rem] z-20 group-hover:text-white'>
                           Rent Now
 
                         </span>
-                        <FaArrowRight className="relative text-[#E60035] z-20 group-hover:text-white ml-2" />
+                        <FaArrowRight className="relative text-[#E60035] text-[1.2rem] z-20 group-hover:text-white ml-2" />
                       </button>
                     </Link>
                   </div>

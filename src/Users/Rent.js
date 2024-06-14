@@ -71,114 +71,114 @@ export default function Rent() {
         <div>
             {
                 car !== null ?
+<div className="flex justify-center">
+  <div className="w-[50%] bg-white shadow-lg rounded-lg mx-4 my-6">
+    <form action="" onSubmit={handleCreate}>
+      <div className="px-4 py-2 bg-white rounded-lg shadow">
+      </div>
+      <div className="px-4 py-2">
+        <img
+          src={`http://127.0.0.1:8000/images/${car.photo}`}
+          alt=""
+          className="w-full h-[19rem] object-cover object-center rounded-t-lg"
+        />
 
-                    <div className="flex justify-center">
-                        <div className="w-[50%] bg-white shadow-lg rounded-lg mx-4 my-6">
-                            <form action="" onSubmit={handleCreate}>
-                                <div className="px-4 py-2 bg-white rounded-lg shadow">
-                                </div>
-                                <div className="px-4 py-2">
-                                    <img
-                                        src={`http://127.0.0.1:8000/images/${car.photo}`}
-                                        alt=""
-                                        className="w-full h-[19rem] object-cover object-center rounded-t-lg"
-                                    />
+        <div className="flex mt-4 space-x-4">
+          <div className="flex-1">
+            <label className="block font-bold text-gray-700">
+              Rental Start Date
+            </label>
+            <input
+              type="date"
+              onChange={(e) => FillData.current.rental_start = e.target.value}
+              className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block font-bold text-gray-700">
+              Rental End Date
+            </label>
+            <input
+              type="date"
+              onChange={(e) => FillData.current.rental_end = e.target.value}
+              className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
 
+        <label className="block mt-2 font-bold text-gray-700">
+          Price per day
+        </label>
+        <input
+          type="text"
+          value={car.price_per_day}
+          onChange={(e) => FillData.current.price_per_day = e.target.value}
+          className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+        />
 
+        <div className="flex mt-4 space-x-4">
+          <div className="flex-1">
+            <label className="block font-bold text-gray-700">
+              Hour Start
+            </label>
+            <input
+              type="time"
+              onChange={(e) => FillData.current.hourStart = e.target.value}
+              className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block font-bold text-gray-700">
+              Hour Finish
+            </label>
+            <input
+              type="time"
+              onChange={(e) => FillData.current.hourFinish = e.target.value}
+              className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
 
-                                    <label className="block mt-2 font-bold text-gray-700">
-                                        Rental Start Date
-                                    </label>
-                                    <input
-                                        type="date"
+        <button
+          type="button"
+          className="w-full px-4 py-2 mt-4 text-white bg-[#E60035] rounded-md hover:bg-red-600 font-semibold mb-2"
+          onClick={() => {
+            diffrenceDate(FillData.current.rental_start, FillData.current.rental_end);
+          }}
+        >
+          Calculate Total
+        </button>
 
-                                        onChange={(e) => FillData.current.rental_start = e.target.value}
-                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                    />
+        <label className="block mt-2 font-bold text-gray-700">
+          Total Price
+        </label>
+        <input
+          type="text"
+          value={total}
+          onChange={(e) => FillData.current.total_price = e.target.value}
+          className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
+        />
 
-                                    <label className="block mt-2 font-bold text-gray-700">
-                                        Rental End Date
-                                    </label>
-                                    <input
-                                        type="date"
+        <div className='flex justify-between mt-2'>
+          <button
+            type='submit'
+            className="relative flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#E60035] border border-transparent rounded-md group hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Rent
+          </button>
 
-                                        onChange={(e) => FillData.current.rental_end = e.target.value}
-                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                    />
+          <Link
+            to={`/welcome`}
+            className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Cancel
+          </Link>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
-                                    <label className="block mt-2 font-bold text-gray-700">
-                                        Price per day                                    </label>
-                                    <input
-                                        type="text"
-                                        value={car.price_per_day}
-
-                                        onChange={(e) => FillData.current.rental_end = e.target.value}
-                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                    />
-                                    <label className="block mt-2 font-bold text-gray-700">
-                                        Hour start
-                                    </label>
-                                    <input
-                                        type="time"
-
-                                        onChange={(e) => FillData.current.hourStart = e.target.value}
-                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                    />
-
-                                    <label className="block mt-2 font-bold text-gray-700">
-                                        Hour finish
-                                    </label>
-                                    <input
-                                        type="time"
-
-                                        onChange={(e) => FillData.current.hourFinish = e.target.value}
-                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                    />
-
-
-
-                                    <button
-                                        type="button"
-                                        className="w-full px-4 py-2 mt-4 text-white  bg-[#E60035] rounded-md hover:bg-red-600 font-semibold mb-2"
-                                        onClick={() => {
-
-                                            diffrenceDate(FillData.current.rental_start, FillData.current.rental_end)
-                                        }}> Calculer Total</button>
-                                    <label className="block mt-2 font-bold text-gray-700">
-                                        Total price
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={total}
-                                        onChange={(e) => FillData.current.total_price = e.target.value}
-                                        className="w-full p-2 text-base font-normal border-2 border-gray-300 rounded-md"
-                                    />
-
-
-
-
-
-
-
-
-                                    <div className='flex justify-between mt-2'>
-
-                                        <button type='submit'
-                                            className="relative flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#E60035] border border-transparent rounded-md group hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        >
-                                            Rent
-                                        </button>
-
-                                        <Link to={`/welcome`}
-                                            className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                        >
-                                            Cancel
-                                        </Link>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                     : ""}
         </div>
     )

@@ -51,25 +51,10 @@ export default function Processed() {
   }
   return (
     <div>
-      <Link to="/admin/rentals/create">
-        <button
-          className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex 
-          justify-center items-center gap-2 overflow-hidden border
-           border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
-  before:-mr-2 before:h-48 before:w-48 before:origin-top-left 
-  before:-translate-x-full before:-translate-y-12 before:rotate-90
-  before:bg-white before:transition-all before:duration-300 hover:text-white
-  hover:shadow-red-500 hover:bg-red-500 hover:before:-rotate-180"
-        >
-          <span className="relative z-20 text-red-500 group-hover:text-white">
-            Create A Rental
-          </span>
-          <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
-        </button>
-      </Link>
+    
 
 
-      <div className="flex justify-center h-screen">
+      <div className="flex justify-center mt-[5rem] h-screen">
         <div className="w-full md:w-2/3">
           {deleteMsg ? <div>
             <h1 className='text-orange-500 py-3 px-2 bg-orange-300 w-full relative top-[5rem]'>{msg}</h1>
@@ -81,6 +66,20 @@ export default function Processed() {
           </div> : ""
 
           }
+            <Link to="/admin/rentals/create">
+        <button
+       className="relative right-0 h-12 w-40 uppercase font-semibold flex justify-center items-center gap-2 overflow-hidden
+       border border-[#E60035] text-[#E60035] shadow-2xl font-Yantramanav-Black text-[1.1rem]
+       before:absolute before:left-0 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full
+       before:translate-y-12 before:-rotate-90 before:bg-white before:transition-all before:duration-300
+       hover:text-white hover:shadow-[#E60035] hover:bg-[#E60035] 
+       hover:before:-rotate-180"
+        >
+                                  <span className="relative z-10">Create rental</span>
+
+                                  <FaArrowRight className="relative z-10" />
+        </button>
+      </Link>
           {data ?
 
 

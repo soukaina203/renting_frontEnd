@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,13 @@ import HeaderAdmin from '../header';
 function CreateCar() {
     const FillData = useRef({ make: "", model: "", color: "", type: "", photo: "", year: "", available: 1, price_per_day: 0 });
     const navigate = useNavigate();
-
+    const [data, setData] = useState(null);//for getting data of the car that we want to edit
+    const [showEditImg, setShowEditImg] = useState(false);// to show the form of uploading an image 
+    const [img, setImg] = useState('')// the uploaded file of the user 
+    const editedData = useRef([])// the data thatis new edited by the user and gonna be passed to the backend
+    const [upClicked, setUpclicked] = useState(false)// this for changing the image if the user click on upload than the url of the image goona change to the one sent by the backend
+    const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // store the incoming image url that is coming from the backend
+  
     let handleCreate = async (e) => {
         e.preventDefault();
 
@@ -34,7 +40,20 @@ function CreateCar() {
 
         console.log(d.data);
     }
-
+    let handleUpload = async () => {
+        const fd = new FormData()
+        fd.append("image", img)
+        const res = await axios.post(`http://127.0.0.1:8000/api/car/uploadImg`, fd, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        console.log("==================IMAGE")
+        console.log(res.data.image_url)
+        FillData.current.photo=res.data.image_url
+        // public function uploadImgs(Request $request,string $id )
+        setUploadedImageUrl(res.data.image_url)
+      }
     return (
         <div>
             <div className='flex items-center justify-center mt-5'>
@@ -44,7 +63,51 @@ function CreateCar() {
                     className="w-full max-w-2xl p-10 space-y-6 bg-white rounded-lg shadow-md"
                     method="POST"
                 >
+
+
                     <h1 className='text-xl font-semibold text-center'>Creation Of A Car</h1>
+
+                   <img
+                        src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
+                        alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
+                    <button className='p-4 pb-0 text-blue-500' onClick={(e) => {
+                        e.preventDefault()
+                        setShowEditImg(true)
+                    }}>Change the image</button>
+
+                 {showEditImg ? ( 
+                        <div className="px-4 py-2 bg-white rounded-lg shadow">
+                            <label className="block mb-2 text-gray-600">Choose an image</label>
+                            <input type="file" onChange={(e) => setImg(e.target.files[0])} />
+                            <div className="flex gap-4 mt-4">
+                                <button
+                                    className="w-full px-3 py-2 border border-gray-300 text-white font-semibold bg-[#E60035] rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
+                                    onClick={(z) => {
+                                        z.preventDefault()
+                                        setUpclicked(true);
+                                        handleUpload();
+                                    }}
+                                >
+
+                                    Upload
+                                </button>
+                                <button
+                                    className="w-full px-3 py-2 font-semibold text-black bg-gray-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
+                                    onClick={() => {
+                                        setShowEditImg(false);
+                                    }}
+                                >
+
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                 ) : null} 
+
+
+
 
                     <div className="space-y-4">
                         <div>
@@ -52,7 +115,7 @@ function CreateCar() {
                                 type="text"
                                 onChange={(e) => FillData.current.make = e.target.value}
                                 placeholder="Make"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
 
@@ -61,7 +124,7 @@ function CreateCar() {
                                 type="text"
                                 onChange={(e) => FillData.current.model = e.target.value}
                                 placeholder="Model"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
 
@@ -70,7 +133,7 @@ function CreateCar() {
                                 type="text"
                                 onChange={(e) => FillData.current.type = e.target.value}
                                 placeholder="Type"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
 
@@ -79,12 +142,12 @@ function CreateCar() {
                                 type="text"
                                 onChange={(e) => FillData.current.year = e.target.value}
                                 placeholder="Year"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
 
                         <div>
-                          <label htmlFor="">Availability</label>
+                            <label htmlFor="">Availability</label>
                             <select
                                 onChange={(e) => FillData.current.available = e.target.value}
                                 className="w-full p-2 mt-1 text-base font-normal border-2 border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
@@ -94,20 +157,14 @@ function CreateCar() {
                             </select>
                         </div>
 
-                        <div>
-                            <input
-                                type="file"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
-                                onChange={(e) => FillData.current.photo = e.target.files[0]}
-                            />
-                        </div>
+                
 
                         <div>
                             <input
                                 type="text"
                                 onChange={(e) => FillData.current.price_per_day = e.target.value}
                                 placeholder="Price per day"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
 
@@ -116,7 +173,7 @@ function CreateCar() {
                                 type="text"
                                 onChange={(e) => FillData.current.color = e.target.value}
                                 placeholder="Color"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             />
                         </div>
 

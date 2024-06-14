@@ -54,7 +54,6 @@ function  EditProfile() {
     console.log(res.data)
     if (res.data.message === "Item updated successfully") {
 
-      navigate('/admin/users')
     }
 
     // Handle the response data here if needed

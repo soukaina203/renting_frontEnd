@@ -18,6 +18,7 @@ function AllUsers() {
   const [permanent, setPermanent] = useState([]);
   const [haveRentals, sethaveRentals] = useState([]);
   const [NoRentals, setNoRentals] = useState([]);
+  const [search, setSearch] = useState([])
 
   const [deleteMsg, setDeleteMsg] = useState(false);
   const [filters, setFilter] = useState({
@@ -104,28 +105,53 @@ function AllUsers() {
       }
     }
   };
+  let getSearchUsers = async () => {
+    const da = await axios.get(`http://localhost:8000/api/search/user/${search}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    setData(da.data)
+  }
+
   return (
     <div className="">
-       <Link to="/admin/users/create">
-      <button
-        className="before:ease relative h-12 w-40 ml-auto mt-3 font-semibold flex justify-center items-center gap-2 overflow-hidden border border-red-500 text-white group shadow-2xl before:absolute before:right-0  {/* Positioned on right side */}
-  before:-mr-2 before:h-48 before:w-48 before:origin-top-left 
-  before:-translate-x-full before:-translate-y-12 before:rotate-90
-  before:bg-white before:transition-all before:duration-300 hover:text-white
-  hover:shadow-red-500 hover:bg-red-500 hover:before:-rotate-180"
-      >
-        <span className="relative z-20 text-red-500 group-hover:text-white">
-         Create A User
-        </span>
-        <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
-      </button>
-      </Link>
 
-      <div className="">
+
+
+      <div className='w-full py-4 mt-2 '>
+        <div className='max-w-4xl px-2 mx-auto'>
+          <div className='flex flex-row '>
+            <input
+              type="text"
+              className='w-full px-4 py-2 bg-white border-2 rounded-l outline-none'
+              placeholder='Search Users By Names or Email...'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button
+              type='button'
+              onClick={() => {
+                getSearchUsers()
+
+              }}
+              className="px-4 py-2 text-white font-Yantramanav-Black text-[1.2rem] rounded-r bg-[#E60035] hover:bg-red-600  "
+            >
+              Search
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div className="mt-[3rem] ">
         <div className="flex flex-col p-4 lg:flex-row">
-          <div className="hidden w-1/5 mr-4 border-[0.2rem] border-gray-200 rounded lg:block ">
+
+          <div className="hidden w-1/5 mr-4 border-[0.1rem] border-red-600 rounded lg:block ">
             <h2
-              className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200"
+              className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100"
               onClick={() => {
                 setFilter({ rental: true, ville: false, pays: false });
               }}
@@ -135,7 +161,7 @@ function AllUsers() {
             {filters.rental === true ? (
               <div>
                 <p
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                  className="px-4 py-2 cursor-pointer hover:bg-red-100"
                   onClick={() => {
                     filter("all");
                   }}
@@ -144,7 +170,7 @@ function AllUsers() {
                 </p>
 
                 <p
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                  className="px-4 py-2 cursor-pointer hover:bg-red-100"
                   onClick={() => {
                     filter("with");
                   }}
@@ -153,7 +179,7 @@ function AllUsers() {
                 </p>
 
                 <p
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                  className="px-4 py-2 cursor-pointer hover:bg-red-100"
                   onClick={() => {
                     filter("no");
                   }}
@@ -166,7 +192,7 @@ function AllUsers() {
             )}
             {/* ================================City ============================ */}
             <h2
-              className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200"
+              className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100"
               onClick={() => {
                 setFilter({ rental: false, ville: true, pays: false });
               }}
@@ -180,7 +206,7 @@ function AllUsers() {
                   <div>
                     {disCity.distinct.map((e) => (
                       <p
-                        className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                        className="px-4 py-2 cursor-pointer hover:bg-red-100"
                         onClick={() => {
                           filterByCity(e);
                         }}
@@ -200,7 +226,7 @@ function AllUsers() {
 
             {/* ================================Country ============================ */}
             <h2
-              className="px-4 py-2 font-semibold cursor-pointer hover:bg-gray-200"
+              className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100"
               onClick={() => {
                 setFilter({ rental: false, ville: false, pays: true });
               }}
@@ -213,7 +239,7 @@ function AllUsers() {
                   <div>
                     {disCountry.distinct.map((e) => (
                       <p
-                        className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                        className="px-4 py-2 cursor-pointer hover:bg-red-100"
                         onClick={() => {
                           filterByCountry(e);
                         }}
@@ -232,68 +258,64 @@ function AllUsers() {
             )}
           </div>
 
-          <div className="w-full m-2 ">
-         
+          <div className="w-full">
 
-            <div className="flex flex-col ">
-              <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                  <div className="overflow-hidden">
-                    <table className="min-w-full text-sm font-light text-left text-surface ">
-                      <thead className="font-medium border-b border-black">
-                        <tr>
-                          <th className="px-6 py-4 ">ID</th>
-                          <th className="px-6 py-4 ">Name</th>
-                          <th className="px-6 py-4 ">Email</th>
-                          <th className="px-6 py-4 ">Address</th>
-                          <th className="px-6 py-4 ">Phone</th>
-                          <th className="px-6 py-4 ">City</th>
-                          <th className="px-6 py-4 ">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {data.map((e, i) => (
-                          <tr key={i} className="border-b border-black ">
-                            <td className="px-6 py-4 font-medium whitespace-nowrap">
-                              {e.id}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              {e.name}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              {e.email}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              {e.address}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              {e.phone}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              {e.city}
-                            </td>
-                            <td className="flex items-center justify-start gap-2 px-6 py-4 whitespace-nowrap">
 
-                              <Link to={`/admin/user/edit/${e.id}`}>
-                                <FaPen className="font-semibold cursor-pointer 
-                                 text-[#E60035] w-4 h-4"/>
-
-                              </Link>
-
-                           
-                                <MdDeleteSweep   className="font-semibold cursor-pointer
-                                 text-[#E60035] w-5 h-5  "
-                                onClick={() => deleteUser(e.id)}/>
-
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-col">
+      <div className="overflow-x-auto sm:-mx-6 lg:mx-9">
+        <div className="flex justify-end mb-4">
+          <Link to="/admin/users/create">
+            <button className="relative right-0 h-12 w-40 uppercase font-semibold flex justify-center items-center gap-2 overflow-hidden
+              border border-[#E60035] text-[#E60035] shadow-2xl font-Yantramanav-Black text-[1.1rem]
+              before:absolute before:left-0 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full
+              before:translate-y-12 before:-rotate-90 before:bg-white before:transition-all before:duration-300
+              hover:text-white hover:shadow-[#E60035] hover:bg-[#E60035] 
+              hover:before:-rotate-180">
+              <span className="relative z-10">Create Car</span>
+              <FaArrowRight className="relative z-10" />
+            </button>
+          </Link>
+        </div>
+        <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div className="overflow-hidden">
+            <table className="min-w-full text-sm font-light text-left text-surface">
+              <thead className="font-medium border-b border-black">
+                <tr>
+                  <th className="px-6 py-4">ID</th>
+                  <th className="px-6 py-4">Name</th>
+                  <th className="px-6 py-4">Email</th>
+                  <th className="px-6 py-4">Address</th>
+                  <th className="px-6 py-4">Phone</th>
+                  <th className="px-6 py-4">City</th>
+                  <th className="px-6 py-4">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((e, i) => (
+                  <tr key={i} className="border-b border-black">
+                    <td className="px-6 py-4 font-medium whitespace-nowrap">{e.id}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{e.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{e.email}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{e.address}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{e.phone}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{e.city}</td>
+                    <td className="flex items-center justify-start gap-2 px-6 py-4 whitespace-nowrap">
+                      <Link to={`/admin/user/edit/${e.id}`}>
+                        <FaPen className="font-semibold cursor-pointer text-[#E60035] w-4 h-4" />
+                      </Link>
+                      <MdDeleteSweep
+                        className="font-semibold cursor-pointer text-[#E60035] w-5 h-5"
+                        onClick={() => deleteUser(e.id)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
           </div>
         </div>
       </div>

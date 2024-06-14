@@ -40,7 +40,7 @@ function Home() {
                  hover:text-white hover:shadow-[#E60035]
                   hover:bg-[#E60035] hover:before:-rotate-180">
 
-              <span className="relative z-10 ">  Learn More</span>
+              <span className="relative z-10 font-Yantramanav-Black">  Learn More</span>
               <FaArrowRight className="relative z-10" />
             </button>
           </Link>

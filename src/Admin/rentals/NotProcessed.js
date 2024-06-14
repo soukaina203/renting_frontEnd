@@ -70,20 +70,22 @@ export default function NotProcessed() {
     };
 
     return (
-        <div>
-            <Link to="/admin/rentals/create">
-                <button
-                    className="relative flex items-center justify-center w-40 h-12 gap-2 mt-3 ml-auto overflow-hidden font-semibold text-white border border-red-500 shadow-2xl before:ease group before:absolute before:right-0 before:-mr-2 before:h-48 before:w-48 before:origin-top-left before:-translate-x-full before:-translate-y-12 before:rotate-90 before:bg-white before:transition-all before:duration-300 hover:text-white hover:shadow-red-500 hover:bg-red-500 hover:before:-rotate-180"
-                >
-                    <span className="relative z-20 text-red-500 group-hover:text-white">
-                        Create A Rental
-                    </span>
-                    <FaArrowRight className="relative z-20 ml-2 text-red-500 group-hover:text-white" />
-                </button>
-            </Link>
+        <div className='mt-[5rem]'>
 
             <div className="flex justify-center h-screen">
                 <div className="w-full md:w-2/3">
+                    <Link to="/admin/rentals/create">
+                        <button className="relative right-0 h-12 w-40 uppercase font-semibold flex justify-center items-center gap-2 overflow-hidden
+              border border-[#E60035] text-[#E60035] shadow-2xl font-Yantramanav-Black text-[1.1rem]
+              before:absolute before:left-0 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full
+              before:translate-y-12 before:-rotate-90 before:bg-white before:transition-all before:duration-300
+              hover:text-white hover:shadow-[#E60035] hover:bg-[#E60035] 
+              hover:before:-rotate-180"
+                        >
+                            <span className="relative z-10">Create rental</span>
+                            <FaArrowRight className="relative z-10" />
+                        </button>
+                    </Link>
                     {data.length > 0 ? (
                         <div>
                             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -145,10 +147,11 @@ export default function NotProcessed() {
                             <div className="flex justify-center mt-6">
                                 <button
                                     onClick={submit}
-                                    className="px-4 py-2 text-white font-medium bg-[#E60035] rounded-md shadow-md hover:bg-red-700"
+                                    className="px-6 py-3 text-[1.1rem] duration-400 transition-colors hover:bg-[#E60035] hover:text-white font-medium text-red-500 bg-white border-[0.1em] border-red-500 shadow-md font-Yantramanav-Black text-red uppercase"
                                 >
                                     Submit the processed rentals
                                 </button>
+
                             </div>
                         </div>
                     ) : (

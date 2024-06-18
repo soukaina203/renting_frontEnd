@@ -5,7 +5,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      keyframes: {
+        l9: {
+          '0%': { 'background-position': '0 50%, 50% 50%, 100% 50%' },
+          '20%': { 'background-position': '0 0, 50% 50%, 100% 50%' },
+          '40%': { 'background-position': '0 100%, 50% 0, 100% 50%' },
+          '60%': { 'background-position': '0 50%, 50% 100%, 100% 0' },
+          '80%': { 'background-position': '0 50%, 50% 50%, 100% 100%' },
+          '100%': { 'background-position': '0 50%, 50% 50%, 100% 50%' },
+        },
+      },
+      animation: {
+        l9: 'l9 1s infinite alternate',
+      },
       fontFamily: {
         'Yantramanav-Black': ['"Yantramanav-Black"', 'sans-serif'],
         'Yantramanav-Bold"': ['"Yantramanav-Bold"', 'sans-serif'],

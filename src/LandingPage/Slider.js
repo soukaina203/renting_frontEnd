@@ -74,7 +74,7 @@ function ImageSlider() {
               <Link to='/signIn' >
 
                 <button
-                  class="before:ease lg:flex hidden mr-auto ml-auto   relative h-12 w-40
+                  className="before:ease lg:flex  mr-auto ml-auto   relative h-12 w-40
                 uppercase font-semibold  justify-center items-center gap-2 
                  overflow-hidden
                border border-[#E60035] text-white 
@@ -89,6 +89,7 @@ function ImageSlider() {
                   <span className="relative z-10 font-semibold">  {slide.buttonText}</span>
                 </button>
               </Link>
+
             </div>
           </div>
         ))}

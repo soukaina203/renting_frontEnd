@@ -59,13 +59,13 @@ export default function HeaderUser() {
 
         <ul className="items-center hidden font-semibold cursor-pointer lg:flex">
           <li className="block px-6 py-4 duration-500 underlineHover">
+            <Link to="/user/welcome">Cars</Link>
+          </li>
+          <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
             <Link to="/user/rentals">Your Rentals </Link>
           </li>
           <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
             <Link to="/user/reviews">Make A Review</Link>
-          </li>
-          <li className="block px-6 py-4 duration-500 rounded-lg underlineHover">
-            <Link to="/user/welcome">Cars</Link>
           </li>
 
 
@@ -76,7 +76,7 @@ export default function HeaderUser() {
           <div className="absolute top-0 flex items-center w-8/12 h-screen ml-auto text-black transition-all duration-500 bg-white opacity-0 md:w-5/12 right-full group-focus:right-0 group-focus:opacity-100">
             <ul className="flex flex-col items-center justify-center w-[98%] font-semibold m-2">
               <li className="block px-6 py-4 duration-500 w-fit underlineHover">
-                <Link to="/user/users">Your Rentals </Link>
+                <Link to="/user/users">My Rentals </Link>
               </li>
               <li className="block px-6 py-4 duration-500 rounded-lg w-fit underlineHover">
                 <Link to="/user/rentals">Make A Review</Link>

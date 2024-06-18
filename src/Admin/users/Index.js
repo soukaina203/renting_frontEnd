@@ -293,7 +293,11 @@ function AllUsers() {
               <tbody>
                 {data.map((e, i) => (
                   <tr key={i} className="border-b border-black">
-                    <td className="px-6 py-4 font-medium whitespace-nowrap">{e.id}</td>
+                    <td className="px-6 py-4 font-medium whitespace-nowrap">
+                  <img src={e.photo?`http://127.0.0.1:8000/images/${e.photo}`:`/imgs/noProfile.jpg`} alt={e.model} 
+                  className="w-8 h-8 rounded-full" />
+
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">{e.name}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{e.email}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{e.address}</td>

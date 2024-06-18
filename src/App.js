@@ -28,6 +28,7 @@ import EditProfile from './Admin/editProfile';
 import UserInterface from './Users/UserInterface';
 import VoirCar from './Admin/cars/Show';
 import UserReviews from './Admin/UserReviews';
+import Loading from './loading/Loading';
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
       <Router>
         <Routes>
           {/* Landing page */}
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<Loading />} />
+          <Route path="/home" element={<LandingPage />} />
 
           {/* Auth */}
           <Route path="signIn" element={<SignIn />} />

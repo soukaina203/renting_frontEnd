@@ -45,11 +45,8 @@ node {
       // echo "${changes}"
 
       app = docker.build("${e.name}", "-t ${e.name} -f ./dockerfile ./${e.path}")
-<<<<<<< HEAD
       // sh """docker build -t sa-dev-api-cms -f ./cmsApi/Dockerfile ./"""
-=======
       // sh """docker build -t sa-dev-api-cms -f ./cmsApi/dockerfile ./"""
->>>>>>> c03400d829fa29810b658ac7dc58329acd4429a2
       //  --volume /home/dev/volumes/${e.name}/wwwroot:/app/wwwroot \
 
       script{
@@ -83,8 +80,4 @@ node {
       sh "docker rmi --force ${e.name}"
     }
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c03400d829fa29810b658ac7dc58329acd4429a2

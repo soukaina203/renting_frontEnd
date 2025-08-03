@@ -1,6 +1,5 @@
 name: trigger jenkins job
 
-# or add https://jenkins.mohamed-mourabit.com/github-webhook
 on:
   push:
     branches: [main]

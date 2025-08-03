@@ -1,11 +1,7 @@
 #!groovy
 node {
   def apps = [
-<<<<<<< HEAD
-    [name: "bestcars", port: '4200', exposed_port: '', path: '', domaine: "cloud.dev-solus.com"],
-=======
     [name: "bestcars", port: '4200', exposed_port: '', path: '', domaine: "bestcars.cloud.dev-solus.ma"],
->>>>>>> c03400d829fa29810b658ac7dc58329acd4429a2
   ];
 
   def app

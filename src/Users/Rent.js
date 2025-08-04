@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import HeaderAdmin from '../Admin/header';
+import { apiUrl } from '../../environnement/environnement.prod';
+
 export default function Rent() {
     const [car, setCars] = useState(null);
     const [total, setTotal] = useState(0);
@@ -15,7 +16,7 @@ export default function Rent() {
     })// the data thatis new edited by the user and gonna be passed to the backend
     const navigate = useNavigate();
     const fetchData = async () => {
-        const res = await axios.get(`http://127.0.0.1:8000/api/car/${id}`, {
+        const res = await axios.get(`${apiUrl}/car/${id}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -27,7 +28,7 @@ export default function Rent() {
         e.preventDefault()
 
         let n = FillData.current;
-        const d = await axios.post("http://localhost:8000/api/rentals", {
+        const d = await axios.post( `${apiUrl}/rentals`, {
             user_id: localStorage.getItem('userId'),
             car_id: id,
             rental_start: n.rental_start,
@@ -78,7 +79,7 @@ export default function Rent() {
       </div>
       <div className="px-4 py-2">
         <img
-          src={`http://127.0.0.1:8000/images/${car.photo}`}
+          src={`${apiUrl}/images/${car.photo}`}
           alt=""
           className="w-full h-[19rem] object-cover object-center rounded-t-lg"
         />

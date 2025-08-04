@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HeaderUser from './Header';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function CreateReview() {
     const data = useRef({ comment: '', rating: 0 })
@@ -11,7 +12,7 @@ function CreateReview() {
         event.preventDefault();
         let n = data.current
         let user_id = localStorage.getItem('userId')
-        const r = await axios.post(`http://127.0.0.1:8000/api/review/create`, {
+        const r = await axios.post(`${apiUrl}/review/create`, {
             'user_id':user_id,
             'comment': n.comment,
             'rating': n.rating

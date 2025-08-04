@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function ModifyCar() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
@@ -16,7 +17,7 @@ function ModifyCar() {
   const { id } = useParams();
 
   const fetchCar = async () => {
-    const res = await axios.get(`http://127.0.0.1:8000/api/user/${id}`, {
+    const res = await axios.get(`${apiUrl}/user/${id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -32,7 +33,7 @@ function ModifyCar() {
     try {
 
       const res = await axios.patch(
-        `http://127.0.0.1:8000/api/user/${id}`,
+        `${apiUrl}/user/${id}`,
         {
           name: n.name,
           phone: n.phone,
@@ -81,7 +82,7 @@ function ModifyCar() {
   let handleUpload = async () => {
     const fd = new FormData()
     fd.append("image", img)
-    const res = await axios.post(`http://127.0.0.1:8000/api/user/uploadImg/${id}`, fd, {
+    const res = await axios.post(`${apiUrl}/user/uploadImg/${id}`, fd, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

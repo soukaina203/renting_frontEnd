@@ -6,6 +6,8 @@ import HeaderAdmin from '../header';
 import { FaArrowRight, FaPen } from 'react-icons/fa6';
 import { MdDeleteSweep } from 'react-icons/md';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
+import { apiUrl } from '../../environnement/environnement.prod';
+
 axios.defaults.withCredentials = true;
 
 export default function NotProcessed() {
@@ -15,7 +17,7 @@ export default function NotProcessed() {
     const [deleteMsg, setDeleteMsg] = useState(false);
 
     let fetchData = async () => {
-        const datas = await axios.get("http://localhost:8000/api/rental", {
+        const datas = await axios.get(`${apiUrl}/rental`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -30,7 +32,7 @@ export default function NotProcessed() {
 
     let deleteRental = async (id) => {
         try {
-            let d = await axios.delete(`http://localhost:8000/api/rental/${id}`, {
+            let d = await axios.delete(`${apiUrl}/rental/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -59,7 +61,7 @@ export default function NotProcessed() {
     };
 
     let submit = async () => {
-        let d = await axios.post(`http://localhost:8000/api/pro`, {
+        let d = await axios.post(`${apiUrl}/pro`, {
             "table": checkedTable.current
         }, {
             headers: {

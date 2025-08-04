@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import HeaderAdmin from '../header';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function CreateCar() {
     const FillData = useRef({ make: "", model: "", color: "", type: "", photo: "", year: "", available: 1, price_per_day: 0 });
@@ -13,7 +13,7 @@ function CreateCar() {
     const editedData = useRef([])// the data thatis new edited by the user and gonna be passed to the backend
     const [upClicked, setUpclicked] = useState(false)// this for changing the image if the user click on upload than the url of the image goona change to the one sent by the backend
     const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // store the incoming image url that is coming from the backend
-  
+
     let handleCreate = async (e) => {
         e.preventDefault();
 
@@ -28,32 +28,33 @@ function CreateCar() {
         formData.append('photo', v.photo);
         formData.append('type', v.type);
         formData.append('available', v.available);
-        const d = await axios.post("http://localhost:8000/api/car", formData, {
+
+        const req = await axios.post(`${apiUrl}/car`, formData, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
-        console.log("hi");
-        if (d.data.message === "Item added successfully") {
+
+
+        if (req.data.message === "Item added successfully") {
             navigate('/admin/cars');
         }
 
-        console.log(d.data);
     }
     let handleUpload = async () => {
         const fd = new FormData()
         fd.append("image", img)
-        const res = await axios.post(`http://127.0.0.1:8000/api/car/uploadImg`, fd, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
+        const res = await axios.post(`${apiUrl}/car/uploadImg`, fd, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
         });
         console.log("==================IMAGE")
         console.log(res.data.image_url)
-        FillData.current.photo=res.data.image_url
+        FillData.current.photo = res.data.image_url
         // public function uploadImgs(Request $request,string $id )
         setUploadedImageUrl(res.data.image_url)
-      }
+    }
     return (
         <div>
             <div className='flex items-center justify-center mt-5'>
@@ -67,7 +68,7 @@ function CreateCar() {
 
                     <h1 className='text-xl font-semibold text-center'>Creation Of A Car</h1>
 
-                   <img
+                    <img
                         src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
                         alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
                     <button className='p-4 pb-0 text-blue-500' onClick={(e) => {
@@ -75,7 +76,7 @@ function CreateCar() {
                         setShowEditImg(true)
                     }}>Change the image</button>
 
-                 {showEditImg ? ( 
+                    {showEditImg ? (
                         <div className="px-4 py-2 bg-white rounded-lg shadow">
                             <label className="block mb-2 text-gray-600">Choose an image</label>
                             <input type="file" onChange={(e) => setImg(e.target.files[0])} />
@@ -104,7 +105,7 @@ function CreateCar() {
                                 </button>
                             </div>
                         </div>
-                 ) : null} 
+                    ) : null}
 
 
 
@@ -157,7 +158,7 @@ function CreateCar() {
                             </select>
                         </div>
 
-                
+
 
                         <div>
                             <input

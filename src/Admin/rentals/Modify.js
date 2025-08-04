@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from '../../environnement/environnement.prod';
 
 export default function ModifyRental() {
     const [data, setData] = useState(null);
@@ -14,7 +15,7 @@ export default function ModifyRental() {
     const { id } = useParams();
 
     const fetchCar = async () => {
-        const res = await axios.get(`http://127.0.0.1:8000/api/rental/${id}`, {
+        const res = await axios.get(`${apiUrl}/rental/${id}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -31,7 +32,7 @@ export default function ModifyRental() {
         let n = editedData.current;
         console.log(n)
         const res = await axios.patch(
-            `http://127.0.0.1:8000/api/rental/${id}`,
+            `${apiUrl}/rental/${id}`,
             {
                 user_id: n.user_id,
                 car_id: n.car_id,

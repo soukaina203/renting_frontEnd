@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 axios.defaults.withCredentials = true;
 
@@ -11,7 +12,7 @@ function LogOut() {
     let st=localStorage.getItem('status')
     try {
       const d = await axios.post( st==='a'?
-        'http://127.0.0.1:8000/api/logout':'http://127.0.0.1:8000/api/logoutUser',
+    `${apiUrl}/logout`:`${apiUrl}/logoutUser`,
         {},
         {
           headers: {

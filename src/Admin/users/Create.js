@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from '../header';
+import { apiUrl } from '../../environnement/environnement.prod';
+
 function CreateUser() {
     const FillData = useRef({ name: "", email: "", password: "", address: "", phone: "", photo: "", city: "", country: "" })// the data thatis new edited by the user and gonna be passed to the backend
     const navigate = useNavigate();
@@ -21,7 +23,7 @@ function CreateUser() {
         formData.append('phone', v.phone); // Assuming v.photo is the selected file object
         formData.append('city', v.city); // Assuming v.photo is the selected file object
         formData.append('country', v.country); // Assuming v.photo is the selected file object
-        const d = await axios.post("http://localhost:8000/api/user", formData, {
+        const d = await axios.post(`${apiUrl}/user`, formData, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }

@@ -3,6 +3,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { MdOutlinePersonOutline } from "react-icons/md";
 import axios from 'axios';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function HeaderAdmin() {
   const [admin, setAdmin] = useState({ id: localStorage.getItem('userId'), name: localStorage.getItem("userName") })
@@ -18,17 +19,14 @@ function HeaderAdmin() {
   };
 
   let getUser =async ()=>{
-    const res = await axios.get(`http://127.0.0.1:8000/api/user/${user.id}`, {
+    const res = await axios.get(`${apiUrl}/user/${user.id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
-    console.log('<<<<<<<<<<<<<<<<<<<<<res>>>>>>>>>>>>>>>>>>>>>')
-    console.log(res.data.user.photo)
     setUserPhoto(res.data.user.photo)
   }
   useEffect(() => {
-    console.log('==========hello==========')
     console.log(user.id)
     getUser()
     const handleClickOutside = (event) => {
@@ -104,7 +102,7 @@ function HeaderAdmin() {
 
           <button className='p-2 text-gray-500 rounded '
             onClick={dropDawn}>
-              <img src={userPhoto ?  `http://127.0.0.1:8000/images/${userPhoto}`:
+              <img src={userPhoto ?  `${apiUrl}/images/${userPhoto}`:
                "/imgs/noProfile.jpg"} className='w-8 h-8 rounded-full ' alt=''/>
           </button>
           {isOpen && (

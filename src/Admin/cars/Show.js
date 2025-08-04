@@ -3,6 +3,7 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
 import { FaArrowRight } from 'react-icons/fa6';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function VoirCar() {
   const [data, setData] = useState(null);
@@ -12,7 +13,8 @@ function VoirCar() {
   const source = queryParams.get('source'); // This will give you either 'dashboard' or 'welcome'
 
   const fetchCar = async () => {
-    const response = await axios.get(`http://127.0.0.1:8000/api/car/${id}`, {
+    
+    const response = await axios.get(`${apiUrl}/car/${id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -33,7 +35,7 @@ function VoirCar() {
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
             <img
-              src={`http://127.0.0.1:8000/images/${data.photo}`}
+              src={`${apiUrl}/images/${data.photo}`}
               alt=""
               className="w-full h-[19rem] object-cover object-center rounded-t-lg"
             />

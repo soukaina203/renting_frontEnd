@@ -1,16 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import HeaderAdmin from './header';
 import { FaArrowRight, FaPen } from 'react-icons/fa6';
 import { MdDeleteSweep } from 'react-icons/md';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function ReviewsAdmin() {
   const [reviews, setReviews] = useState([]);
 
   const [search, setSearch] = useState([])
   let getSearchUsers = async () => {
-    const da = await axios.get(`http://localhost:8000/api/search/review/${search}`, {
+    const da = await axios.get(`${apiUrl}/search/review/${search}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -20,7 +20,7 @@ function ReviewsAdmin() {
 
   const getReviews = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/reviews', {
+      const response = await axios.get(`${apiUrl}/reviews`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -33,7 +33,7 @@ function ReviewsAdmin() {
   };
 
   let deleteReview = async (id) => {
-    let d = await axios.delete(`http://localhost:8000/api/review/${id}`, {
+    let d = await axios.delete(`${apiUrl}/review/${id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

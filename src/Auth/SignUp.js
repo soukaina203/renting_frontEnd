@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowRight } from 'react-icons/fa6';
 import { Fade, Zoom } from 'react-reveal';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function SignUp() {
   const [showPoppup, setShowpoppup] = useState(false)
@@ -18,7 +19,7 @@ function SignUp() {
   let handleSignup = async (e) => {
     e.preventDefault()
     let v = data.current
-    const res = await axios.post('http://127.0.0.1:8000/api/signUp', {
+    const res = await axios.post(`${apiUrl}/signUp`, {
       name: v.name,
       email: v.email,
       password: v.password,

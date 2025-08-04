@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from '../header';
+import { apiUrl } from '../../environnement/environnement.prod';
+
 export default function CreateRental() {
     const [cars, setCars] = useState(null);
     const [users, setUsers] = useState(null);
@@ -14,7 +16,7 @@ export default function CreateRental() {
     })// the data thatis new edited by the user and gonna be passed to the backend
     const navigate = useNavigate();
     const fetchData = async () => {
-        const res = await axios.get(`http://127.0.0.1:8000/api/select`, {
+        const res = await axios.get(`${apiUrl}/select`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -29,7 +31,7 @@ export default function CreateRental() {
     let userId=localStorage.getItem('userId');
 
         console.log(n)
-        const d = await axios.post("http://localhost:8000/api/rental", {
+        const d = await axios.post(`${apiUrl}/select/rental`, {
             user_id: userId,
             car_id: n.car_id,
             rental_start: n.rental_start,

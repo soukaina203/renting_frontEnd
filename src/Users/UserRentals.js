@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderUser from './Header';
 import { Fade } from 'react-reveal';
+import { apiUrl } from '../../environnement/environnement.prod';
+
 axios.defaults.withCredentials = true;
 
 function UserRentals() {
@@ -15,7 +17,7 @@ function UserRentals() {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/api/rentals/${id}`, {
+            const res = await axios.get(`${apiUrl}/rentals/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -85,7 +87,7 @@ function UserRentals() {
                                 <td colSpan="5">
                                   <div className="grid grid-cols-1 gap-3 p-2 lg:grid-cols-3">
                                     <img
-                                      src={`http://127.0.0.1:8000/images/${rental.car.photo}`}
+                                      src={`${apiUrl}/images/${rental.car.photo}`}
                                       alt=""
                                       className="w-full h-[13rem] object-cover object-center rounded-lg"
                                     />

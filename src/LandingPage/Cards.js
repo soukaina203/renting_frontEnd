@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function Cards() {
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ function Cards() {
           ? data.map((e, i) => (
             <div key={i} className="w-[16rem] h-[21.5rem]  lg:w-[17rem] bg-white shadow-lg rounded-lg overflow-hidden ">
               <img
-                src={`http://127.0.0.1:8000/images/${e.photo}`}
+                src={`${apiUrl}/images/${e.photo}`}
                 alt=""
                 className="object-cover object-center w-full h-48 rounded-t-lg"
               />

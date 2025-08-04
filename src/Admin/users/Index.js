@@ -7,6 +7,7 @@ import Admin from "../Admin";
 import { FaArrowRight } from "react-icons/fa6";
 import { FaPen } from "react-icons/fa";
 import { MdDeleteSweep } from "react-icons/md";
+import { apiUrl } from '../../environnement/environnement.prod';
 
 
 axios.defaults.withCredentials = true;
@@ -32,7 +33,7 @@ function AllUsers() {
   const [disCountry, setdisCountry] = useState();
 
   let fetchData = async () => {
-    const datas = await axios.get("http://localhost:8000/api/user", {
+    const datas = await axios.get(`${apiUrl}/user`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -52,7 +53,7 @@ function AllUsers() {
   }, []);
   let deleteUser = async (id) => {
     try {
-      let d = await axios.delete(`http://localhost:8000/api/user/${id}`, {
+      let d = await axios.delete(`${apiUrl}/user/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -106,7 +107,7 @@ function AllUsers() {
     }
   };
   let getSearchUsers = async () => {
-    const da = await axios.get(`http://localhost:8000/api/search/user/${search}`, {
+    const da = await axios.get(`${apiUrl}/search/user/${search}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -294,7 +295,7 @@ function AllUsers() {
                 {data.map((e, i) => (
                   <tr key={i} className="border-b border-black">
                     <td className="px-6 py-4 font-medium whitespace-nowrap">
-                  <img src={e.photo?`http://127.0.0.1:8000/images/${e.photo}`:`/imgs/noProfile.jpg`} alt={e.model} 
+                  <img src={e.photo?`${apiUrl}/images/${e.photo}`:`/imgs/noProfile.jpg`} alt={e.model} 
                   className="w-8 h-8 rounded-full" />
 
                     </td>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeaderUser from './Header'
 import { FaArrowRight } from 'react-icons/fa6'
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function Welcome() {
   const [search, setSearch] = useState([])
@@ -23,7 +24,7 @@ function Welcome() {
 
 
   let fetchData = async () => {
-    const da = await axios.get("http://localhost:8000/api/carForUsers", {
+    const da = await axios.get(`${apiUrl}/carForUsers`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { MdOutlinePersonOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { Link as RouterLink } from 'react-router-dom';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 export default function HeaderUser() {
   const [isClicked, setClicked] = useState({ menuIcon: true, exitIcon: false });
@@ -20,7 +20,7 @@ export default function HeaderUser() {
   };
 
   let getUser =async ()=>{
-    const res = await axios.get(`http://127.0.0.1:8000/api/user/${user.id}`, {
+    const res = await axios.get(`${apiUrl}/user/${user.id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

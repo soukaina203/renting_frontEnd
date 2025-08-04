@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function ModifyCar() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
@@ -16,7 +17,8 @@ function ModifyCar() {
   const { id } = useParams();
 
   const fetchCar = async () => {
-    const response = await axios.get(`http://127.0.0.1:8000/api/car/${id}`, {
+
+    const response = await axios.get(`${apiUrl}/car/${id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -27,10 +29,9 @@ function ModifyCar() {
   let handleUpdta = async (e) => {
     e.preventDefault()
     let n = editedData.current;
-    console.log('hiiiii')
     try {
       const res = await axios.patch(
-        `http://127.0.0.1:8000/api/car/${id}`,
+        `${apiUrl}/car/${id}`,
         {
           model: n.model,
           make: n.make,
@@ -78,7 +79,7 @@ function ModifyCar() {
   let handleUpload = async () => {
     const fd = new FormData()
     fd.append("image", img)
-    const res = await axios.post(`http://127.0.0.1:8000/api/car/uploadImg/${id}`, fd, {
+    const res = await axios.post(`${apiUrl}/car/uploadImg/${id}`, fd, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -94,9 +95,15 @@ function ModifyCar() {
           <div className="w-[55%] bg-white shadow-lg rounded-lg mx-4 my-6">
             <form action="" >
               <img
-                src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
-                alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
-              <button className='p-4 pb-0 text-blue-500'  onClick={(e) => {
+                src={
+                  upClicked
+                    ? `${apiUrl}/images/${uploadedImageUrl}`
+                    : `${apiUrl}/images/${data.photo}`
+                }
+                alt="Loading ..."
+                className="w-full h-[19rem] object-cover object-center rounded-t-lg"
+              />
+              <button className='p-4 pb-0 text-blue-500' onClick={(e) => {
                 e.preventDefault()
                 setShowEditImg(true)
               }}>Change the image</button>
@@ -210,20 +217,20 @@ function ModifyCar() {
                 <div className='flex justify-between mt-2'>
 
 
-                  <button type='submit' 
-                  className="relative flex justify-center px-4 py-2 text-sm font-medium
+                  <button type='submit'
+                    className="relative flex justify-center px-4 py-2 text-sm font-medium
                   text-white bg-[#E60035] border border-transparent 
                   rounded-md group hover:bg-red-600 focus:outline-none 
                   focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   onClick={(e) => {
-                    handleUpdta(e)
-                  }}>
+                    onClick={(e) => {
+                      handleUpdta(e)
+                    }}>
                     Edit
                   </button>
 
-                  <Link to={`/admin/cars`} 
-                      className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Cancel
+                  <Link to={`/admin/cars`}
+                    className="relative flex justify-center px-4 py-2 text-sm font-medium text-black bg-gray-200 border border-transparent rounded-md group hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Cancel
                   </Link>
                 </div>
 

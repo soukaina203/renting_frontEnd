@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import { apiUrl } from '../../environnement/environnement.prod';
 
 import { Link } from 'react-router-dom';
 import { ImCross } from 'react-icons/im'
-import HeaderAdmin from '../header';
 import { FaArrowRight, FaPen } from "react-icons/fa6";
 import { MdDeleteSweep } from 'react-icons/md';
 
@@ -18,7 +18,7 @@ export default function Processed() {
   const [deleteMsg, setDeleteMsg] = useState(false);
 
   let fetchData = async () => {
-    const datas = await axios.get("http://localhost:8000/api/rental", {
+    const datas = await axios.get(`${apiUrl}/rental`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -32,7 +32,7 @@ export default function Processed() {
   }, []);
   let deleteRental = async (id) => {
     try {
-      let d = await axios.delete(`http://localhost:8000/api/rental/${id}`, {
+      let d = await axios.delete(`${apiUrl}/rental/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -51,7 +51,7 @@ export default function Processed() {
   }
   return (
     <div>
-    
+
 
 
       <div className="flex justify-center mt-[5rem] h-screen">
@@ -66,20 +66,20 @@ export default function Processed() {
           </div> : ""
 
           }
-            <Link to="/admin/rentals/create">
-        <button
-       className="relative right-0 h-12 w-40 uppercase font-semibold flex justify-center items-center gap-2 overflow-hidden
+          <Link to="/admin/rentals/create">
+            <button
+              className="relative right-0 h-12 w-40 uppercase font-semibold flex justify-center items-center gap-2 overflow-hidden
        border border-[#E60035] text-[#E60035] shadow-2xl font-Yantramanav-Black text-[1.1rem]
        before:absolute before:left-0 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full
        before:translate-y-12 before:-rotate-90 before:bg-white before:transition-all before:duration-300
        hover:text-white hover:shadow-[#E60035] hover:bg-[#E60035] 
        hover:before:-rotate-180"
-        >
-                                  <span className="relative z-10">Create rental</span>
+            >
+              <span className="relative z-10">Create rental</span>
 
-                                  <FaArrowRight className="relative z-10" />
-        </button>
-      </Link>
+              <FaArrowRight className="relative z-10" />
+            </button>
+          </Link>
           {data ?
 
 
@@ -91,7 +91,7 @@ export default function Processed() {
                   <FaLongArrowAltLeft className='h-6 w-7' />
                 </Link>
 
-                
+
                 <div className="overflow-hidden">
                   <table className="min-w-full text-sm font-light text-left text-surface ">
                     <thead className="font-medium border-b border-black">

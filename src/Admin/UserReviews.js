@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 import { MdDeleteSweep } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../../environnement/environnement.prod';
 
 function UserReviews() {
   const userId = localStorage.getItem('userId');
@@ -11,7 +12,7 @@ function UserReviews() {
 
   const fetchData = async () => {
     try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/review/user/${userId}`, {
+        const res = await axios.get(`${apiUrl}/review/user/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
@@ -23,7 +24,7 @@ function UserReviews() {
     }
 };
 let deleteReview = async (id) => {
-  let d = await axios.delete(`http://localhost:8000/api/review/${id}`, {
+  let d = await axios.delete(`${apiUrl}/review/${id}`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     }

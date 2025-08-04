@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
+import { apiUrl } from '../../environnement/environnement.prod';
+import { Url } from '../../environnement/environnement.prod';
 
 export default function VoirRental() {
   const [data, setData] = useState(null);
@@ -9,7 +11,7 @@ export default function VoirRental() {
 
   const fetchCar = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/rental/${id}`, {
+      const response = await axios.get(`${apiUrl}/rental/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -37,7 +39,7 @@ export default function VoirRental() {
           <div className="w-full md:w-2/3 lg:w-3/5 xl:w-2/5 bg-white shadow-lg rounded-lg mx-4 my-6 p-4">
             <div className="flex items-center justify-center">
               <img
-                src={`http://127.0.0.1:8000/images/${data.car.photo}`}
+                src={`${apiUrl}/images/${data.car.photo}`}
                 alt=""
                 className="w-full h-48 object-cover object-center rounded-lg"
               />

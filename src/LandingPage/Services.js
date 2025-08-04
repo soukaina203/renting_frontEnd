@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 
 export default function Services() {
   return (
-      <div id='Services' className="relative flex items-center justify-center w-full h-full py-16 bg-gray-100"> {/* Add py-16 for padding */}
-        <div>
+    <div id='Services' className="relative flex items-center justify-center w-full h-full py-16 bg-gray-100"> {/* Add py-16 for padding */}
+      <div>
 
-          {/* Paragraphs */}
-          <div className='flex flex-col items-center justify-center '>
-            <p className="text-[#E60035] text-lg justify-center p-2  font-Yantramanav-Black font-semibold flex items-center">
-              <div className='w-12 h-[3px] mr-3 bg-[#E60035] '></div>
-              KNOW ABOUT US
-              <div className='w-12 h-[3px] ml-3 bg-[#E60035] '></div>
+        {/* Paragraphs */}
+        <div className='flex flex-col items-center justify-center '>
+          <p className="text-[#E60035] text-lg justify-center p-2  font-Yantramanav-Black font-semibold flex items-center">
+            <div className='w-12 h-[3px] mr-3 bg-[#E60035] '></div>
+            KNOW ABOUT US
+            <div className='w-12 h-[3px] ml-3 bg-[#E60035] '></div>
 
-            </p>
+          </p>
 
-            <h1 className='max-w-2xl p-2 ml-auto mr-auto text-3xl font-extrabold text-center uppercase md:text-4xl font-Yantramanav-Black'>Strategic Solutions For A Thriving Future</h1>
-          </div>
+          <h1 className='max-w-2xl p-2 ml-auto mr-auto text-3xl font-extrabold text-center uppercase md:text-4xl font-Yantramanav-Black'>Strategic Solutions For A Thriving Future</h1>
+        </div>
 
 
-<Zoom>
+        <Zoom>
           <div className="grid grid-cols-1 gap-4 mt-8 md:grid-cols-2 place-items-center lg:grid-cols-3">
             <div
               class="relative grid h-[31rem] w-full max-w-[28rem] flex-col items-end justify-center 
@@ -117,9 +117,9 @@ export default function Services() {
 
 
           </div>
-    </Zoom>
-        </div>
+        </Zoom>
       </div>
+    </div>
   );
 }
 

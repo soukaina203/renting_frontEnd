@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa6';
 import HeaderAdmin from '../header';
+import { apiUrl } from '../../environnement/environnement.prod'; // or `.prod` for production
 axios.defaults.withCredentials = true;
 
 function AllCars() {
@@ -24,7 +25,8 @@ function AllCars() {
   const [filter, setFilter] = useState({ type: false, avail: false, color: false, price: false, year: false, model: false });
 
   let fetchData = async () => {
-    const datas = await axios.get("http://localhost:8000/api/carsForAdmin", {
+    
+    const datas = await axios.get(`${apiUrl}/carsForAdmin`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -67,7 +69,8 @@ function AllCars() {
 
   let deleteClient = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/car/${id}`, {
+      
+      await axios.delete(`${apiUrl}/car/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -78,7 +81,8 @@ function AllCars() {
     }
   }
   let getSearchCars = async () => {
-    const da = await axios.get(`http://localhost:8000/api/search/${search}`, {
+   
+    const da = await axios.get( `${apiUrl}/search/${search}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeaderUser from './Header'
 import { FaArrowRight } from 'react-icons/fa6'
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 function Welcome() {
   const [search, setSearch] = useState([])

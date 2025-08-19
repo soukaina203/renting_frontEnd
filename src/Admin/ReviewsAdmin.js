@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { FaArrowRight, FaPen } from 'react-icons/fa6';
 import { MdDeleteSweep } from 'react-icons/md';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 function ReviewsAdmin() {
   const [reviews, setReviews] = useState([]);

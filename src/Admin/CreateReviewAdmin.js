@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 function CreateReviewAdmin() {
   const FillData = useRef({ rating: "", comment: "",user_id:0}); // the data that is new edited by the user and gonna be passed to the backend

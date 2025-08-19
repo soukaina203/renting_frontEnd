@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HeaderUser from './Header';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 function CreateReview() {
     const data = useRef({ comment: '', rating: 0 })

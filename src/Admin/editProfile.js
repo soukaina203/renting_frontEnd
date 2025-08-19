@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from './header';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 function  EditProfile() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit

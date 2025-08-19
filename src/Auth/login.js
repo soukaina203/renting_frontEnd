@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowRight } from 'react-icons/fa6';
 import { Zoom } from 'react-reveal';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 axios.defaults.withCredentials = true;
 

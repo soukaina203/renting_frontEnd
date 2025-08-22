@@ -16,7 +16,8 @@ function SignIn() {
 
   let handleLogin = async (e) => {
     e.preventDefault();
-    const res = await axios.post( `${apiUrl}/login`, {
+
+    const res = await axios.post(`${apiUrl}/login`, {
       email: data.current.email,
       password: data.current.password,
     });

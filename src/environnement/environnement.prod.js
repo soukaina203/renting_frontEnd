@@ -1,2 +1,2 @@
-const apiUrl="bestcars-api.cloud.dev-solus.com/api"
-const Url="bestcars-api.cloud.dev-solus.com"
+export const apiUrl="https://bestcars-api.cloud.dev-solus.com/api"
+export const Url="https://bestcars-api.cloud.dev-solus.com"

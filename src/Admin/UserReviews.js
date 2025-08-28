@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 import { MdDeleteSweep } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 function UserReviews() {
   const userId = localStorage.getItem('userId');

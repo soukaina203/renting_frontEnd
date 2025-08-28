@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderUser from './Header';
 import { Fade } from 'react-reveal';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 axios.defaults.withCredentials = true;
 

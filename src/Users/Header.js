@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { Link as RouterLink } from 'react-router-dom';
-import { apiUrl } from '../../environnement/environnement.prod';
+import { apiUrl } from '../environnement/environnement.prod';
 
 export default function HeaderUser() {
   const [isClicked, setClicked] = useState({ menuIcon: true, exitIcon: false });

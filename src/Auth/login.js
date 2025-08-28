@@ -36,7 +36,7 @@ function SignIn() {
       setMsg('')
       console.log("==========")
       console.log(res.data)
-      if (res.data.isAdmin === 'a') {
+      if (res.data.role === 'admin') {
 
         navigate('/admin/users')
       } else {

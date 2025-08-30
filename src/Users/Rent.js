@@ -2,7 +2,7 @@ import  { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { apiUrl } from '../environnement/environnement.prod';
+import { Url, apiUrl } from '../environnement/environnement.prod';
 
 export default function Rent() {
     const [car, setCars] = useState(null);
@@ -79,7 +79,7 @@ export default function Rent() {
       </div>
       <div className="px-4 py-2">
         <img
-          src={`${apiUrl}/images/${car.photo}`}
+          src={`${Url}/images/${car.photo}`}
           alt=""
           className="w-full h-[19rem] object-cover object-center rounded-t-lg"
         />

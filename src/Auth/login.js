@@ -34,7 +34,11 @@ function SignIn() {
       setMsg('')
       console.log("==========")
       console.log(res.data)
+<<<<<<< HEAD
       if (res.data.isAdmin === 'admin') {
+=======
+      if (res.data.role === 'admin') {
+>>>>>>> 33395052b8a338ba01e33e87b09c7b42860224ea
 
         navigate('/admin/users')
       } else {

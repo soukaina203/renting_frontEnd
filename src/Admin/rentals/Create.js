@@ -31,7 +31,7 @@ export default function CreateRental() {
     let userId=localStorage.getItem('userId');
 
         console.log(n)
-        const d = await axios.post(`${apiUrl}/select/rental`, {
+        const d = await axios.post(`${apiUrl}/rental`, {
             user_id: userId,
             car_id: n.car_id,
             rental_start: n.rental_start,

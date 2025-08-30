@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa6'
-import { apiUrl } from '../environnement/environnement.prod';
+import { Url, apiUrl } from '../environnement/environnement.prod';
 
 function Welcome() {
   const [search, setSearch] = useState([])
@@ -87,7 +87,7 @@ function Welcome() {
     }
   }
   let getSearchCars = async () => {
-    const da = await axios.get(`http://localhost:8000/api/search/${search}`, {
+    const da = await axios.get(`${apiUrl}/${search}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -178,7 +178,7 @@ function Welcome() {
             <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" >
               {data.map((e, i) => (
                 <div key={i} className="max-w-sm overflow-hidden transition-shadow duration-300 rounded shadow-lg hover:shadow-xl">
-                  <img src={`http://127.0.0.1:8000/images/${e.photo}`} alt={e.model} className="object-cover w-full h-48" />
+                  <img src={`${Url}/images/${e.photo}`} alt={e.model} className="object-cover w-full h-48" />
                   <div className="px-6 py-4">
                     <div className="flex justify-between mb-2 ">
                       <h1 className='text-xl font-bold'>

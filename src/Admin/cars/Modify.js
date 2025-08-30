@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import HeaderAdmin from '../header';
 import { useNavigate } from "react-router-dom";
-import { apiUrl } from '../../environnement/environnement.prod';
+import { Url, apiUrl } from '../../environnement/environnement.prod';
 
 function ModifyCar() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
@@ -97,8 +97,8 @@ function ModifyCar() {
               <img
                 src={
                   upClicked
-                    ? `${apiUrl}/images/${uploadedImageUrl}`
-                    : `${apiUrl}/images/${data.photo}`
+                    ? `${Url}/images/${uploadedImageUrl}`
+                    : `${Url}/images/${data.photo}`
                 }
                 alt="Loading ..."
                 className="w-full h-[19rem] object-cover object-center rounded-t-lg"

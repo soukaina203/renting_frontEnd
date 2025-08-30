@@ -67,7 +67,7 @@ function CreateCar() {
 
                     <h1 className='text-xl font-semibold text-center'>Creation Of A Car</h1>
                     <img
-                        src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
+                        src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data?.photo}`}
                         alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " /> 
                         
                     <button className='p-4 pb-0 text-blue-500' onClick={(e) => {

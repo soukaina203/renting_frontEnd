@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import HeaderUser from './Header'
 import { FaArrowRight } from 'react-icons/fa6'
 import { apiUrl } from '../environnement/environnement.prod';
 
@@ -124,10 +123,10 @@ function Welcome() {
           </div>
         </div>
         {/* Filter Part */}
-        <div className='flex'>
+        <div className='flex '>
           <div className="flex flex-col p-4 lg:flex-row">
             {/* Sidebar */}
-            <div className="hidden w-1/5 mr-4 border-[0.1rem] border-red-600 rounded lg:block bg-white text-black">
+            <div className="hidden w-[41rem] w-1/5 mr-4 border-[0.1rem] border-red-600 rounded lg:block bg-white text-black">
             <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })}>Car Type</h2>
               {filter.type && (
                 <div>
@@ -175,7 +174,8 @@ function Welcome() {
 
 
             {/* Main Content */}
-            <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {data?(
+            <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" >
               {data.map((e, i) => (
                 <div key={i} className="max-w-sm overflow-hidden transition-shadow duration-300 rounded shadow-lg hover:shadow-xl">
                   <img src={`http://127.0.0.1:8000/images/${e.photo}`} alt={e.model} className="object-cover w-full h-48" />
@@ -255,6 +255,7 @@ function Welcome() {
                 </div>
               ))}
             </div>
+            ):null}
           </div>
         </div>
 

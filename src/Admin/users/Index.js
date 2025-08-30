@@ -272,7 +272,7 @@ function AllUsers() {
               before:translate-y-12 before:-rotate-90 before:bg-white before:transition-all before:duration-300
               hover:text-white hover:shadow-[#E60035] hover:bg-[#E60035] 
               hover:before:-rotate-180">
-              <span className="relative z-10">Create Car</span>
+              <span className="relative z-10">Create User</span>
               <FaArrowRight className="relative z-10" />
             </button>
           </Link>

@@ -25,6 +25,8 @@ export default function HeaderUser() {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
+    console.log(res.data)
+    console.log("-===========")
     setUserPhoto(res.data.user.photo)
   }
 
@@ -123,7 +125,7 @@ export default function HeaderUser() {
                   Profile
                 </a>
                 <a
-                  href="/logout"
+                  href="/"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"

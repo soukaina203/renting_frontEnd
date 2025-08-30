@@ -8,8 +8,8 @@ function CreateCar() {
     const FillData = useRef({ make: "", model: "", color: "", type: "", photo: "", year: "", available: 1, price_per_day: 0 });
     const navigate = useNavigate();
     const [data, setData] = useState(null);//for getting data of the car that we want to edit
-    const [showEditImg, setShowEditImg] = useState(false);// to show the form of uploading an image 
-    const [img, setImg] = useState('')// the uploaded file of the user 
+    const [showEditImg, setShowEditImg] = useState(false);// to show the form of uploading an image
+    const [img, setImg] = useState('')// the uploaded file of the user
     const editedData = useRef([])// the data thatis new edited by the user and gonna be passed to the backend
     const [upClicked, setUpclicked] = useState(false)// this for changing the image if the user click on upload than the url of the image goona change to the one sent by the backend
     const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // store the incoming image url that is coming from the backend
@@ -49,8 +49,7 @@ function CreateCar() {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
-        console.log("==================IMAGE")
-        console.log(res.data.image_url)
+
         FillData.current.photo = res.data.image_url
         // public function uploadImgs(Request $request,string $id )
         setUploadedImageUrl(res.data.image_url)
@@ -67,14 +66,14 @@ function CreateCar() {
 
 
                     <h1 className='text-xl font-semibold text-center'>Creation Of A Car</h1>
-
                     <img
                         src={upClicked ? `http://127.0.0.1:8000/images/${uploadedImageUrl}` : `http://127.0.0.1:8000/images/${data.photo}`}
-                        alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " />
+                        alt="Loading ..." className="w-full h-[19rem] object-cover object-center rounded-t-lg   " /> 
+                        
                     <button className='p-4 pb-0 text-blue-500' onClick={(e) => {
                         e.preventDefault()
                         setShowEditImg(true)
-                    }}>Change the image</button>
+                    }}>upload image</button>
 
                     {showEditImg ? (
                         <div className="px-4 py-2 bg-white rounded-lg shadow">

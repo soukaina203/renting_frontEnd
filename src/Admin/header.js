@@ -24,6 +24,8 @@ function HeaderAdmin() {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
+    console.log(res.data)
+    console.log("-===========")
     setUserPhoto(res.data.user.photo)
   }
   useEffect(() => {
@@ -102,7 +104,7 @@ function HeaderAdmin() {
 
           <button className='p-2 text-gray-500 rounded '
             onClick={dropDawn}>
-              <img src={userPhoto ?  `${apiUrl}/images/${userPhoto}`:
+              <img src={userPhoto!==null ?  `${apiUrl}/images/${userPhoto}`:
                "/imgs/noProfile.jpg"} className='w-8 h-8 rounded-full ' alt=''/>
           </button>
           {isOpen && (

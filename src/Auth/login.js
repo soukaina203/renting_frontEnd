@@ -16,18 +16,15 @@ function SignIn() {
 
   let handleLogin = async (e) => {
     e.preventDefault();
-
     const res = await axios.post(`${apiUrl}/login`, {
       email: data.current.email,
       password: data.current.password,
     });
 
 
-    console.log(res.data)
 
 
     if (res.data !== -1) {
-      console.log("hello1")
       setShowpoppup(false)
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userName', res.data.user.name);
@@ -37,7 +34,7 @@ function SignIn() {
       setMsg('')
       console.log("==========")
       console.log(res.data)
-      if (res.data.isAdmin === 'a') {
+      if (res.data.isAdmin === 'admin') {
 
         navigate('/admin/users')
       } else {

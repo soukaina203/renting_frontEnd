@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import HeaderAdmin from './header';
-import { apiUrl } from '../environnement/environnement.prod';
+import { Url, apiUrl } from '../environnement/environnement.prod';
 
 function  EditProfile() {
   const [data, setData] = useState(null);//for getting data of the car that we want to edit
@@ -87,9 +87,9 @@ function  EditProfile() {
                 <img
                   src={
                     upClicked
-                      ? `${apiUrl}/images/${uploadedImageUrl}`
+                      ? `${Url}/images/${uploadedImageUrl}`
                       : data && data.photo
-                        ? `${apiUrl}/images/${data.photo}`
+                        ? `${Url}/images/${data.photo}`
                         : "/imgs/noProfile.jpg"
                   }
                   alt=""

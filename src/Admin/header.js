@@ -3,7 +3,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 import { MdOutlinePersonOutline } from "react-icons/md";
 import axios from 'axios';
-import { apiUrl } from '../environnement/environnement.prod';
+import { Url, apiUrl } from '../environnement/environnement.prod';
 
 function HeaderAdmin() {
   const [admin, setAdmin] = useState({ id: localStorage.getItem('userId'), name: localStorage.getItem("userName") })
@@ -104,7 +104,7 @@ function HeaderAdmin() {
 
           <button className='p-2 text-gray-500 rounded '
             onClick={dropDawn}>
-              <img src={userPhoto!==null ?  `${apiUrl}/images/${userPhoto}`:
+              <img src={userPhoto!==null ?  `${Url}/images/${userPhoto}`:
                "/imgs/noProfile.jpg"} className='w-8 h-8 rounded-full ' alt=''/>
           </button>
           {isOpen && (

@@ -25,7 +25,7 @@ function AllCars() {
   const [filter, setFilter] = useState({ type: false, avail: false, color: false, price: false, year: false, model: false });
 
   let fetchData = async () => {
-
+    
     const datas = await axios.get(`${apiUrl}/carsForAdmin`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -69,7 +69,7 @@ function AllCars() {
 
   let deleteClient = async (id) => {
     try {
-
+      
       await axios.delete(`${apiUrl}/car/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -81,8 +81,8 @@ function AllCars() {
     }
   }
   let getSearchCars = async () => {
-
-    const da = await axios.get(`${apiUrl}/search/${search}`, {
+   
+    const da = await axios.get( `${apiUrl}/search/${search}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -136,154 +136,152 @@ function AllCars() {
 
 
 
-      <div className="flex flex-col p-4 lg:flex-row">
+        <div className="flex flex-col p-4 lg:flex-row">
 
-        {/* Sidebar */}
-        <div className="hidden w-1/5 mr-4 border-[0.1rem] border-red-600 rounded lg:block bg-white text-black">
-          <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })}>Car Type</h2>
-          {filter.type && (
-            <div>
-              <p className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => setData(permanent)}>All</p>
-              {distinctTypes.map((e) => (
-                <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByType(e)}>{e}</p>
-              ))}
-            </div>
-          )}
-
-
-
-          <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })}>Car Color</h2>
-          {filter.color && (
-            <div>
-              {distinctColors.map((e) => (
-                <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByColor(e)}>{e}</p>
-              ))}
-            </div>
-          )}
-
-          <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })}>Car Model</h2>
-          {filter.model && (
-            <div>
-              {distinctModels.map((e) => (
-                <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByModel(e)}>{e}</p>
-              ))}
-            </div>
-          )}
-
-          <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })}>Car Year</h2>
-          {filter.year && (
-            <div>
-              {distinctYear.map((e) => (
-                <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByYear(e)}>{e}</p>
-              ))}
-            </div>
-          )}
-
-          <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: true, color: false, price: false, year: false, model: false })}>Car Availability</h2>
-          {filter.avail && (
-            <>
-              <p key="1" className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => setData(avaiCars)}>Available</p>
-              <p key="2" className="w-full px-4 py-2 cursor-pointer hover:bg-red-100"
-                onClick={() => setData(notAvailCars)}>Not Available</p>
-            </>
-          )}
-
-        </div>
+          {/* Sidebar */}
+          <div className="hidden w-1/5 mr-4 border-[0.1rem] border-red-600 rounded lg:block bg-white text-black">
+            <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: true, avail: false, color: false, price: false, year: false, model: false })}>Car Type</h2>
+            {filter.type && (
+              <div>
+                <p className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => setData(permanent)}>All</p>
+                {distinctTypes.map((e) => (
+                  <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByType(e)}>{e}</p>
+                ))}
+              </div>
+            )}
 
 
+
+            <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: true, price: false, year: false, model: false })}>Car Color</h2>
+            {filter.color && (
+              <div>
+                {distinctColors.map((e) => (
+                  <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByColor(e)}>{e}</p>
+                ))}
+              </div>
+            )}
+
+            <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: false, model: true })}>Car Model</h2>
+            {filter.model && (
+              <div>
+                {distinctModels.map((e) => (
+                  <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByModel(e)}>{e}</p>
+                ))}
+              </div>
+            )}
+
+            <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: false, color: false, price: false, year: true, model: false })}>Car Year</h2>
+            {filter.year && (
+              <div>
+                {distinctYear.map((e) => (
+                  <p key={e} className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => filterByYear(e)}>{e}</p>
+                ))}
+              </div>
+            )}
+
+            <h2 className="px-4 py-2 font-semibold cursor-pointer hover:bg-red-100" onClick={() => setFilter({ type: false, avail: true, color: false, price: false, year: false, model: false })}>Car Availability</h2>
+            {filter.avail && (
+              <>
+                <p key="1" className="px-4 py-2 cursor-pointer hover:bg-red-100" onClick={() => setData(avaiCars)}>Available</p>
+                <p key="2" className="w-full px-4 py-2 cursor-pointer hover:bg-red-100"
+                  onClick={() => setData(notAvailCars)}>Not Available</p>
+              </>
+            )}
+
+          </div>
 
 
 
 
 
 
-        {/* Main Content */}
-        <div className="w-full p-2">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {data.map((e, i) => (
-              <div
-                key={i}
-                className="flex flex-col max-w-sm mx-auto overflow-hidden transition-shadow duration-300 rounded-lg shadow-md hover:shadow-xl"
-              >
-                {/* Image */}
-                <img
-                  src={`${Url}/images/${e.photo}`}
-                  alt={e.model}
-                  className="object-cover w-full h-48 sm:h-56"
-                />
 
-                {/* Card content */}
-                <div className="flex-1 px-4 py-3 sm:px-6 sm:py-4">
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mb-3">
-                    <h1 className="text-lg font-bold sm:text-xl">{e.model}</h1>
-                    <p className="text-lg font-bold text-[#E60035] sm:text-xl">
-                      ${e.price_per_day}/day
-                    </p>
+
+          {/* Main Content */}
+          <div className="w-full m-2 ">
+
+            <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {data.map((e, i) => (
+                <div key={i} className="max-w-sm overflow-hidden transition-shadow duration-300 rounded shadow-lg hover:shadow-xl">
+                  <img src={`${Url}/images/${e.photo}`} alt={e.model} className="object-cover w-full h-48" />
+                  <div className="px-6 py-4">
+                    <div className="flex justify-between mb-2 ">
+                      <h1 className='text-xl font-bold'>
+                        {e.model}
+                      </h1>
+                      <p className='font-bold text-xl text-[#E60035] '>  ${e.price_per_day}/day </p>
+
+                    </div>
+
+                    <div className='flex flex-wrap'>
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Make:</span> {e.make}
+                      </div>
+
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Year:</span> {e.year}
+                      </div>
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Color:</span> {e.color}
+                      </div>
+
+                      <div className="ml-1 text-base text-gray-700">
+                        <span className="mr-2 font-medium">Type:</span> {e.type}
+                      </div>
+                      {e.available === 0 ?
+                        <div className="ml-1 text-base text-gray-700">
+                          <span className="mr-2 font-medium">Availabilty:</span> Available
+                        </div> :
+                        <div className="ml-1 text-base text-gray-700">
+                          <span className="mr-2 font-medium">Availabilty:</span> Not Available
+                        </div>
+                      }
+                    </div>
                   </div>
-
-                  {/* Details */}
-                  <div className="grid grid-cols-1 gap-2 text-sm text-gray-700 sm:grid-cols-2">
-                    <p>
-                      <span className="font-medium">Make:</span> {e.make}
-                    </p>
-                    <p>
-                      <span className="font-medium">Year:</span> {e.year}
-                    </p>
-                    <p>
-                      <span className="font-medium">Color:</span> {e.color}
-                    </p>
-                    <p>
-                      <span className="font-medium">Type:</span> {e.type}
-                    </p>
-                    <p>
-                      <span className="font-medium">Availability:</span>{" "}
-                      {e.available === 0 ? "Available" : "Not Available"}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Buttons */}
-                <div className="flex flex-col gap-3 px-4 pb-4 sm:flex-row sm:justify-between sm:px-6">
-                  <Link to={`/admin/car/edit/${e.id}`} className="flex-1">
-                    <button
-                      className="relative w-full h-12 font-semibold flex justify-center items-center gap-2
-                overflow-hidden border border-[#E60035] text-white group
-                shadow-md before:absolute before:left-0 
-                before:-ml-2 before:h-48 before:w-48 before:origin-top-right
-                before:-translate-x-full before:translate-y-12 before:-rotate-90
+                  <div className="flex justify-between px-6 pb-5">
+                    <Link to={`/admin/car/edit/${e.id}`}>
+                      <button className="before:ease relative h-12 w-40  font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
                 before:bg-white before:transition-all before:duration-300 hover:text-white
-                hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180 rounded-lg"
-                    >
-                      <span className="relative text-[#E60035] z-20 group-hover:text-white">
-                        Modify
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+                        <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+
+                          Modify
+
+                        </span>
+
+                        <FaArrowRight className="relative text-[#E60035] 
+                  z-20 group-hover:text-white ml-2" />
+                      </button>
+                    </Link>
+
+
+                    <button onClick={() => deleteClient(e.id)} className="before:ease relative h-12 w-40  font-semibold flex
+             justify-center items-center gap-2 mr-auto ml-auto overflow-hidden border
+              border-[#E60035] text-white group
+              shadow-2xl before:absolute before:left-0 
+              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
+               before:-translate-x-full before:translate-y-12 before:-rotate-90
+                before:bg-white before:transition-all before:duration-300 hover:text-white
+                 hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180">
+
+                      <span className='relative text-[#E60035] z-20 group-hover:text-white'>
+                        Delete
+
                       </span>
                       <FaArrowRight className="relative text-[#E60035] z-20 group-hover:text-white ml-2" />
                     </button>
-                  </Link>
-
-                  <button
-                    onClick={() => deleteClient(e.id)}
-                    className="relative w-full h-12 font-semibold flex justify-center items-center gap-2
-              overflow-hidden border border-[#E60035] text-white group
-              shadow-md before:absolute before:left-0 
-              before:-ml-2 before:h-48 before:w-48 before:origin-top-right
-              before:-translate-x-full before:translate-y-12 before:-rotate-90
-              before:bg-white before:transition-all before:duration-300 hover:text-white
-              hover:shadow-[#E60035] hover:bg-[#E60035] hover:before:-rotate-180 rounded-lg"
-                  >
-                    <span className="relative text-[#E60035] z-20 group-hover:text-white">
-                      Delete
-                    </span>
-                    <FaArrowRight className="relative text-[#E60035] z-20 group-hover:text-white ml-2" />
-                  </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
 
 
   );

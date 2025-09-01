@@ -4,6 +4,7 @@ import axios from 'axios';
 import HeaderAdmin from '../header';
 import { FaArrowRight } from 'react-icons/fa6';
 import { apiUrl } from '../../environnement/environnement.prod';
+import { Url } from '../../environnement/environnement.prod';
 
 function VoirCar() {
   const [data, setData] = useState(null);
@@ -35,7 +36,7 @@ function VoirCar() {
         {data !== null ?
           <div className="w-[60%] bg-white shadow-lg rounded-lg mx-4 my-6">
             <img
-              src={`${apiUrl}/images/${data.photo}`}
+              src={`${Url}/images/${data.photo}`}
               alt=""
               className="w-full h-[19rem] object-cover object-center rounded-t-lg"
             />

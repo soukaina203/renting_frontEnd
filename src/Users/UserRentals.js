@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderUser from './Header';
 import { Fade } from 'react-reveal';
 import { apiUrl } from '../environnement/environnement.prod';
+import { Url } from '../environnement/environnement.prod';
 
 axios.defaults.withCredentials = true;
 
@@ -87,7 +88,7 @@ function UserRentals() {
                                 <td colSpan="5">
                                   <div className="grid grid-cols-1 gap-3 p-2 lg:grid-cols-3">
                                     <img
-                                      src={`${apiUrl}/images/${rental.car.photo}`}
+                                      src={`${Url}/images/${rental.car.photo}`}
                                       alt=""
                                       className="w-full h-[13rem] object-cover object-center rounded-lg"
                                     />

@@ -28,7 +28,7 @@ import NotProcessed from './Admin/rentals/NotProcessed';
 import CreateReview from './Users/CreateReview';
 import ReviewsAdmin from './Admin/ReviewsAdmin';
 import Admin from './Admin/Admin';
-
+import CreateReviewAdmin from './Admin/CreateReviewAdmin'
 const routesConfig = [
   // Auth Admin and users
   { path: '/', element: <LandingPage /> },
@@ -67,7 +67,9 @@ const routesConfig = [
   { path: '/car/:id/rent', element: <Rent /> },
   { path: '/answer', element: <Answer /> },
   { path: '/user/rentals', element: <UserRentals /> },
+
   { path: '/review/create', element: <CreateReview /> },
+  { path: '/admin/review/create', element: <CreateReviewAdmin /> },
 
 
 

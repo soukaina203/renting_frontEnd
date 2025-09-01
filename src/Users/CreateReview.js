@@ -24,7 +24,7 @@ function CreateReview() {
                 }
             });
             if(r.data.message==='yes'){
-                navigate('/welcome')
+                navigate('/user/reviews')
 
             }
 
@@ -33,15 +33,15 @@ function CreateReview() {
     return (
         <div>
             <HeaderUser />
-            <div className="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow">
+            <div className="max-w-md p-4 mx-auto mt-8 bg-white rounded shadow">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label htmlFor="comment" className="text-gray-600 font-bold">
+                        <label htmlFor="comment" className="font-bold text-gray-600">
                             Comment:
                         </label>
                         <textarea
                             id="comment"
-                            className="form-textarea w-full border px-4 py-2 rounded focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 border rounded form-textarea focus:outline-none focus:shadow-outline"
                             rows="4"
                             placeholder="Enter your comment..."
                             onChange={(e) => data.current.comment = e.target.value}
@@ -49,13 +49,13 @@ function CreateReview() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="rating" className="text-gray-600 font-bold">
+                        <label htmlFor="rating" className="font-bold text-gray-600">
                             Rating:
                         </label>
                         <input
                             type="number"
                             id="rating"
-                            className="form-input w-full border px-4 py-2 rounded focus:outline-none focus:shadow-outline"
+                            className="w-full px-4 py-2 border rounded form-input focus:outline-none focus:shadow-outline"
                             min="0"
                             max="5"
                             onChange={(e) => data.current.rating = e.target.value}
@@ -64,7 +64,7 @@ function CreateReview() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-btn hover:bg-btn1 text-white font-bold py-2 px-4 rounded"
+                        className="w-full px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600"
                     >
                         Submit Review
                     </button>

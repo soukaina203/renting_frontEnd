@@ -61,6 +61,8 @@ function App() {
 
 
           </Route>
+          <Route path="review/create" element={<CreateReview />} /> 
+
           {/* Admin */}
           <Route path="/admin" element={<Admin />}>
             <Route path="editProfile/:id" element={<EditProfile />} />

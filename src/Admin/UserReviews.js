@@ -49,7 +49,7 @@ useEffect(() => {
 
       <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
 
-      <Link to="/admin/review/create">
+      <Link to="/review/create"> 
         <button className="relative h-12 w-40 uppercase font-semibold flex justify-center items-center gap-2 overflow-hidden
           border border-[#E60035] text-[#E60035] shadow-2xl font-Yantramanav-Black text-[1.1rem]
           before:absolute before:left-0 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full

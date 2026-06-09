@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 env:
-  JOB_NAME: 'renting-frontend'
-  TOKEN: '11c80379c26a77d3b60f78764bb994fb4f'
+  JOB_NAME: 'renting_front'
+  TOKEN: '11e15bc43465e9ebbd7d5b9a32647ba98a'
 jobs:
   build:
     name: Build
@@ -17,7 +17,7 @@ jobs:
     - name: trigger single Job
       uses: appleboy/jenkins-action@master
       with:
-        url: "http://194.163.148.222:7000"
-        user: "admin"
+        url: "http://167.86.67.229:8080"
+        user: "mourabit"
         token: ${{ env.TOKEN }}
         job: "${{ env.JOB_NAME }}"
